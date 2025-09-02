@@ -6,13 +6,13 @@ const Contact = () => {
   return (
     <motion.section
       id="contact"
-      className="py-16 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+      className="py-8 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.2 }}
       viewport={{ once: true, amount: 0.3 }}
     >
-      <div className="container mx-auto px-4 max-w-4xl">
+      <div className="px-4 max-w-4xl">
         <motion.h2
           className="text-4xl font-extrabold text-center mb-12 text-gray-900 dark:text-white"
           initial={{ opacity: 0, y: -20 }}

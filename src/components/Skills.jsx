@@ -28,8 +28,8 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className="py-16 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-      <div className="container mx-auto px-4">
+    <section id="skills" className="py-8 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+      <div className="px-4">
         <h2 className="text-4xl font-extrabold text-center mb-12 text-gray-900 dark:text-white">
           Compétences
         </h2>

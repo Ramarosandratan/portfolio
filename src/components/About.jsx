@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 
 const About = () => {
   return (
-    <section id="about" className="py-16 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-      <div className="container mx-auto px-4">
+    <section id="about" className="py-8 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+      <div className="px-4">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
