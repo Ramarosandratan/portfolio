@@ -5,19 +5,19 @@ const Projects = () => {
     {
       title: 'Projet 1',
       description: 'Description du projet 1.',
-      image: '/vite.svg',
+      image: '/portfolio/vite.svg',
       link: '#'
     },
     {
       title: 'Projet 2',
       description: 'Description du projet 2.',
-      image: '/vite.svg',
+      image: '/portfolio/vite.svg',
       link: '#'
     },
     {
       title: 'Projet 3',
       description: 'Description du projet 3.',
-      image: '/vite.svg',
+      image: '/portfolio/vite.svg',
       link: '#'
     }
   ];

@@ -7,7 +7,7 @@ const About = () => {
         <h2 className="text-3xl font-bold text-center mb-8">À propos de moi</h2>
         <div className="flex flex-col md:flex-row items-center">
           <div className="md:w-1/2 mb-8 md:mb-0">
-            <img src="/vite.svg" alt="Profile" className="w-48 h-48 rounded-full mx-auto" />
+            <img src="/portfolio/vite.svg" alt="Profile" className="w-48 h-48 rounded-full mx-auto" />
           </div>
           <div className="md:w-1/2">
             <p className="text-lg leading-relaxed">
