@@ -50,7 +50,7 @@ const Contact = () => {
   return (
     <div
       id="contact"
-      className="min-h-screen flex items-center justify-center py-16 px-4 bg-gray-100 dark:bg-gray-900"
+      className="min-h-screen flex items-center justify-center py-16 px-4 bg-gradient-to-br from-indigo-100 to-purple-100 dark:bg-gray-900"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
