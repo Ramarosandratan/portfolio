@@ -3,22 +3,28 @@ import React from 'react';
 const Projects = () => {
   const projects = [
     {
-      title: 'Projet 1',
-      description: 'Description du projet 1.',
-      image: '/portfolio/vite.svg',
+      title: 'Développeur Full Stack - Freelance',
+      description: 'Conception et développement d\'une application no-code avec Retool. Conception de base de données avec Supabase. (09/2023 - 01/2024)',
+      image: '/images/freelance.png',
       link: '#'
     },
     {
-      title: 'Projet 2',
-      description: 'Description du projet 2.',
-      image: '/portfolio/vite.svg',
-      link: '#'
+      title: 'Sprint',
+      description: 'Un Framework personnel créer a partir d\'un projet Maven multi modules',
+      image: '/images/sprint.png',
+      link: 'https://github.com/Ramarosandratan/Sprint'
     },
     {
-      title: 'Projet 3',
-      description: 'Description du projet 3.',
-      image: '/portfolio/vite.svg',
-      link: '#'
+      title: 'Extension de ERPNext Frappe',
+      description: 'Une application web Symfony moderne intégrée à ERPNext pour la gestion des employés, le traitement de la paie et la génération de bulletins de salaire.',
+      image: '/images/erpnext-logo.png',
+      link: 'https://github.com/Ramarosandratan/frappe_newapp'
+    },
+    {
+      title: 'DWH',
+      description: 'Un travaux pratique réaliser avec airflow',
+      image: '/images/Apache-Airflow.png',
+      link: 'https://github.com/Ramarosandratan/DWH'
     }
   ];
 

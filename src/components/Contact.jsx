@@ -5,6 +5,10 @@ const Contact = () => {
     <section id="contact" className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-8">Contactez-moi</h2>
+        <div className="max-w-md mx-auto text-center mb-8">
+          <p className="text-lg mb-2">**Téléphone :** +261 34 54 187 16</p>
+          <p className="text-lg mb-2">**Email :** ramarosandratana@hotmail.com</p>
+        </div>
         <div className="max-w-md mx-auto">
           <form className="bg-gray-100 p-6 rounded-lg shadow-md">
             <div className="mb-4">

@@ -7,12 +7,15 @@ const About = () => {
         <h2 className="text-3xl font-bold text-center mb-8">À propos de moi</h2>
         <div className="flex flex-col md:flex-row items-center">
           <div className="md:w-1/2 mb-8 md:mb-0">
-            <img src="/portfolio/vite.svg" alt="Profile" className="w-48 h-48 rounded-full mx-auto" />
+            <img src="/images/profil.png" alt="Profile" className="w-48 h-48 rounded-full mx-auto" />
           </div>
           <div className="md:w-1/2">
             <p className="text-lg leading-relaxed">
-              Je suis un développeur passionné avec une expérience en React, Node.js et plus.
-              J'aime créer des applications web modernes et responsives.
+              Étudiant en informatique motivé et passionné par le développement web.
+              Compétences solides en langages tels que PHP et Java, ainsi qu'en
+              front-end (HTML, CSS, JavaScript). Curieux et rigoureux, capable de
+              s'adapter rapidement aux nouvelles technologies et appréciant le travail
+              en équipe pour élaborer des solutions innovantes.
             </p>
           </div>
         </div>
