@@ -1,56 +1,68 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+const skillsData = {
+  Frontend: [
+    { name: 'HTML', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+    { name: 'CSS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
+    { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+    { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+    { name: 'Vue.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg' },
+    { name: 'Angular', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg' },
+    { name: 'Tailwind CSS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg' },
+  ],
+  Backend: [
+    { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+    { name: 'Express.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg' },
+    { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+    { name: 'Django', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-original.svg' },
+    { name: 'PHP', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg' },
+    { name: 'Laravel', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg' },
+  ],
+  "Base de données": [
+    { name: 'MongoDB', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
+    { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
+    { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
+    { name: 'SQL Server', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg' },
+  ],
+  Outils: [
+    { name: 'Git', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
+    { name: 'Docker', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
+    { name: 'Jira', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg' },
+    { name: 'VS Code', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg' },
+  ],
+};
+
 const Skills = () => {
-  const skills = [
-    'PHP', 'JavaScript', 'Java', 'Python', 'C', 'C#',
-    'Laravel', 'Symfony', 'Express.js', 'Git', 'MySQL',
-    'PostgreSQL', 'MongoDB', 'Agile/Scrum', 'Linux', 'Windows',
-    'React', 'Tailwind CSS', 'Framer Motion', 'Shadcn/ui'
-  ];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-    },
-  };
-
   return (
-    <section id="skills" className="py-8 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-      <div className="px-4">
-        <h2 className="text-4xl font-extrabold text-center mb-12 text-gray-900 dark:text-white">
-          Compétences
-        </h2>
-        <motion.div
-          className="flex flex-wrap justify-center gap-4"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-        >
-          {skills.map((skill, index) => (
-            <motion.span
-              key={index}
-              className="px-5 py-2 bg-blue-100 dark:bg-blue-700 text-blue-800 dark:text-blue-100 rounded-full text-lg font-medium shadow-md hover:shadow-lg transition-all duration-300 ease-in-out cursor-pointer"
-              variants={itemVariants}
-              aria-label={`Skill: ${skill}`}
-            >
-              {skill}
-            </motion.span>
-          ))}
-        </motion.div>
+    <section id="skills" className="py-16 bg-gray-100 dark:bg-gray-800">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white">My Skills</h2>
+        {Object.entries(skillsData).map(([category, skills]) => (
+          <motion.div
+            key={category}
+            className="mb-8"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h3 className="text-2xl font-semibold mb-6 text-gray-700 dark:text-gray-200">{category}</h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+              {skills.map((skill, index) => (
+                <motion.div
+                  key={index}
+                  className="flex items-center p-4 bg-white dark:bg-gray-700 rounded-xl shadow-md hover:scale-105 transition-transform duration-300 ease-in-out"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <img src={skill.icon} alt={skill.name} className="w-10 h-10 mr-4" />
+                  <p className="text-lg font-medium text-gray-800 dark:text-white">{skill.name}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        ))}
       </div>
     </section>
   );
