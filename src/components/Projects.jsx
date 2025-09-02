@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 
 const Projects = () => {
   const projects = [
@@ -38,10 +38,10 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-8 bg-gray-100 dark:bg-gray-900">
+    <section id="projects" className="py-16 bg-gray-100 dark:bg-gray-900">
       <div className="px-4">
         <h2 className="text-4xl font-extrabold text-center text-gray-800 mb-12">My Projects</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {projects.map((project, index) => (
             <ProjectCard key={index} project={project} index={index} />
           ))}
@@ -52,18 +52,22 @@ const Projects = () => {
 };
 
 const ProjectCard = ({ project, index }) => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, amount: 0.2 }); // Trigger when 20% of the element is in view
+
   return (
     <motion.div
-      className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col h-full border border-gray-200"
+      ref={ref}
       initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
       whileHover={{ scale: 1.03, boxShadow: "0 12px 20px rgba(0,0,0,0.15)" }}
+      className="bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden flex flex-col h-full"
     >
       <img src={project.image} alt={project.title} className="w-full h-56 object-cover" />
-      <div className="p-6 flex flex-col flex-grow">
-        <h3 className="text-2xl font-bold text-gray-800 mb-3">{project.title}</h3>
-        <p className="text-gray-600 text-base mb-5 flex-grow leading-relaxed">{project.description}</p>
+      <div className="p-8 flex flex-col flex-grow">
+        <h3 className="font-semibold text-xl text-gray-900 dark:text-white mb-3">{project.title}</h3>
+        <p className="text-sm text-gray-600 dark:text-gray-300 mb-5 flex-grow leading-relaxed">{project.description}</p>
         <div className="flex flex-wrap gap-2 mb-5">
           {project.tags.map((tag, tagIndex) => (
             <span key={tagIndex} className="bg-blue-50 text-blue-700 text-sm font-medium px-3 py-1 rounded-full">
@@ -76,18 +80,18 @@ const ProjectCard = ({ project, index }) => {
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-600 hover:text-blue-800 font-semibold text-base transition-colors duration-300"
+            className="mr-2 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 hover:scale-105"
           >
-            GitHub
+            Voir le code
           </a>
           {project.demo && project.demo !== '#' && (
             <a
               href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-green-600 hover:text-green-800 font-semibold text-base transition-colors duration-300"
+              className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 hover:scale-105"
             >
-              Demo
+              Démo
             </a>
           )}
         </div>

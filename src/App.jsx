@@ -9,9 +9,9 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-900 font-sans">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white font-sans">
       <Navbar />
-      <main className="space-y-8 sm:space-y-12 md:space-y-16">
+      <main className="container mx-auto px-4">
         <Hero />
         <About />
         <Projects />
