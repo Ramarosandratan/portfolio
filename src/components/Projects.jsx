@@ -5,25 +5,25 @@ const Projects = () => {
     {
       title: 'Développeur Full Stack - Freelance',
       description: 'Conception et développement d\'une application no-code avec Retool. Conception de base de données avec Supabase. (09/2023 - 01/2024)',
-      image: '/images/freelance.png',
+      image: '/portfolio/images/freelance.png',
       link: '#'
     },
     {
       title: 'Sprint',
       description: 'Un Framework personnel créer a partir d\'un projet Maven multi modules',
-      image: '/images/sprint.png',
+      image: '/portfolio/images/sprint.png',
       link: 'https://github.com/Ramarosandratan/Sprint'
     },
     {
       title: 'Extension de ERPNext Frappe',
       description: 'Une application web Symfony moderne intégrée à ERPNext pour la gestion des employés, le traitement de la paie et la génération de bulletins de salaire.',
-      image: '/images/erpnext-logo.png',
+      image: '/portfolio/images/erpnext-logo.png',
       link: 'https://github.com/Ramarosandratan/frappe_newapp'
     },
     {
       title: 'DWH',
       description: 'Un travaux pratique réaliser avec airflow',
-      image: '/images/Apache-Airflow.png',
+      image: '/portfolio/images/Apache-Airflow.png',
       link: 'https://github.com/Ramarosandratan/DWH'
     }
   ];
