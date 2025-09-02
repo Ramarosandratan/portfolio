@@ -12,7 +12,7 @@ const Hero = () => {
         className="mb-8"
       >
         <img
-          src="/images/profil.png"
+          src="/portfolio/images/profil.png"
           alt="Profile Illustration"
           className="w-48 h-48 rounded-full object-cover shadow-lg border-4 border-white"
         />

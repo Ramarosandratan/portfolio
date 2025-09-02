@@ -6,7 +6,7 @@ const Projects = () => {
     {
       title: 'Développeur Full Stack - Freelance',
       description: 'Conception et développement d\'une application no-code avec Retool. Conception de base de données avec Supabase.',
-      image: '/images/freelance.png',
+      image: '/portfolio/images/freelance.png',
       github: '#',
       demo: '#',
       tags: ['Retool', 'Supabase', 'No-code', 'Full Stack']
@@ -14,7 +14,7 @@ const Projects = () => {
     {
       title: 'Sprint Framework',
       description: 'Un Framework personnel créer a partir d\'un projet Maven multi modules.',
-      image: '/images/sprint.png',
+      image: '/portfolio/images/sprint.png',
       github: 'https://github.com/Ramarosandratan/Sprint',
       demo: '#',
       tags: ['Java', 'Maven', 'Framework']
@@ -22,7 +22,7 @@ const Projects = () => {
     {
       title: 'Extension de ERPNext Frappe',
       description: 'Une application web Symfony moderne intégrée à ERPNext pour la gestion des employés, le traitement de la paie et la génération de bulletins de salaire.',
-      image: '/images/erpnext-logo.png',
+      image: '/portfolio/images/erpnext-logo.png',
       github: 'https://github.com/Ramarosandratan/frappe_newapp',
       demo: '#',
       tags: ['Symfony', 'ERPNext', 'PHP', 'Web Application']
@@ -30,7 +30,7 @@ const Projects = () => {
     {
       title: 'Data Warehouse avec Airflow',
       description: 'Un travail pratique réalisé avec Apache Airflow pour la mise en place d\'un Data Warehouse.',
-      image: '/images/Apache-Airflow.png',
+      image: '/portfolio/images/Apache-Airflow.png',
       github: 'https://github.com/Ramarosandratan/DWH',
       demo: '#',
       tags: ['Apache Airflow', 'Data Warehouse', 'ETL', 'Python']
