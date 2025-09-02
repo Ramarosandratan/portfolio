@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const About = () => {
   return (
-    <div id="about" className="min-h-screen flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-green-100 to-teal-100">
+    <div id="about" className="min-h-screen flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8 bg-gray-900">
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}

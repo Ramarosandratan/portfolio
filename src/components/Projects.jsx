@@ -38,7 +38,7 @@ const Projects = () => {
   ];
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-red-100 to-pink-100">
+    <div className="min-h-screen flex items-center justify-center bg-gray-900">
       <div className="px-4">
         <h2 className="text-4xl font-extrabold text-center text-gray-800 mb-12">My Projects</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
