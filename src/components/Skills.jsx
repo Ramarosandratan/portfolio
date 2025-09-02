@@ -35,7 +35,7 @@ const skillsData = {
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-16 bg-gray-100 dark:bg-gray-800">
+    <div className="min-h-screen flex items-center justify-center">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white">My Skills</h2>
         {Object.entries(skillsData).map(([category, skills]) => (
@@ -64,7 +64,7 @@ const Skills = () => {
           </motion.div>
         ))}
       </div>
-    </section>
+    </div>
   );
 };
 

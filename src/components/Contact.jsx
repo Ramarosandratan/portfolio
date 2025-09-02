@@ -48,9 +48,9 @@ const Contact = () => {
     }
   };
   return (
-    <motion.section
+    <div
       id="contact"
-      className="py-16 px-4 bg-gray-100 dark:bg-gray-900"
+      className="min-h-screen flex items-center justify-center py-16 px-4 bg-gray-100 dark:bg-gray-900"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
@@ -134,7 +134,7 @@ const Contact = () => {
           </a>
         </div>
       </div>
-    </motion.section>
+    </div>
   );
 };
 

@@ -10,10 +10,7 @@ const Hero = ({
   profileImageAlt = "Profile Illustration",
 }) => {
   return (
-    <section
-      className="relative w-full flex flex-col items-center justify-center min-h-screen px-4 py-8 text-white bg-center bg-cover md:flex-row"
-      style={{ backgroundImage: `url('${backgroundImage}')` }}
-    >
+    <div className="min-h-screen flex items-center justify-center">
       {/* Dark overlay for better text contrast */}
       <div className="absolute inset-0 bg-black opacity-70"></div>
 
@@ -58,7 +55,7 @@ const Hero = ({
           />
         </motion.div>
       </div>
-    </section>
+    </div>
   );
 };
 
