@@ -2,9 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const Hero = ({
+  goToSection,
   name = "Ramarosandratana Mampionona Rinasoa",
   title = "A passionate Full-Stack Developer with a focus on creating elegant and efficient web applications. I love bringing ideas to life through code and constantly learning new technologies.",
-  buttonText = "View My Work",
   backgroundImage = "/images/freelance.png",
   profileImage = "/portfolio/images/profil.png",
   profileImageAlt = "Profile Illustration",
@@ -23,7 +23,7 @@ const Hero = ({
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <h1 className="mb-4 text-4xl font-bold leading-tight md:text-6xl">
-              Hello, I'm <span className="text-indigo-600">{name}</span>
+              <span className="text-white">Hello, I'm</span> <span className="text-indigo-600">{name}</span>
             </h1>
             <p className="mb-8 text-lg text-white md:text-xl">
               {title}
@@ -35,8 +35,11 @@ const Hero = ({
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <button className="px-6 py-3 font-semibold text-white transition-all duration-300 rounded-xl shadow-lg bg-gradient-to-r from-indigo-500 to-purple-600 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-              {buttonText}
+            <button
+              onClick={() => goToSection(1)}
+              className="px-6 py-3 font-semibold text-white transition-all duration-300 rounded-xl shadow-lg bg-gradient-to-r from-blue-500 to-purple-600 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            >
+              Scroll Down &darr;
             </button>
           </motion.div>
         </div>

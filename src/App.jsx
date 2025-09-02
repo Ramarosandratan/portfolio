@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import FullpageWrapper from './components/FullpageWrapper';
@@ -9,10 +9,20 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 
 function App() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleSectionChange = (index) => {
+    setActiveIndex(index);
+  };
+
+  const goToSection = (index) => {
+    setActiveIndex(index);
+  };
+
   return (
     <div>
-      <Navbar />
-      <FullpageWrapper>
+      <Navbar activeIndex={activeIndex} goToSection={goToSection} />
+      <FullpageWrapper onSectionChange={handleSectionChange}>
         <Hero />
         <About />
         <Skills />

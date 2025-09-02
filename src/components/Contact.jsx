@@ -56,7 +56,7 @@ const Contact = () => {
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.8 }}
     >
-      <div className="max-w-lg mx-auto p-8 rounded-2xl shadow-xl bg-white dark:bg-gray-800">
+      <div className="max-w-3xl w-full mx-auto p-8 rounded-2xl shadow-lg bg-gray-800 text-white">
         <h2 className="text-center font-bold text-2xl mb-8 text-gray-900 dark:text-white">Contact Me</h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>

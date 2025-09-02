@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const FullpageWrapper = ({ children }) => {
+const FullpageWrapper = ({ children, onSectionChange }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionsRef = useRef([]);
   const isAnimating = useRef(false);
@@ -27,12 +27,17 @@ const FullpageWrapper = ({ children }) => {
     ease: 'easeOut',
   };
 
-  const navigateTo = (index) => {
-    if (isAnimating.current || index < 0 || index >= numSections) return;
-
-    isAnimating.current = true;
-    setActiveIndex(index);
+  const goToSection = (index) => {
+    if (index >= 0 && index < React.Children.count(children) && !isAnimating.current) {
+      setActiveIndex(index);
+    }
   };
+
+  useEffect(() => {
+    if (onSectionChange) {
+      onSectionChange(activeIndex);
+    }
+  }, [activeIndex, onSectionChange]);
 
   // Handle scroll events
   useEffect(() => {
@@ -40,7 +45,7 @@ const FullpageWrapper = ({ children }) => {
       if (isAnimating.current) return;
 
       const direction = event.deltaY > 0 ? 1 : -1;
-      navigateTo(activeIndex + direction);
+      goToSection(activeIndex + direction);
     };
 
     window.addEventListener('wheel', handleScroll);
@@ -53,9 +58,9 @@ const FullpageWrapper = ({ children }) => {
       if (isAnimating.current) return;
 
       if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
-        navigateTo(activeIndex + 1);
+        goToSection(activeIndex + 1);
       } else if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
-        navigateTo(activeIndex - 1);
+        goToSection(activeIndex - 1);
       }
     };
 
@@ -94,7 +99,7 @@ const FullpageWrapper = ({ children }) => {
               className="absolute top-0 left-0 w-full min-h-screen flex items-center justify-center"
               ref={(el) => (sectionsRef.current[index] = el)}
             >
-              {child}
+              {React.cloneElement(child, { goToSection })}
             </motion.div>
           ) : null
         )}
@@ -108,7 +113,7 @@ const FullpageWrapper = ({ children }) => {
             className={`w-3 h-3 rounded-full ${
               index === activeIndex ? 'bg-blue-500' : 'bg-gray-300'
             }`}
-            onClick={() => navigateTo(index)}
+            onClick={() => goToSection(index)}
           />
         ))}
       </div>

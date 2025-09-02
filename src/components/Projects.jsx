@@ -41,7 +41,7 @@ const Projects = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-900">
       <div className="px-4">
         <h2 className="text-4xl font-extrabold text-center text-gray-800 mb-12">My Projects</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto p-4">
           {projects.map((project, index) => (
             <ProjectCard key={index} project={project} index={index} />
           ))}
@@ -62,7 +62,7 @@ const ProjectCard = ({ project, index }) => {
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       whileHover={{ scale: 1.03, boxShadow: "0 12px 20px rgba(0,0,0,0.15)" }}
-      className="bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden flex flex-col h-full"
+      className="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl shadow-md overflow-hidden flex flex-col h-full"
     >
       <img src={project.image} alt={project.title} className="w-full h-56 object-cover" />
       <div className="p-8 flex flex-col flex-grow">
