@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +11,9 @@ const Contact = () => {
   });
 
   const [errors, setErrors] = useState({});
+
+  const formRef = useRef();
+  const [message, setMessage] = useState('');
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -40,15 +44,19 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      console.log('Form data submitted:', formData);
-      // Here you would typically send the data to a server
-      // For now, we just log it.
-      setFormData({ name: '', email: '', message: '' }); // Clear form
-      setErrors({}); // Clear errors
+      emailjs.sendForm('service_3ziv67v', 'template_661d95k', formRef.current, '67EoTOdQ550eLb1hk')
+        .then(() => {
+          setMessage('Message envoyé !');
+          setFormData({ name: '', email: '', message: '' });
+          setErrors({});
+        })
+        .catch(() => {
+          setMessage('Erreur d’envoi');
+        });
     }
   };
   return (
-    <div
+    <motion.div
       id="contact"
       className="min-h-screen flex items-center justify-center py-16 px-4 bg-gray-900 dark:bg-gray-900"
       initial={{ opacity: 0, y: 50 }}
@@ -58,7 +66,7 @@ const Contact = () => {
     >
       <div className="w-full max-w-5xl mx-auto p-8 rounded-2xl shadow-lg bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white">
         <h2 className="text-center font-bold text-2xl mb-8 text-gray-900 dark:text-white">Contact Me</h2>
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
             <input
@@ -67,7 +75,7 @@ const Contact = () => {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+              className="w-full p-3 rounded-xl border border-gray-300 focus:ring focus:ring-purple-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
               placeholder="Your Name"
             />
             {errors.name && <p className="mt-1 text-sm text-red-500">{errors.name}</p>}
@@ -80,7 +88,7 @@ const Contact = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+              className="w-full p-3 rounded-xl border border-gray-300 focus:ring focus:ring-purple-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
               placeholder="Your Email"
             />
             {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email}</p>}
@@ -93,17 +101,18 @@ const Contact = () => {
               value={formData.message}
               onChange={handleChange}
               rows="4"
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+              className="w-full p-3 rounded-xl border border-gray-300 focus:ring focus:ring-purple-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
               placeholder="Your Message"
             ></textarea>
             {errors.message && <p className="mt-1 text-sm text-red-500">{errors.message}</p>}
           </div>
           <button
             type="submit"
-            className="w-full py-3 px-6 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 hover:scale-105 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className="bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-xl px-6 py-3 hover:scale-105"
           >
             Send
           </button>
+          {message && <p className={`mt-4 text-center ${message.includes('Erreur') ? 'text-red-500' : 'text-green-500'}`}>{message}</p>}
         </form>
 
         <div className="mt-10 flex justify-center space-x-6">
@@ -134,7 +143,7 @@ const Contact = () => {
           </a>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
