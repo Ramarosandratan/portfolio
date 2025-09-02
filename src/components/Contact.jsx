@@ -20,17 +20,17 @@ const Contact = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!formData.name.trim()) {
-      newErrors.name = 'Le nom est requis.';
+      newErrors.name = 'Name is required.';
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = 'L\'email est requis.';
+      newErrors.email = 'Email is required.';
     } else if (!emailRegex.test(formData.email)) {
-      newErrors.email = 'L\'email n\'est pas valide.';
+      newErrors.email = 'Email is not valid.';
     }
 
     if (!formData.message.trim()) {
-      newErrors.message = 'Le message est requis.';
+      newErrors.message = 'Message is required.';
     }
 
     setErrors(newErrors);
@@ -57,10 +57,10 @@ const Contact = () => {
       transition={{ duration: 0.8 }}
     >
       <div className="max-w-lg mx-auto p-8 rounded-2xl shadow-xl bg-white dark:bg-gray-800">
-        <h2 className="text-center font-bold text-2xl mb-8 text-gray-900 dark:text-white">Contactez-moi</h2>
+        <h2 className="text-center font-bold text-2xl mb-8 text-gray-900 dark:text-white">Contact Me</h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Nom</label>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
             <input
               type="text"
               id="name"
@@ -68,7 +68,7 @@ const Contact = () => {
               value={formData.name}
               onChange={handleChange}
               className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-              placeholder="Votre nom"
+              placeholder="Your Name"
             />
             {errors.name && <p className="mt-1 text-sm text-red-500">{errors.name}</p>}
           </div>
@@ -81,7 +81,7 @@ const Contact = () => {
               value={formData.email}
               onChange={handleChange}
               className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-              placeholder="Votre email"
+              placeholder="Your Email"
             />
             {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email}</p>}
           </div>
@@ -94,7 +94,7 @@ const Contact = () => {
               onChange={handleChange}
               rows="4"
               className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-              placeholder="Votre message"
+              placeholder="Your Message"
             ></textarea>
             {errors.message && <p className="mt-1 text-sm text-red-500">{errors.message}</p>}
           </div>
@@ -102,7 +102,7 @@ const Contact = () => {
             type="submit"
             className="w-full py-3 px-6 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 hover:scale-105 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
-            Envoyer
+            Send
           </button>
         </form>
 

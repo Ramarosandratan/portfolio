@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 const Projects = () => {
   const projects = [
     {
-      title: 'Développeur Full Stack - Freelance',
-      description: 'Conception et développement d\'une application no-code avec Retool. Conception de base de données avec Supabase.',
+      title: 'Full Stack Developer - Freelance',
+      description: 'Design and development of a no-code application with Retool. Database design with Supabase.',
       image: '/portfolio/images/freelance.png',
       github: '#',
       demo: '#',
@@ -13,23 +13,23 @@ const Projects = () => {
     },
     {
       title: 'Sprint Framework',
-      description: 'Un Framework personnel créer a partir d\'un projet Maven multi modules.',
+      description: 'A personal framework created from a multi-module Maven project.',
       image: '/portfolio/images/sprint.png',
       github: 'https://github.com/Ramarosandratan/Sprint',
       demo: '#',
       tags: ['Java', 'Maven', 'Framework']
     },
     {
-      title: 'Extension de ERPNext Frappe',
-      description: 'Une application web Symfony moderne intégrée à ERPNext pour la gestion des employés, le traitement de la paie et la génération de bulletins de salaire.',
+      title: 'ERPNext Frappe Extension',
+      description: 'A modern Symfony web application integrated with ERPNext for employee management, payroll processing, and payslip generation.',
       image: '/portfolio/images/erpnext-logo.png',
       github: 'https://github.com/Ramarosandratan/frappe_newapp',
       demo: '#',
       tags: ['Symfony', 'ERPNext', 'PHP', 'Web Application']
     },
     {
-      title: 'Data Warehouse avec Airflow',
-      description: 'Un travail pratique réalisé avec Apache Airflow pour la mise en place d\'un Data Warehouse.',
+      title: 'Data Warehouse with Airflow',
+      description: 'A practical project implemented with Apache Airflow for setting up a Data Warehouse.',
       image: '/portfolio/images/Apache-Airflow.png',
       github: 'https://github.com/Ramarosandratan/DWH',
       demo: '#',
@@ -40,7 +40,7 @@ const Projects = () => {
   return (
     <section id="projects" className="py-8 bg-gray-50">
       <div className="px-4">
-        <h2 className="text-4xl font-extrabold text-center text-gray-800 mb-12">Mes Projets</h2>
+        <h2 className="text-4xl font-extrabold text-center text-gray-800 mb-12">My Projects</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {projects.map((project, index) => (
             <ProjectCard key={index} project={project} index={index} />
@@ -87,7 +87,7 @@ const ProjectCard = ({ project, index }) => {
               rel="noopener noreferrer"
               className="text-green-600 hover:text-green-800 font-semibold text-base transition-colors duration-300"
             >
-              Démo
+              Demo
             </a>
           )}
         </div>

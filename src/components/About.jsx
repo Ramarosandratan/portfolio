@@ -19,7 +19,7 @@ const About = () => {
             className="flex-shrink-0"
           >
             <img
-              src="/images/profil.png"
+              src="/portfolio/images/profil.png"
               alt="Profile"
               className="w-64 h-64 rounded-full object-cover shadow-lg border-4 border-indigo-500 dark:border-indigo-400"
             />
@@ -33,7 +33,7 @@ const About = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-3xl font-bold text-gray-900 dark:text-white mb-6"
             >
-              À propos de moi
+              About Me
             </motion.h2>
 
             <motion.p
@@ -42,8 +42,7 @@ const About = () => {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-8"
             >
-              Je suis Ramarosandratana Mampionona Rinasoa, étudiant en informatique passionné par le développement web et les technologies modernes. Curieux et rigoureux, j’aime explorer de nouvelles solutions pour créer des applications performantes et intuitives.
-              Mon objectif est de continuer à progresser en tant que développeur full stack, en combinant créativité et efficacité pour répondre aux besoins réels des utilisateurs.
+              I am Ramarosandratana Mampionona Rinasoa, a computer science student passionate about web development and modern technologies. Curious and rigorous, I enjoy exploring new solutions to create high-performance and intuitive applications. My goal is to continue growing as a full-stack developer, combining creativity and efficiency to meet real user needs.
             </motion.p>
 
             <motion.ul
@@ -52,11 +51,11 @@ const About = () => {
               transition={{ duration: 0.8, delay: 0.8 }}
               className="text-gray-700 dark:text-gray-300 space-y-3 mb-10 text-lg md:text-left text-center"
             >
-              <li><span className="font-semibold text-gray-900 dark:text-white">🎓 Formation :</span> Licence en Informatique (IT University, Madagascar)</li>
-              <li><span className="font-semibold text-gray-900 dark:text-white">💻 Spécialité :</span> Développement Web et Développement d'application</li>
-              <li><span className="font-semibold text-gray-900 dark:text-white">🌍 Localisation :</span> Antananarivo, Madagascar</li>
-              <li><span className="font-semibold text-gray-900 dark:text-white">📧 Email :</span> ramarosandratana@hotmail.com</li>
-              <li><span className="font-semibold text-gray-900 dark:text-white">📂 Disponibilité :</span> Ouvert à des stages et collaborations</li>
+              <li><span className="font-semibold text-gray-900 dark:text-white">🎓 Education:</span> Bachelor's Degree in Computer Science (IT University, Madagascar)</li>
+              <li><span className="font-semibold text-gray-900 dark:text-white">💻 Specialty:</span> Web Development and Application Development</li>
+              <li><span className="font-semibold text-gray-900 dark:text-white">🌍 Location:</span> Antananarivo, Madagascar</li>
+              <li><span className="font-semibold text-gray-900 dark:text-white">📧 Email:</span> ramarosandratana@hotmail.com</li>
+              <li><span className="font-semibold text-gray-900 dark:text-white">📂 Availability:</span> Open to internships and collaborations</li>
             </motion.ul>
 
             <motion.a
@@ -67,7 +66,7 @@ const About = () => {
               transition={{ duration: 0.8, delay: 1.0 }}
               className="inline-block bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-lg font-semibold py-3 px-8 rounded-full shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out"
             >
-              Télécharger mon CV
+              Download my CV
             </motion.a>
           </div>
         </div>
