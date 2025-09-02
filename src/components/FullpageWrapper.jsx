@@ -3,33 +3,39 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const FullpageWrapper = ({ children, onSectionChange }) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const [directionType, setDirectionType] = useState('vertical');
   const sectionsRef = useRef([]);
   const isAnimating = useRef(false);
   const numSections = React.Children.count(children);
 
-  const variants = {
+  // Variants pour les animations selon le type de direction
+  const currentVariants = {
     enter: (direction) => ({
-      y: direction > 0 ? '100%' : '-100%',
+      [directionType === 'vertical' ? 'y' : 'x']: direction > 0 ? '100%' : '-100%',
       opacity: 0,
     }),
     center: {
       y: 0,
+      x: 0,
       opacity: 1,
     },
     exit: (direction) => ({
-      y: direction < 0 ? '100%' : '-100%',
+      [directionType === 'vertical' ? 'y' : 'x']: direction < 0 ? '100%' : '-100%',
       opacity: 0,
     }),
   };
 
   const transition = {
     duration: 0.6,
-    ease: 'easeOut',
+    ease: 'easeInOut',
   };
 
-  const goToSection = (index) => {
+  const goToSection = (index, newDirection = direction, newDirectionType = directionType) => {
     if (index >= 0 && index < React.Children.count(children) && !isAnimating.current) {
       isAnimating.current = true; // Start animation lock
+      setDirection(newDirection);
+      setDirectionType(newDirectionType);
       setActiveIndex(index);
     }
   };
@@ -45,9 +51,9 @@ const FullpageWrapper = ({ children, onSectionChange }) => {
     const handleWheel = (e) => {
       if (isAnimating.current) return;
 
-      const direction = e.deltaY > 0 ? 1 : -1;
-      const nextIndex = activeIndex + direction;
-      goToSection(nextIndex);
+      const newDirection = e.deltaY > 0 ? 1 : -1;
+      const nextIndex = activeIndex + newDirection;
+      goToSection(nextIndex, newDirection, 'vertical');
     };
 
     window.addEventListener('wheel', handleWheel);
@@ -60,14 +66,29 @@ const FullpageWrapper = ({ children, onSectionChange }) => {
       if (isAnimating.current) return;
 
       let nextIndex = activeIndex;
-      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+      let newDirection = 1;
+      let newDirectionType = 'vertical';
+
+      if (e.key === 'ArrowDown') {
         nextIndex = activeIndex + 1;
-      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        newDirection = 1;
+        newDirectionType = 'vertical';
+      } else if (e.key === 'ArrowUp') {
         nextIndex = activeIndex - 1;
+        newDirection = -1;
+        newDirectionType = 'vertical';
+      } else if (e.key === 'ArrowRight') {
+        nextIndex = activeIndex + 1;
+        newDirection = 1;
+        newDirectionType = 'horizontal';
+      } else if (e.key === 'ArrowLeft') {
+        nextIndex = activeIndex - 1;
+        newDirection = -1;
+        newDirectionType = 'horizontal';
       }
 
       if (nextIndex !== activeIndex) {
-        goToSection(nextIndex);
+        goToSection(nextIndex, newDirection, newDirectionType);
       }
     };
 
@@ -91,13 +112,13 @@ const FullpageWrapper = ({ children, onSectionChange }) => {
 
   return (
     <div className="relative overflow-hidden h-screen bg-gray-900">
-      <AnimatePresence initial={false} custom={activeIndex}>
+      <AnimatePresence initial={false} custom={direction}>
         {React.Children.map(children, (child, index) =>
           index === activeIndex ? (
             <motion.div
               key={index}
-              custom={index}
-              variants={variants}
+              custom={direction}
+              variants={currentVariants}
               initial="enter"
               animate="center"
               exit="exit"
