@@ -29,6 +29,7 @@ const FullpageWrapper = ({ children, onSectionChange }) => {
 
   const goToSection = (index) => {
     if (index >= 0 && index < React.Children.count(children) && !isAnimating.current) {
+      isAnimating.current = true; // Start animation lock
       setActiveIndex(index);
     }
   };
@@ -41,46 +42,51 @@ const FullpageWrapper = ({ children, onSectionChange }) => {
 
   // Handle scroll events
   useEffect(() => {
-    const handleScroll = (event) => {
+    const handleWheel = (e) => {
       if (isAnimating.current) return;
 
-      const direction = event.deltaY > 0 ? 1 : -1;
-      goToSection(activeIndex + direction);
+      const direction = e.deltaY > 0 ? 1 : -1;
+      const nextIndex = activeIndex + direction;
+      goToSection(nextIndex);
     };
 
-    window.addEventListener('wheel', handleScroll);
-    return () => window.removeEventListener('wheel', handleScroll);
-  }, [activeIndex, numSections]);
+    window.addEventListener('wheel', handleWheel);
+    return () => window.removeEventListener('wheel', handleWheel);
+  }, [activeIndex, children, goToSection]);
 
   // Handle keyboard events
   useEffect(() => {
-    const handleKeyDown = (event) => {
+    const handleKeyDown = (e) => {
       if (isAnimating.current) return;
 
-      if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
-        goToSection(activeIndex + 1);
-      } else if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
-        goToSection(activeIndex - 1);
+      let nextIndex = activeIndex;
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+        nextIndex = activeIndex + 1;
+      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        nextIndex = activeIndex - 1;
+      }
+
+      if (nextIndex !== activeIndex) {
+        goToSection(nextIndex);
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [activeIndex, numSections]);
+  }, [activeIndex, children, goToSection]);
 
   // Smooth scroll to active section
+  // Effect to scroll to the active section
   useEffect(() => {
     if (sectionsRef.current[activeIndex]) {
-      sectionsRef.current[activeIndex].scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
+      // No need for scrollIntoView if using Framer Motion for full-page transitions
+      // The motion.div handles the visual positioning.
+      // We just need to ensure isAnimating is reset after the transition.
+      const timer = setTimeout(() => {
+        isAnimating.current = false; // Release animation lock after transition duration
+      }, transition.duration * 1000); // Convert seconds to milliseconds
+      return () => clearTimeout(timer);
     }
-    const timer = setTimeout(() => {
-      isAnimating.current = false;
-    }, transition.duration * 1000); // Reset animation flag after transition
-
-    return () => clearTimeout(timer);
   }, [activeIndex, transition.duration]);
 
   return (
@@ -96,8 +102,8 @@ const FullpageWrapper = ({ children, onSectionChange }) => {
               animate="center"
               exit="exit"
               transition={transition}
-              className="absolute top-0 left-0 w-full min-h-screen flex items-center justify-center"
-              ref={(el) => (sectionsRef.current[index] = el)}
+              onAnimationComplete={() => (isAnimating.current = false)} // Release lock when animation completes
+              className="absolute top-0 left-0 w-full h-full flex items-center justify-center"
             >
               {React.cloneElement(child, { goToSection })}
             </motion.div>

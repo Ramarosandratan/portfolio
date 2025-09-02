@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import Footer from '../components/Footer';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -56,7 +57,7 @@ const Contact = () => {
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.8 }}
     >
-      <div className="max-w-3xl w-full mx-auto p-8 rounded-2xl shadow-lg bg-gray-800 text-white">
+      <div className="w-full max-w-5xl mx-auto p-8 rounded-2xl shadow-lg bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white">
         <h2 className="text-center font-bold text-2xl mb-8 text-gray-900 dark:text-white">Contact Me</h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
@@ -134,6 +135,7 @@ const Contact = () => {
           </a>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

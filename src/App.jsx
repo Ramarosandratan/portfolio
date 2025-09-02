@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
-import Footer from './components/Footer';
 import FullpageWrapper from './components/FullpageWrapper';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -29,7 +28,6 @@ function App() {
         <Projects />
         <Contact />
       </FullpageWrapper>
-      <Footer />
     </div>
   );
 }
