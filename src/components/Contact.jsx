@@ -1,141 +1,137 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import { FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa'; // Assuming react-icons is installed
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+
+  const [errors, setErrors] = useState({});
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const validateForm = () => {
+    let newErrors = {};
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!formData.name.trim()) {
+      newErrors.name = 'Le nom est requis.';
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = 'L\'email est requis.';
+    } else if (!emailRegex.test(formData.email)) {
+      newErrors.email = 'L\'email n\'est pas valide.';
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = 'Le message est requis.';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      console.log('Form data submitted:', formData);
+      // Here you would typically send the data to a server
+      // For now, we just log it.
+      setFormData({ name: '', email: '', message: '' }); // Clear form
+      setErrors({}); // Clear errors
+    }
+  };
   return (
     <motion.section
       id="contact"
-      className="py-8 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+      className="py-16 px-4"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 0.2 }}
       viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.8 }}
     >
-      <div className="px-4 max-w-4xl">
-        <motion.h2
-          className="text-4xl font-extrabold text-center mb-12 text-gray-900 dark:text-white"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          Contact Me
-        </motion.h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <motion.div
-            className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-xl"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            viewport={{ once: true, amount: 0.3 }}
+      <div className="max-w-lg mx-auto p-8 rounded-2xl shadow-xl bg-white dark:bg-gray-800">
+        <h2 className="text-center font-bold text-2xl mb-8 text-gray-900 dark:text-white">Contactez-moi</h2>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Nom</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+              placeholder="Votre nom"
+            />
+            {errors.name && <p className="mt-1 text-sm text-red-500">{errors.name}</p>}
+          </div>
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+              placeholder="Votre email"
+            />
+            {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email}</p>}
+          </div>
+          <div>
+            <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              rows="4"
+              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+              placeholder="Votre message"
+            ></textarea>
+            {errors.message && <p className="mt-1 text-sm text-red-500">{errors.message}</p>}
+          </div>
+          <button
+            type="submit"
+            className="w-full py-3 px-6 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 hover:scale-105 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
-            <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Send a Message</h3>
-            <form className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition duration-200"
-                  placeholder="Your Name"
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition duration-200"
-                  placeholder="Your Email"
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="5"
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition duration-200"
-                  placeholder="Your Message"
-                ></textarea>
-              </div>
-              <button
-                type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-md shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
-              >
-                Send Message
-              </button>
-            </form>
-          </motion.div>
+            Envoyer
+          </button>
+        </form>
 
-          {/* Contact Info and Social Media */}
-          <motion.div
-            className="flex flex-col justify-center items-center md:items-start text-center md:text-left"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            viewport={{ once: true, amount: 0.3 }}
+        <div className="mt-10 flex justify-center space-x-6">
+          <a
+            href="https://github.com/Ramarosandratan"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full p-3 transition duration-300 ease-in-out"
+            aria-label="GitHub"
           >
-            <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Get in Touch</h3>
-            <p className="text-lg mb-4 text-gray-700 dark:text-gray-300">
-              Feel free to reach out to me through the form or connect with me on social media.
-            </p>
-            <div className="space-y-2 mb-8 text-gray-700 dark:text-gray-300">
-              <p className="flex items-center justify-center md:justify-start">
-                <span className="font-semibold mr-2">Phone:</span> +261 34 54 187 16
-              </p>
-              <p className="flex items-center justify-center md:justify-start">
-                <span className="font-semibold mr-2">Email:</span> ramarosandratana@hotmail.com
-              </p>
-            </div>
-
-            <div className="flex space-x-6 text-gray-700 dark:text-gray-300">
-              <motion.a
-                href="https://linkedin.com/in/yourprofile" // Replace with actual LinkedIn profile
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-400 hover:text-blue-700 dark:hover:text-blue-500 transition duration-300 transform hover:scale-110"
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9 }}
-                aria-label="LinkedIn Profile"
-              >
-                <FaLinkedin className="text-4xl" />
-              </motion.a>
-              <motion.a
-                href="https://github.com/yourprofile" // Replace with actual GitHub profile
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition duration-300 transform hover:scale-110"
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9 }}
-                aria-label="GitHub Profile"
-              >
-                <FaGithub className="text-4xl" />
-              </motion.a>
-              <motion.a
-                href="https://twitter.com/yourprofile" // Replace with actual Twitter profile
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-400 hover:text-blue-400 dark:hover:text-blue-300 transition duration-300 transform hover:scale-110"
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9 }}
-                aria-label="Twitter Profile"
-              >
-                <FaTwitter className="text-4xl" />
-              </motion.a>
-            </div>
-          </motion.div>
+            <FaGithub className="h-8 w-8" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/rinasoa-mampionona-ramarosandratana/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full p-3 transition duration-300 ease-in-out"
+            aria-label="LinkedIn"
+          >
+            <FaLinkedin className="h-8 w-8" />
+          </a>
+          <a
+            href="mailto:ramarosandratana@hotmail.com"
+            className="text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full p-3 transition duration-300 ease-in-out"
+            aria-label="Email"
+          >
+            <FaEnvelope className="h-8 w-8" />
+          </a>
         </div>
       </div>
     </motion.section>
