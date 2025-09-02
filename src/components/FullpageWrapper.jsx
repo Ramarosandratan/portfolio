@@ -79,7 +79,7 @@ const FullpageWrapper = ({ children }) => {
   }, [activeIndex, transition.duration]);
 
   return (
-    <div className="relative overflow-hidden h-screen">
+    <div className="relative overflow-hidden h-screen bg-gray-900">
       <AnimatePresence initial={false} custom={activeIndex}>
         {React.Children.map(children, (child, index) =>
           index === activeIndex ? (
