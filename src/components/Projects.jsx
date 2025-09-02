@@ -62,10 +62,9 @@ const ProjectCard = ({ project, index }) => {
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       whileHover={{ scale: 1.03, boxShadow: "0 12px 20px rgba(0,0,0,0.15)" }}
-      className="rounded-xl shadow-md p-6 bg-gray-800 text-white hover:scale-105 transition-transform duration-300 flex flex-col md:flex-row"
+      className="rounded-xl shadow-md p-6 bg-gray-800 text-white hover:scale-105 transition-transform duration-300 flex flex-col"
     >
-      <img src={project.image} alt={project.title} className="w-full md:w-1/3 object-cover rounded-lg" />
-      <div className="md:w-2/3 p-4 flex flex-col flex-grow">
+      <div className="w-full p-4 flex flex-col flex-grow">
         <h3 className="font-semibold text-xl text-gray-900 dark:text-white mb-3">{project.title}</h3>
         <p className="text-sm text-gray-600 dark:text-gray-300 mb-5 flex-grow leading-relaxed">{project.description}</p>
         <div className="flex flex-wrap gap-2 mb-5">

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import Footer from '../components/Footer';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -135,7 +134,6 @@ const Contact = () => {
           </a>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };
