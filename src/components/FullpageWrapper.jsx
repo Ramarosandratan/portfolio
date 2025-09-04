@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const FullpageWrapper = ({ children, onSectionChange }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
+const FullpageWrapper = ({ children, activeIndex, onSectionChange }) => {
   const [direction, setDirection] = useState(1);
   const [directionType, setDirectionType] = useState('vertical');
   const sectionsRef = useRef([]);
@@ -36,14 +35,16 @@ const FullpageWrapper = ({ children, onSectionChange }) => {
       isAnimating.current = true; // Start animation lock
       setDirection(newDirection);
       setDirectionType(newDirectionType);
-      setActiveIndex(index);
+      onSectionChange(index); // Use onSectionChange to update activeIndex in App.jsx
     }
   };
 
   useEffect(() => {
-    if (onSectionChange) {
-      onSectionChange(activeIndex);
-    }
+    // This useEffect is now primarily for external changes to activeIndex
+    // and to ensure onSectionChange is called when activeIndex changes internally
+    // (e.g., from scroll/keyboard events).
+    // However, since activeIndex is now a prop, onSectionChange will be called
+    // when the prop changes from the parent.
   }, [activeIndex, onSectionChange]);
 
   // Handle scroll events

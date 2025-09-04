@@ -8,6 +8,7 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 
 function App() {
+  const sectionNames = ["Hero", "About", "Skills", "Projects", "Contact"];
   const [activeIndex, setActiveIndex] = useState(0);
 
   const handleSectionChange = (index) => {
@@ -20,8 +21,8 @@ function App() {
 
   return (
     <div>
-      <Navbar activeIndex={activeIndex} goToSection={goToSection} />
-      <FullpageWrapper onSectionChange={handleSectionChange}>
+      <Navbar sectionNames={sectionNames} activeIndex={activeIndex} goToSection={goToSection} />
+      <FullpageWrapper activeIndex={activeIndex} onSectionChange={handleSectionChange}>
         <Hero />
         <About />
         <Skills />
