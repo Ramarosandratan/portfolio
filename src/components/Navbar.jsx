@@ -1,8 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { FaHome, FaUser, FaCode, FaFolder, FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 const Navbar = ({ sectionNames, activeIndex, goToSection, isMobile }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mobileActiveIndex, setMobileActiveIndex] = useState(activeIndex);
+
+  const iconMap = {
+    Home: FaHome,
+    About: FaUser,
+    Skills: FaCode,
+    Projects: FaFolder,
+    Contact: FaEnvelope,
+  };
 
   // Empêcher le défilement de la page lorsque le menu est ouvert
   useEffect(() => {
@@ -118,16 +128,16 @@ const Navbar = ({ sectionNames, activeIndex, goToSection, isMobile }) => {
         role="dialog"
         aria-modal="true"
         aria-label="Navigation menu"
-        className={`md:hidden fixed top-0 right-0 w-80 h-full bg-gray-900 shadow-lg p-6 transform transition-transform duration-300 ease-in-out z-50 flex flex-col ${
+        className={`md:hidden fixed top-0 right-0 w-80 h-full bg-slate-900 shadow-2xl p-6 transform transition-transform duration-300 ease-in-out z-50 flex flex-col ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
         {/* Header with close button */}
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-white text-xl font-semibold">Menu</h2>
-          <button 
-            onClick={toggleMenu} 
-            className="text-white focus:outline-none p-2 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors duration-300"
+          <h2 className="text-slate-100 text-xl font-semibold">Menu</h2>
+          <button
+            onClick={toggleMenu}
+            className="text-slate-100 focus:outline-none p-2 rounded-full bg-slate-800 hover:bg-slate-700 transition-colors duration-300"
             aria-label="Close menu"
           >
             <svg
@@ -148,26 +158,73 @@ const Navbar = ({ sectionNames, activeIndex, goToSection, isMobile }) => {
         </div>
         
         {/* Navigation Items */}
-        <ul className="flex flex-col space-y-4 flex-1 justify-center">
-          {sectionNames.map((item, index) => (
-            <li key={item} className="border-b border-gray-700 last:border-b-0">
-              <button
-                onClick={() => handleNavigationClick(index, item.toLowerCase())}
-                className={`w-full text-left text-xl font-semibold py-6 px-6 rounded-lg transition-all duration-300 ${
-                  mobileActiveIndex === index
-                    ? 'text-blue-400 bg-gray-800'
-                    : 'text-gray-300 hover:text-white hover:bg-gray-800'
-                }`}
+        <motion.ul
+          className="flex flex-col space-y-3 flex-1 justify-center"
+          initial="hidden"
+          animate={isMenuOpen ? "visible" : "hidden"}
+          variants={{
+            visible: {
+              transition: {
+                staggerChildren: 0.1,
+              },
+            },
+          }}
+        >
+          {sectionNames.map((item, index) => {
+            const IconComponent = iconMap[item];
+            const isContact = item === 'Contact';
+            return (
+              <motion.li
+                key={item}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 },
+                }}
+                transition={{ duration: 0.3 }}
               >
-                {item}
-              </button>
-            </li>
-          ))}
-        </ul>
+                <motion.button
+                  onClick={() => handleNavigationClick(index, item.toLowerCase())}
+                  className={`w-full text-center text-lg font-medium py-3 px-6 rounded-full transition-all duration-300 ease-in-out flex items-center justify-center space-x-3 ${
+                    mobileActiveIndex === index
+                      ? 'text-slate-900 bg-slate-200 shadow-lg'
+                      : 'text-slate-300 bg-transparent hover:text-slate-100 hover:bg-slate-700 hover:shadow-md'
+                  }`}
+                >
+                  {IconComponent && <IconComponent className="text-xl" />}
+                  <span>{item}</span>
+                </motion.button>
+              </motion.li>
+            );
+          })}
+        </motion.ul>
         
-        {/* Footer with copyright */}
-        <div className="mt-auto pt-8 text-center text-gray-400 text-sm">
-          © {new Date().getFullYear()} My Portfolio
+        {/* Footer with social icons */}
+        <div className="mt-auto pt-8 flex justify-center space-x-6">
+          <a
+            href="https://github.com/Ramarosandratan"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-slate-300 hover:text-white transition-colors duration-300"
+            aria-label="GitHub"
+          >
+            <FaGithub className="h-6 w-6" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/rinasoa-mampionona-ramarosandratana/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-slate-300 hover:text-white transition-colors duration-300"
+            aria-label="LinkedIn"
+          >
+            <FaLinkedin className="h-6 w-6" />
+          </a>
+          <a
+            href="mailto:ramarosandratana@hotmail.com"
+            className="text-slate-300 hover:text-white transition-colors duration-300"
+            aria-label="Email"
+          >
+            <FaEnvelope className="h-6 w-6" />
+          </a>
         </div>
       </div>
     </nav>

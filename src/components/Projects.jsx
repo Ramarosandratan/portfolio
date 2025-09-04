@@ -1,19 +1,10 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { motion, useInView } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 const Projects = () => {
-  const [currentPage, setCurrentPage] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
-  const projects = [
-    {
-      title: 'Full Stack Developer - Freelance',
-      description: 'Design and development of a no-code application with Retool. Database design with Supabase.',
-      image: '/portfolio/images/freelance.png',
-      github: '#',
-      demo: '#',
-      tags: ['Retool', 'Supabase', 'No-code', 'Full Stack']
-    },
+  const allProjects = [
     {
       title: 'Sprint Framework',
       description: 'A personal framework created from a multi-module Maven project.',
@@ -34,13 +25,14 @@ const Projects = () => {
       title: 'Data Warehouse with Airflow',
       description: 'A practical project implemented with Apache Airflow for setting up a Data Warehouse.',
       image: '/portfolio/images/Apache-Airflow.png',
-      github: 'https://github.com/Ramarosandratan/DWH',
+      github: 'https://github.com/Ramarosandratan/DW',
       demo: '#',
       tags: ['Apache Airflow', 'Data Warehouse', 'ETL', 'Python']
     }
   ];
 
-  // Détecter si on est sur mobile
+
+  // Detect if on mobile
   useEffect(() => {
     const checkIsMobile = () => {
       setIsMobile(window.innerWidth < 768);
@@ -51,142 +43,116 @@ const Projects = () => {
     return () => window.removeEventListener('resize', checkIsMobile);
   }, []);
 
-  // Grouper les projets par page (2 par page sur desktop, 1 sur mobile)
-  const projectsPerPage = isMobile ? 1 : 2;
-  const totalPages = Math.ceil(projects.length / projectsPerPage);
-  const paginatedProjects = [];
-  for (let i = 0; i < projects.length; i += projectsPerPage) {
-    paginatedProjects.push(projects.slice(i, i + projectsPerPage));
-  }
-
-  // Reset currentPage si on dépasse le nombre total de pages
-  useEffect(() => {
-    if (currentPage >= totalPages) {
-      setCurrentPage(0);
-    }
-  }, [currentPage, totalPages]);
-
-  const nextPage = () => {
-    setCurrentPage((prev) => (prev + 1) % totalPages);
-  };
-
-  const prevPage = () => {
-    setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
-  };
-
-  const goToPage = (pageIndex) => {
-    setCurrentPage(pageIndex);
-  };
-
   return (
-    <div id="projects" className="min-h-screen flex flex-col items-center justify-center bg-gray-900 overflow-y-auto relative">
-      <div className="w-full max-w-6xl mx-auto px-4 py-8">
-        <h2 className="text-xl font-extrabold text-center text-gray-800 mb-8 dark:text-white sm:text-2xl md:text-3xl lg:text-4xl">My Projects</h2>
+    <div id="projects" className="min-h-screen flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-900 overflow-y-auto relative">
+      <div className="w-full max-w-7xl mx-auto px-4 py-12">
+        <motion.h2
+          className="text-lg font-bold text-center mb-8 text-gray-800 dark:text-white sm:text-xl md:text-2xl lg:text-3xl"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          My Projects
+        </motion.h2>
 
-        {/* Carrousel Container */}
-        <div className="relative overflow-hidden">
-          <motion.div
-            className="flex transition-transform duration-500 ease-in-out"
-            style={{ transform: `translateX(-${currentPage * 100}%)` }}
-          >
-            {paginatedProjects.map((pageProjects, pageIndex) => (
-              <div key={pageIndex} className="w-full flex-shrink-0 px-4">
-                <div className={`grid gap-6 ${pageProjects.length === 1 ? 'grid-cols-1 max-w-md mx-auto' : 'grid-cols-1 md:grid-cols-2'}`}>
-                  {pageProjects.map((project, index) => (
-                    <ProjectCard key={`${pageIndex}-${index}`} project={project} index={index} />
-                  ))}
-                </div>
-              </div>
-            ))}
-          </motion.div>
-        </div>
-
-        {/* Navigation interne - Bullets plus petits */}
-        <div className="flex justify-center mt-8 space-x-2">
-          {Array.from({ length: totalPages }, (_, index) => (
-            <button
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
+          {allProjects.map((project, index) => (
+            <MemoizedProjectCard
               key={index}
-              onClick={() => goToPage(index)}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                index === currentPage
-                  ? 'bg-blue-500 scale-125'
-                  : 'bg-gray-400 hover:bg-gray-300'
-              }`}
-              aria-label={`Aller à la page ${index + 1}`}
+              project={project}
+              index={index}
+              isMobile={isMobile}
             />
           ))}
         </div>
-
-        {/* Navigation fléchée (optionnelle pour desktop) */}
-        {totalPages > 1 && (
-          <>
-            <button
-              onClick={prevPage}
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-gray-800 bg-opacity-50 hover:bg-opacity-75 text-white p-3 rounded-full transition-all duration-300 hidden md:block"
-              aria-label="Projet précédent"
-            >
-              ‹
-            </button>
-            <button
-              onClick={nextPage}
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-gray-800 bg-opacity-50 hover:bg-opacity-75 text-white p-3 rounded-full transition-all duration-300 hidden md:block"
-              aria-label="Projet suivant"
-            >
-              ›
-            </button>
-          </>
-        )}
       </div>
     </div>
   );
 };
 
-const ProjectCard = ({ project, index }) => {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, amount: 0.2 }); // Trigger when 20% of the element is in view
-
+const ProjectCard = ({ project, index, isMobile }) => {
   return (
     <motion.div
-      ref={ref}
       initial={{ opacity: 0, y: 50 }}
-      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      whileHover={{ scale: 1.03, boxShadow: "0 12px 20px rgba(0,0,0,0.15)" }}
-      className="rounded-xl shadow-md p-4 bg-gray-800 text-white hover:scale-105 transition-transform duration-300 flex flex-col max-w-full overflow-hidden"
+      whileHover={isMobile ? {} : { scale: 1.05 }}
+      className="group bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
+      aria-label={`Project: ${project.title}`}
     >
-      <div className="w-full flex flex-col flex-grow">
-        <h3 className="font-semibold text-base text-gray-900 dark:text-white mb-2 sm:text-lg md:text-xl leading-tight">{project.title}</h3>
-        <p className="text-xs text-gray-600 dark:text-gray-300 mb-4 flex-grow leading-relaxed sm:text-sm md:text-base line-clamp-3">{project.description}</p>
-        <div className="flex flex-wrap gap-1 mb-4">
+      {/* 16:9 Aspect Ratio Image Container */}
+      <div className="relative aspect-video bg-gray-200 dark:bg-gray-700 overflow-hidden">
+        <img
+          src={project.image}
+          alt={`Screenshot of ${project.title} project`}
+          loading="lazy"
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300" />
+      </div>
+
+      {/* Project Content */}
+      <div className="p-6 flex flex-col flex-grow">
+        {/* Project Title */}
+        <h3 className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white mb-2 leading-tight" aria-label="Project title">
+          {project.title}
+        </h3>
+
+        {/* Project Description */}
+        <p className="text-sm md:text-base text-gray-700 dark:text-gray-300 mb-4 flex-grow leading-relaxed line-clamp-3" aria-label="Project description">
+          {project.description}
+        </p>
+
+        {/* Technology Tags */}
+        <div className="flex flex-wrap gap-2 mb-4" aria-label="Technologies used">
           {project.tags.map((tag, tagIndex) => (
-            <span key={tagIndex} className="bg-blue-50 text-blue-700 text-xs font-medium px-2 py-1 rounded-full max-w-full truncate">
+            <motion.span
+              key={tagIndex}
+              className="bg-blue-500 text-white text-xs font-medium px-3 py-1.5 rounded-full border-2 border-blue-400 transition-all duration-300 hover:bg-blue-600 hover:border-blue-500"
+              aria-label={`Technology: ${tag}`}
+              whileHover={{ scale: 1.1, rotate: 2 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
               {tag}
-            </span>
+            </motion.span>
           ))}
         </div>
-        <div className="flex justify-start items-center mt-auto space-x-2">
-          <a
+
+        {/* Action Buttons */}
+        <div className="flex justify-start items-center mt-auto space-x-3">
+          <motion.a
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold py-1.5 px-3 rounded-lg transition-all duration-300 hover:scale-105 text-xs sm:text-sm"
+            className="bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold py-2 px-4 rounded-2xl shadow-lg scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800"
+            aria-label={`View source code for ${project.title}`}
+            whileHover={{ scale: 1.05, rotate: -1 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
             Code
-          </a>
+          </motion.a>
           {project.demo && project.demo !== '#' && (
-            <a
+            <motion.a
               href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold py-1.5 px-3 rounded-lg transition-all duration-300 hover:scale-105 text-xs sm:text-sm"
+              className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded-2xl shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800"
+              aria-label={`View live demo of ${project.title}`}
+              whileHover={{ scale: 1.05, rotate: 1 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              Démo
-            </a>
+              Demo
+            </motion.a>
           )}
         </div>
       </div>
     </motion.div>
   );
 };
+
+const MemoizedProjectCard = React.memo(ProjectCard);
 
 export default Projects;

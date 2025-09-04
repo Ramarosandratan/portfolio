@@ -8,7 +8,7 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 
 function App() {
-  const sectionNames = ["Hero", "About", "Skills", "Projects", "Contact"];
+  const sectionNames = ["Home", "About", "Skills", "Projects", "Contact"];
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
