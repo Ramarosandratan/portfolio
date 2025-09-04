@@ -65,10 +65,10 @@ const Contact = () => {
       transition={{ duration: 0.8 }}
     >
       <div className="w-full max-w-5xl mx-auto p-8 rounded-2xl shadow-lg bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white">
-        <h2 className="text-center font-bold text-2xl mb-8 text-gray-900 dark:text-white">Contact Me</h2>
+        <h2 className="text-center font-bold text-xl mb-8 text-gray-900 dark:text-white sm:text-2xl md:text-3xl">Contact Me</h2>
         <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
+            <label htmlFor="name" className="block text-xs font-medium text-gray-700 dark:text-gray-300 sm:text-sm">Name</label>
             <input
               type="text"
               id="name"
@@ -81,7 +81,7 @@ const Contact = () => {
             {errors.name && <p className="mt-1 text-sm text-red-500">{errors.name}</p>}
           </div>
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
+            <label htmlFor="email" className="block text-xs font-medium text-gray-700 dark:text-gray-300 sm:text-sm">Email</label>
             <input
               type="email"
               id="email"
@@ -94,7 +94,7 @@ const Contact = () => {
             {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email}</p>}
           </div>
           <div>
-            <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Message</label>
+            <label htmlFor="message" className="block text-xs font-medium text-gray-700 dark:text-gray-300 sm:text-sm">Message</label>
             <textarea
               id="message"
               name="message"

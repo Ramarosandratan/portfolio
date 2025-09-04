@@ -21,7 +21,7 @@ const About = () => {
             <img
               src="/portfolio/images/profil.png"
               alt="Profile"
-              className="w-64 h-64 rounded-full object-cover shadow-lg border-4 border-indigo-500 dark:border-indigo-400"
+              className="w-32 h-32 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full object-cover shadow-lg border-4 border-indigo-500 dark:border-indigo-400 max-w-full"
             />
           </motion.div>
 
@@ -31,7 +31,7 @@ const About = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-3xl font-bold text-gray-900 dark:text-white mb-6"
+              className="text-xl font-bold text-gray-900 dark:text-white mb-6 sm:text-2xl md:text-3xl lg:text-4xl"
             >
               About Me
             </motion.h2>
@@ -40,7 +40,7 @@ const About = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-8"
+              className="text-sm leading-relaxed text-gray-700 dark:text-gray-300 mb-8 sm:text-base md:text-lg"
             >
               I am Ramarosandratana Mampionona Rinasoa, a computer science student passionate about web development and modern technologies. Curious and rigorous, I enjoy exploring new solutions to create high-performance and intuitive applications. My goal is to continue growing as a full-stack developer, combining creativity and efficiency to meet real user needs.
             </motion.p>
@@ -49,7 +49,7 @@ const About = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="text-gray-700 dark:text-gray-300 space-y-3 mb-10 text-lg md:text-left text-center"
+              className="text-gray-700 dark:text-gray-300 space-y-3 mb-10 text-sm md:text-left text-center sm:text-base"
             >
               <li><span className="font-semibold text-gray-900 dark:text-white">🎓 Education:</span> Bachelor's Degree in Computer Science (IT University, Madagascar)</li>
               <li><span className="font-semibold text-gray-900 dark:text-white">💻 Specialty:</span> Web Development and Application Development</li>

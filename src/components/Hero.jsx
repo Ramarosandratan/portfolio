@@ -22,10 +22,10 @@ const Hero = ({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h1 className="mb-4 text-4xl font-bold leading-tight md:text-6xl">
+            <h1 className="mb-4 text-xl font-bold leading-tight sm:text-2xl md:text-4xl lg:text-6xl">
               <span className="text-white">Hello, I'm</span> <span className="text-indigo-600">{name}</span>
             </h1>
-            <p className="mb-8 text-lg text-white md:text-xl">
+            <p className="mb-8 text-sm text-white sm:text-base md:text-lg lg:text-xl">
               {title}
             </p>
           </motion.div>
@@ -54,7 +54,7 @@ const Hero = ({
           <img
             src={profileImage}
             alt={profileImageAlt}
-            className="object-cover w-48 h-48 border-4 border-white rounded-full shadow-lg"
+            className="object-cover w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 border-4 border-white rounded-full shadow-lg max-w-full"
           />
         </motion.div>
       </div>
