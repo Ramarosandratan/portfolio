@@ -41,7 +41,7 @@ const Skills = () => {
   const filteredSkills = [[activeCategory, skillsData[activeCategory]]];
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-900 overflow-y-auto">
+    <div id="skills" className="min-h-screen flex flex-col items-center justify-center bg-gray-900 overflow-y-auto">
       <div className="container mx-auto px-4 py-8">
         <motion.h2
           className="text-lg font-bold text-center mb-8 text-gray-800 dark:text-white sm:text-xl md:text-2xl lg:text-3xl"

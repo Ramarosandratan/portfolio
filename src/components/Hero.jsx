@@ -10,7 +10,7 @@ const Hero = ({
   profileImageAlt = "Profile Illustration",
 }) => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900">
+    <div id="home" className="min-h-screen flex items-center justify-center bg-gray-900">
       {/* Dark overlay for better text contrast */}
       <div className="absolute inset-0 bg-black opacity-70"></div>
 

@@ -3,7 +3,13 @@
 @tailwind utilities;
 
 html, body {
-  overflow: hidden;
+  /* overflow-hidden is applied by default for desktop, removed for mobile */
+}
+
+@media (min-width: 768px) {
+  html, body {
+    overflow: hidden;
+  }
 }
 
 html {

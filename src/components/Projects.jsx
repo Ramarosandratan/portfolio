@@ -79,7 +79,7 @@ const Projects = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-900 overflow-y-auto relative">
+    <div id="projects" className="min-h-screen flex flex-col items-center justify-center bg-gray-900 overflow-y-auto relative">
       <div className="w-full max-w-6xl mx-auto px-4 py-8">
         <h2 className="text-xl font-extrabold text-center text-gray-800 mb-8 dark:text-white sm:text-2xl md:text-3xl lg:text-4xl">My Projects</h2>
 
