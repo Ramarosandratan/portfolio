@@ -29,7 +29,19 @@ function App() {
   };
 
   const goToSection = (index) => {
-    setActiveIndex(index);
+    if (isMobile) {
+      // For mobile, scroll to the section
+      const sectionIds = ['home', 'about', 'skills', 'projects', 'contact'];
+      const targetId = sectionIds[index];
+      if (targetId) {
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    } else {
+      setActiveIndex(index);
+    }
   };
 
   return (
@@ -37,7 +49,7 @@ function App() {
       <Navbar sectionNames={sectionNames} activeIndex={activeIndex} goToSection={goToSection} isMobile={isMobile} />
       {isMobile ? (
         <>
-          <Hero />
+          <Hero goToSection={goToSection} />
           <About />
           <Skills />
           <Projects />

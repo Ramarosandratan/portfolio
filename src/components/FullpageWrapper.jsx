@@ -125,7 +125,7 @@ const FullpageWrapper = ({ children, activeIndex, onSectionChange }) => {
               exit="exit"
               transition={transition}
               onAnimationComplete={() => (isAnimating.current = false)} // Release lock when animation completes
-              className="absolute top-0 left-0 w-full h-full flex items-center justify-center"
+              className="absolute top-0 left-0 w-full h-full"
             >
               {React.cloneElement(child, { goToSection })}
             </motion.div>
