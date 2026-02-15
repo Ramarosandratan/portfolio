@@ -117,8 +117,8 @@ Ce projet est sous licence MIT - voir le fichier [LICENSE](LICENSE) pour plus de
 
 **Ramarosandratana Mampionona Rinasoa**
 
-- **Email** : [Votre adresse email]
-- **LinkedIn** : [Votre profil LinkedIn]
+- **Email** : [mailto:ramarosandratana2019@gmail.com](ramarosandratana2019@gmail.com)
+- **LinkedIn** : [https://www.linkedin.com/in/rinasoa-mampionona-ramarosandratana/](LinkedInd/rinasoa-mampionona-ramarosandratana/)
 - **GitHub** : [https://github.com/Ramarosandratan](https://github.com/Ramarosandratan)
 
 **Lien du projet** : [https://ramarosandratan.github.io/portfolio](https://ramarosandratan.github.io/portfolio)
