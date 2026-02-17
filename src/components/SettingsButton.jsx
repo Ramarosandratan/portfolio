@@ -2,9 +2,10 @@ import { useState } from 'react';
 import { Settings, Sun, Moon } from 'lucide-react';
 import { useThemeLanguage } from '../context/useThemeLanguage';
 
-export default function SettingsButton() {
+export default function SettingsButton({ variant = 'floating' }) {
   const [isOpen, setIsOpen] = useState(false);
   const { theme, toggleTheme, language, changeLanguage, t } = useThemeLanguage();
+  const isFloating = variant === 'floating';
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -19,10 +20,13 @@ export default function SettingsButton() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className={isFloating ? 'fixed bottom-6 right-6 z-50' : 'relative'}>
       {/* Menu */}
       {isOpen && (
-        <div className="absolute bottom-20 right-0 rounded-lg shadow-lg p-4 min-w-48 border animate-fade-in transition-all duration-200" style={{backgroundColor: 'var(--surface)', borderColor: 'var(--border)'}}>
+        <div
+          className={`absolute ${isFloating ? 'bottom-20' : 'top-12'} right-0 rounded-lg shadow-lg p-4 min-w-48 border animate-fade-in transition-all duration-200`}
+          style={{backgroundColor: 'var(--surface)', borderColor: 'var(--border)'}}
+        >
           {/* Titre */}
           <h3 className="text-sm font-semibold mb-4" style={{color: 'var(--text-primary)'}}>
             {t('settings.title')}
@@ -85,11 +89,11 @@ export default function SettingsButton() {
       {/* Bouton flottant */}
       <button
         onClick={toggleMenu}
-        className="w-14 h-14 rounded-full text-white shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center hover:opacity-90"
+        className={`${isFloating ? 'w-14 h-14 rounded-full shadow-lg hover:shadow-xl' : 'w-10 h-10 rounded-lg shadow-md hover:shadow-lg'} text-white transition-all duration-200 flex items-center justify-center hover:opacity-90`}
         style={{backgroundColor: 'var(--accent)'}}
         aria-label="Open settings"
       >
-        <Settings size={24} />
+        <Settings size={isFloating ? 24 : 18} />
       </button>
     </div>
   );

@@ -36,47 +36,45 @@ const Home = () => {
         <>
             <StructuredData data={organizationSchema} />
             {/* Main Hero Section */}
-            <main className="relative pt-32 pb-16 lg:pt-48 lg:pb-32 overflow-hidden transition-colors duration-300" style={{ backgroundColor: 'var(--background)' }}>
+            <main className="relative pt-24 pb-14 sm:pt-28 sm:pb-16 lg:pt-48 lg:pb-32 overflow-hidden transition-colors duration-300" style={{ backgroundColor: 'var(--background)' }}>
                 {/* Abstract Background Gradient Decoration */}
-                <div className="absolute top-0 right-0 -mr-24 -mt-24 w-[600px] h-[600px] rounded-full blur-3xl -z-10 pointer-events-none" style={{ backgroundColor: 'rgb(from var(--accent) r g b / 0.08)' }}></div>
-                <div className="absolute bottom-0 left-0 -ml-24 -mb-24 w-[500px] h-[500px] rounded-full blur-3xl -z-10 pointer-events-none" style={{ backgroundColor: 'var(--surface-secondary)' }}></div>
+                <div className="absolute top-0 right-0 -mr-40 -mt-32 w-[520px] h-[520px] sm:w-[620px] sm:h-[620px] rounded-full blur-3xl -z-10 pointer-events-none" style={{ backgroundColor: 'rgb(from var(--accent) r g b / 0.1)' }}></div>
+                <div className="absolute bottom-0 left-0 -ml-32 -mb-32 w-[420px] h-[420px] sm:w-[520px] sm:h-[520px] rounded-full blur-3xl -z-10 pointer-events-none" style={{ backgroundColor: 'var(--surface-secondary)' }}></div>
 
-                <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+                <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
                         {/* Hero Text Content */}
-                        <div className="flex flex-col gap-6 lg:gap-8 order-2 lg:order-1">
+                        <div className="flex flex-col gap-5 sm:gap-6 lg:gap-8 order-2 lg:order-1">
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full w-fit border" style={{ backgroundColor: 'rgb(from var(--success) r g b / 0.15)', borderColor: 'rgb(from var(--success) r g b / 0.3)' }}>
                                 <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: 'var(--success)' }}></span>
                                 <span className="text-xs font-semibold tracking-wide uppercase" style={{ color: 'var(--success)' }}>{t('home.availableForWork')}</span>
                             </div>
-                            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold tracking-tight leading-[1.1]" style={{ color: 'var(--text-primary)' }}>
+                            <h1 className="text-[2.35rem] leading-[1.05] sm:text-5xl lg:text-6xl font-display font-extrabold tracking-tight" style={{ color: 'var(--text-primary)' }}>
                                 {t('home.heroTitle')} <br />
                                 <span className="text-transparent bg-clip-text" style={{ background: 'linear-gradient(to right, var(--accent), var(--accent-hover))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Digital Solutions</span>
                             </h1>
-                            <p className="text-lg max-w-xl leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                            <p className="text-base sm:text-lg max-w-xl leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                                 {t('home.heroParagraph')}
                             </p>
-                            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                                <Link to="/projects" className="px-8 py-3.5 text-white font-semibold rounded shadow-lg transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 group hover:opacity-90" style={{ backgroundColor: 'var(--accent)', boxShadow: '0 10px 25px -5px rgb(from var(--accent) r g b / 0.3)' }}>
+                            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-3 sm:pt-4">
+                                <Link to="/projects" className="px-7 py-3.5 text-white font-semibold rounded shadow-lg transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 group hover:opacity-90" style={{ backgroundColor: 'var(--accent)', boxShadow: '0 10px 25px -5px rgb(from var(--accent) r g b / 0.3)' }}>
                                     {t('home.viewMyWork')}
                                     <span className="material-icons text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
                                 </Link>
-                                <Link to="/contact" className="px-8 py-3.5 border font-medium rounded transition-all flex items-center justify-center gap-2 hover:opacity-80" style={{ backgroundColor: 'var(--surface)', borderColor: 'var(--border)', color: 'var(--text-secondary)' }}>
+                                <Link to="/contact" className="px-7 py-3.5 border font-medium rounded transition-all flex items-center justify-center gap-2 hover:opacity-80" style={{ backgroundColor: 'var(--surface)', borderColor: 'var(--border)', color: 'var(--text-secondary)' }}>
                                     {t('home.contactMe')}
                                 </Link>
                             </div>
                             {/* Trust/Stats small section */}
-                            <div className="pt-8 flex items-center gap-8 text-sm border-t mt-4" style={{ color: 'var(--text-muted)', borderColor: 'var(--border)' }}>
+                            <div className="pt-6 sm:pt-8 grid grid-cols-3 gap-4 text-xs sm:text-sm border-t mt-3 sm:mt-4" style={{ color: 'var(--text-muted)', borderColor: 'var(--border)' }}>
                                 <div className="flex flex-col">
                                     <span className="font-bold text-2xl" style={{ color: 'var(--text-primary)' }}>1+</span>
                                     <span>{t('home.yearsExp')}</span>
                                 </div>
-                                <div className="w-px h-8" style={{ backgroundColor: 'var(--border)' }}></div>
                                 <div className="flex flex-col">
                                     <span className="font-bold text-2xl" style={{ color: 'var(--text-primary)' }}>5+</span>
                                     <span>{t('home.projects')}</span>
                                 </div>
-                                <div className="w-px h-8" style={{ backgroundColor: 'var(--border)' }}></div>
                                 <div className="flex flex-col">
                                     <span className="font-bold text-2xl" style={{ color: 'var(--text-primary)' }}>100%</span>
                                     <span>{t('home.satisfaction')}</span>
@@ -85,7 +83,7 @@ const Home = () => {
                         </div>
 
                         {/* Visual Element: Code/Terminal Card */}
-                        <div className="relative order-1 lg:order-2 perspective-1000">
+                        <div className="relative order-1 lg:order-2 perspective-1000 hidden md:block">
                             {/* Decorative back layers */}
                             <div className="absolute -inset-1 rounded-lg blur opacity-20" style={{ background: 'linear-gradient(to right, var(--accent), var(--accent-hover))' }}></div>
                             <div className="relative rounded-lg border overflow-hidden transform transition-transform hover:scale-[1.01] duration-500" style={{ backgroundColor: 'var(--surface)', borderColor: 'var(--border)', boxShadow: 'var(--shadow-soft)' }}>
@@ -158,7 +156,7 @@ const Home = () => {
             <section className="border-t transition-colors duration-300" style={{ borderColor: 'var(--border)', backgroundColor: 'var(--surface-secondary)' }}>
                 <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-10">
                     <p className="text-center text-sm font-medium mb-6 uppercase tracking-wider" style={{ color: 'var(--text-muted)' }}>{t('home.technologiesHeading')}</p>
-                    <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 opacity-70 transition-all duration-500">
+                    <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-7 sm:gap-x-12 sm:gap-y-8 opacity-70 transition-all duration-500">
                         {/* React */}
                         <div className="group flex flex-col items-center gap-2 hover:text-primary transition-colors cursor-default">
                             <div className="w-10 h-10 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-300">

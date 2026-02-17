@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useThemeLanguage } from '../context/useThemeLanguage';
+import SettingsButton from './SettingsButton';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -38,15 +39,17 @@ const Navbar = () => {
                         </div>
                     </div>
 
-                    {/* CTA */}
-                    <div className="hidden md:block">
+                    {/* CTA + Settings */}
+                    <div className="hidden md:flex items-center gap-3">
                         <Link to="/contact" className="text-white px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 shadow-md hover:shadow-xl hover:scale-105 active:scale-95 hover:-translate-y-0.5" style={{backgroundColor: 'var(--accent)'}}>
                             {t('navbar.hireMe')}
                         </Link>
+                        <SettingsButton variant="navbar" />
                     </div>
 
-                    {/* Mobile menu button */}
-                    <div className="-mr-2 flex md:hidden">
+                    {/* Mobile menu + settings */}
+                    <div className="-mr-2 flex md:hidden items-center gap-2">
+                        <SettingsButton variant="navbar" />
                         <button
                             type="button"
                             className="inline-flex items-center justify-center p-2 rounded hover:opacity-80 focus:outline-none transition-all duration-300"

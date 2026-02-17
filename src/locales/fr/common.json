@@ -36,7 +36,7 @@
     "selected": "Projets",
     "works": "sélectionnés",
     "description": "Une collection de projets présentant mon parcours dans la création d'applications web évolutives, la résolution de défis backend complexes et la conception d'interfaces utilisateur intuitives.",
-    "allProjects": "Tous les projets",
+    "allProjects": "Tous",
     "fullStack": "Full Stack",
     "frontend": "Frontend",
     "backend": "Backend",
@@ -59,7 +59,7 @@
   "experience": {
     "title": "Expérience & Compétences",
     "subtitle": "Mon parcours professionnel dans le développement logiciel et l'arsenal technique que j'ai développé au fil du temps.",
-    "workExperience": "Expérience professionnelle",
+    "workExperience": "Experience",
     "education": "Éducation",
     "seniorFullStack": "Stagiaire Développeur",
     "techFlowSystems": "Orange Madagascar (DSI)",
