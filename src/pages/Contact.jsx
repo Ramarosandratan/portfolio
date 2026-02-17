@@ -269,7 +269,8 @@ const Contact = () => {
                                     <h3 className="text-2xl font-bold mb-2">{t('contact.myResume')}</h3>
                                     <p className="mb-6 text-sm opacity-90">{t('contact.downloadCVDesc')}</p>
                                     <a 
-                                        href="/CV_ramarosandratana_Full_stack.pdf" 
+                                        href={`${import.meta.env.BASE_URL}CV_ramarosandratana_Full_stack.pdf`}
+                                        download="CV_ramarosandratana_Full_stack.pdf"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="w-full group bg-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 flex items-center justify-center shadow-md hover:opacity-90" 

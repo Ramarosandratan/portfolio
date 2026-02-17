@@ -68,12 +68,12 @@ const Home = () => {
                             {/* Trust/Stats small section */}
                             <div className="pt-8 flex items-center gap-8 text-sm border-t mt-4" style={{ color: 'var(--text-muted)', borderColor: 'var(--border)' }}>
                                 <div className="flex flex-col">
-                                    <span className="font-bold text-2xl" style={{ color: 'var(--text-primary)' }}>5+</span>
+                                    <span className="font-bold text-2xl" style={{ color: 'var(--text-primary)' }}>1+</span>
                                     <span>{t('home.yearsExp')}</span>
                                 </div>
                                 <div className="w-px h-8" style={{ backgroundColor: 'var(--border)' }}></div>
                                 <div className="flex flex-col">
-                                    <span className="font-bold text-2xl" style={{ color: 'var(--text-primary)' }}>50+</span>
+                                    <span className="font-bold text-2xl" style={{ color: 'var(--text-primary)' }}>5+</span>
                                     <span>{t('home.projects')}</span>
                                 </div>
                                 <div className="w-px h-8" style={{ backgroundColor: 'var(--border)' }}></div>
