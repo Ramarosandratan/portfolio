@@ -167,10 +167,10 @@ const Contact = () => {
                 { name: 'Contact', url: 'https://ramarosandratan.github.io/portfolio/contact' }
             ])} />
             {/* Main Content Area */}
-            <main className="flex-grow flex items-center justify-center pt-28 pb-16 px-4 sm:px-6 lg:px-8">
+            <main className="flex-grow flex items-center justify-center pt-24 pb-24 sm:pt-28 sm:pb-16 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-6xl w-full">
                     {/* Enhanced Header Section with Gradient */}
-                    <div className="relative text-center mb-16 scroll-fade-in">
+                    <div className="relative text-center mb-10 sm:mb-16 scroll-fade-in">
                         {/* Gradient background */}
                         <div className="absolute -inset-8 pointer-events-none opacity-20">
                             <div className="absolute inset-0" style={{
@@ -179,24 +179,24 @@ const Contact = () => {
                         </div>
 
                         <div className="relative">
-                            <h1 className="text-5xl sm:text-6xl font-bold mb-6 tracking-tight transition-colors duration-300" style={{ color: 'var(--text-primary)' }}>
+                            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 tracking-tight transition-colors duration-300" style={{ color: 'var(--text-primary)' }}>
                                 {t('contact.title')} <span style={{ color: 'var(--accent)' }}>{t('contact.title2')}</span>
                             </h1>
-                            <p className="text-xl max-w-2xl mx-auto transition-colors duration-300" style={{ color: 'var(--text-secondary)' }}>
+                            <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto transition-colors duration-300" style={{ color: 'var(--text-secondary)' }}>
                                 {t('contact.subtitle')}
                             </p>
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16">
                         {/* Left Column: Contact Info & Resume */}
                         <div className="lg:col-span-5 space-y-8">
                             {/* Enhanced Direct Contact Card */}
-                            <div className="scroll-fade-in hover-lift p-8 rounded-2xl border relative overflow-hidden group transition-all duration-300 shadow-lg" style={{ backgroundColor: 'var(--surface)', borderColor: 'var(--border)' }}>
+                            <div className="scroll-fade-in hover-lift p-6 sm:p-8 rounded-2xl border relative overflow-hidden group transition-all duration-300 shadow-lg" style={{ backgroundColor: 'var(--surface)', borderColor: 'var(--border)' }}>
                                 {/* Decorative background element */}
                                 <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 rounded-full blur-2xl group-hover:opacity-75 transition-opacity duration-500" style={{ backgroundColor: 'rgb(from var(--accent) r g b / 0.1)' }}></div>
 
-                                <h3 className="text-2xl font-bold mb-8 flex items-center gap-3 transition-colors duration-300" style={{ color: 'var(--text-primary)' }}>
+                                <h3 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 flex items-center gap-3 transition-colors duration-300" style={{ color: 'var(--text-primary)' }}>
                                     <span className="material-icons text-2xl" style={{ color: 'var(--accent)' }}>contact_page</span>
                                     {t('contact.contactDetails')}
                                 </h3>
@@ -233,9 +233,9 @@ const Contact = () => {
                                 {/* Social Links */}
                                 <div className="mt-8 pt-8 border-t transition-colors duration-300" style={{ borderColor: 'var(--border)' }}>
                                     <p className="text-sm font-medium mb-4 transition-colors duration-300" style={{ color: 'var(--text-muted)' }}>{t('contact.connectWithMe')}</p>
-                                    <div className="flex space-x-4">
+                                    <div className="flex gap-3">
                                         {['github', 'linkedin', 'whatsapp'].map((platform) => (
-                                            <a key={platform} href={platform === 'github' ? 'https://github.com/Ramarosandratan' : platform === 'linkedin' ? 'https://www.linkedin.com/in/rinasoa-mampionona-ramarosandratana/' : 'https://wa.me/261341592473'} target="_blank" rel="noopener noreferrer" className="group relative flex items-center justify-center h-10 w-10 rounded-lg transition-all duration-300 hover:opacity-80" style={{ backgroundColor: 'var(--surface-secondary)', color: 'var(--text-secondary)' }}>
+                                            <a key={platform} href={platform === 'github' ? 'https://github.com/Ramarosandratan' : platform === 'linkedin' ? 'https://www.linkedin.com/in/rinasoa-mampionona-ramarosandratana/' : 'https://wa.me/261341592473'} target="_blank" rel="noopener noreferrer" className="group relative flex items-center justify-center h-9 w-9 sm:h-10 sm:w-10 rounded-lg transition-all duration-300 hover:opacity-80" style={{ backgroundColor: 'var(--surface-secondary)', color: 'var(--text-secondary)' }}>
                                                 {platform === 'github' && (
                                                     <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
                                                         <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
@@ -258,7 +258,7 @@ const Contact = () => {
                             </div>
 
                             {/* Enhanced Resume CTA */}
-                            <div className="scroll-fade-in rounded-2xl p-8 shadow-2xl text-white relative overflow-hidden hover:scale-105 transition-all duration-300"
+                            <div className="scroll-fade-in rounded-2xl p-6 sm:p-8 shadow-2xl text-white relative overflow-hidden sm:hover:scale-105 transition-all duration-300"
                                 style={{
                                     background: 'linear-gradient(135deg, var(--accent), var(--accent-hover))',
                                     boxShadow: '0 8px 30px rgb(from var(--accent) r g b / 0.4)'
@@ -266,7 +266,7 @@ const Contact = () => {
                                 {/* Background pattern */}
                                 <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
                                 <div className="relative z-10">
-                                    <h3 className="text-2xl font-bold mb-2">{t('contact.myResume')}</h3>
+                                    <h3 className="text-xl sm:text-2xl font-bold mb-2">{t('contact.myResume')}</h3>
                                     <p className="mb-6 text-sm opacity-90">{t('contact.downloadCVDesc')}</p>
                                     <a 
                                         href={`${import.meta.env.BASE_URL}CV_ramarosandratana_Full_stack.pdf`}
@@ -285,10 +285,10 @@ const Contact = () => {
 
                         {/* Right Column: Contact Form */}
                         <div className="lg:col-span-7">
-                            <div className="scroll-fade-in hover-lift rounded-2xl border p-8 sm:p-10 h-full transition-all duration-300 shadow-lg" style={{ backgroundColor: 'var(--surface)', borderColor: 'var(--border)' }}>
-                                <h2 className="text-3xl font-bold mb-8 transition-colors duration-300" style={{ color: 'var(--text-primary)' }}>{t('contact.sendMessage')}</h2>
+                            <div className="scroll-fade-in hover-lift rounded-2xl border p-6 sm:p-10 h-full transition-all duration-300 shadow-lg" style={{ backgroundColor: 'var(--surface)', borderColor: 'var(--border)' }}>
+                                <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 transition-colors duration-300" style={{ color: 'var(--text-primary)' }}>{t('contact.sendMessage')}</h2>
                                 <form onSubmit={handleSubmit} className="space-y-6">
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
                                         {/* Name Field */}
                                         <div>
                                             <label htmlFor="name" className="block text-sm font-medium mb-1 transition-colors duration-300" style={{ color: 'var(--text-secondary)' }}>{t('contact.fullName')}</label>
@@ -303,7 +303,7 @@ const Contact = () => {
                                                     value={formData.name}
                                                     onChange={handleChange}
                                                     placeholder="John Doe"
-                                                    className="block w-full pl-10 sm:text-sm rounded-lg py-3 transition-all duration-300 border focus:outline-none focus:ring-2 hover:shadow-md placeholder:text-opacity-50"
+                                                    className="block w-full pl-10 text-sm rounded-lg py-2.5 sm:py-3 transition-all duration-300 border focus:outline-none focus:ring-2 sm:hover:shadow-md placeholder:text-opacity-50"
                                                     style={{
                                                         borderColor: 'var(--border)',
                                                         backgroundColor: 'var(--surface-secondary)',
@@ -329,7 +329,7 @@ const Contact = () => {
                                                     value={formData.email}
                                                     onChange={handleChange}
                                                     placeholder="john@example.com"
-                                                    className="block w-full pl-10 sm:text-sm rounded-lg py-3 transition-all duration-300 border focus:outline-none focus:ring-2 hover:shadow-md placeholder:text-opacity-50"
+                                                    className="block w-full pl-10 text-sm rounded-lg py-2.5 sm:py-3 transition-all duration-300 border focus:outline-none focus:ring-2 sm:hover:shadow-md placeholder:text-opacity-50"
                                                     style={{
                                                         borderColor: 'var(--border)',
                                                         backgroundColor: 'var(--surface-secondary)',
@@ -356,7 +356,7 @@ const Contact = () => {
                                                 value={formData.subject}
                                                 onChange={handleChange}
                                                 placeholder={t('contact.subjectPlaceholder')}
-                                                className="block w-full pl-10 sm:text-sm rounded-lg py-3 transition-all duration-300 border focus:outline-none focus:ring-2 hover:shadow-md placeholder:text-opacity-50"
+                                                className="block w-full pl-10 text-sm rounded-lg py-2.5 sm:py-3 transition-all duration-300 border focus:outline-none focus:ring-2 sm:hover:shadow-md placeholder:text-opacity-50"
                                                 style={{
                                                     borderColor: 'var(--border)',
                                                     backgroundColor: 'var(--surface-secondary)',
@@ -375,11 +375,11 @@ const Contact = () => {
                                             <textarea
                                                 id="message"
                                                 name="message"
-                                                rows="5"
+                                                rows="4"
                                                 value={formData.message}
                                                 onChange={handleChange}
                                                 placeholder={t('contact.messagePlaceholder')}
-                                                className="block w-full sm:text-sm rounded-lg p-3 transition-all duration-300 resize-none border focus:outline-none focus:ring-2 hover:shadow-md placeholder:text-opacity-50"
+                                                className="block w-full text-sm rounded-lg p-3 transition-all duration-300 resize-none border focus:outline-none focus:ring-2 sm:hover:shadow-md placeholder:text-opacity-50"
                                                 style={{
                                                     borderColor: 'var(--border)',
                                                     backgroundColor: 'var(--surface-secondary)',
@@ -394,17 +394,17 @@ const Contact = () => {
 
                                     {/* Error Messages */}
                                     {errorMessage && (
-                                        <div className="flex items-center p-4 rounded-lg transition-all duration-300 animate-pulse" style={{ backgroundColor: 'rgb(from #ef4444 r g b / 0.1)', borderLeft: '4px solid #ef4444' }}>
+                                        <div className="flex items-center p-4 rounded-lg transition-all duration-300 sm:animate-pulse" style={{ backgroundColor: 'rgb(from #ef4444 r g b / 0.1)', borderLeft: '4px solid #ef4444' }}>
                                             <span className="material-icons text-base mr-2" style={{ color: '#ef4444' }}>error</span>
                                             <p className="text-sm font-medium" style={{ color: '#ef4444' }}>{errorMessage}</p>
                                         </div>
                                     )}
 
                                     {/* Form Actions */}
-                                    <div className="flex items-center justify-between pt-2">
+                                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-2">
                                         {/* Success Message */}
                                         {isSubmitted && (
-                                            <div className="text-sm font-medium flex items-center animate-pulse transition-colors duration-300" style={{ color: 'var(--accent)' }}>
+                                            <div className="text-sm font-medium flex items-center sm:animate-pulse transition-colors duration-300" style={{ color: 'var(--accent)' }}>
                                                 <span className="material-icons text-base mr-1">check_circle</span>
                                                 {t('contact.successMessage')}
                                             </div>
@@ -413,7 +413,7 @@ const Contact = () => {
                                         <button
                                             type="submit"
                                             disabled={isLoading}
-                                            className="inline-flex justify-center items-center py-3 px-8 shadow-lg text-sm font-semibold rounded-xl text-white transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                                            className="w-full sm:w-auto inline-flex justify-center items-center py-3 px-8 shadow-lg text-sm font-semibold rounded-xl text-white transition-all sm:hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                                             style={{
                                                 backgroundColor: 'var(--accent)',
                                                 boxShadow: '0 4px 20px rgb(from var(--accent) r g b / 0.3)'
@@ -441,7 +441,7 @@ const Contact = () => {
 
             {/* Location Map (Visual Representation) */}
             <div
-                className="w-full h-64 relative border-t transition-colors duration-300"
+                className="w-full h-52 sm:h-64 relative border-t transition-colors duration-300"
                 style={{
                     backgroundImage: `url(${mapBackground})`,
                     backgroundSize: 'cover',
@@ -458,11 +458,12 @@ const Contact = () => {
                 </div>
             </div>
 
+
             {/* Floating Scroll to Top Button */}
             {showScrollTop && (
                 <button
                     onClick={scrollToTop}
-                    className="fixed bottom-24 right-6 w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-all hover:scale-110 z-50 animate-fade-in-scale"
+                    className="fixed bottom-6 sm:bottom-10 right-8 sm:right-8 w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-2xl transition-all sm:hover:scale-110 z-50 animate-fade-in-scale"
                     style={{
                         backgroundColor: 'var(--accent)',
                         color: 'white',

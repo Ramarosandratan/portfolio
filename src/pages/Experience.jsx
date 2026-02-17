@@ -144,9 +144,9 @@ const Experience = () => {
         { name: 'Home', url: 'https://ramarosandratan.github.io/portfolio' },
         { name: 'Experience', url: 'https://ramarosandratan.github.io/portfolio/experience' }
       ])} />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16 w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 sm:pt-28 sm:pb-16 w-full">
         {/* Enhanced Header with Gradient */}
-        <div className="relative mb-16 scroll-fade-in">
+        <div className="relative mb-10 sm:mb-16 scroll-fade-in">
           {/* Gradient background */}
           <div className="absolute -inset-4 pointer-events-none opacity-20">
             <div className="absolute inset-0" style={{
@@ -155,33 +155,33 @@ const Experience = () => {
           </div>
 
           <div className="relative">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 transition-colors duration-300" style={{ color: 'var(--text-primary)' }}>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 transition-colors duration-300" style={{ color: 'var(--text-primary)' }}>
               {t('experience.title')}
             </h1>
-            <p className="max-w-2xl text-xl transition-colors duration-300" style={{ color: 'var(--text-secondary)' }}>
+            <p className="max-w-2xl text-base sm:text-lg md:text-xl transition-colors duration-300" style={{ color: 'var(--text-secondary)' }}>
               {t('experience.subtitle')}
             </p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12">
           {/* Left Column: Timeline (7 cols) */}
           <div className="lg:col-span-7 space-y-8">
-            <div className="scroll-fade-in flex items-center justify-between mb-8">
-              <h2 className="text-2xl font-bold flex items-center gap-3 transition-colors duration-300" style={{ color: 'var(--text-primary)' }}>
+            <div className="scroll-fade-in flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 sm:mb-8">
+              <h2 className="text-xl sm:text-2xl font-bold flex items-center gap-3 transition-colors duration-300" style={{ color: 'var(--text-primary)' }}>
                 <ExperienceIconSVG style={{ width: '28px', height: '28px' }} />
                 {activeTab === 'work' ? t('experience.workExperience') : t('experience.education')}
               </h2>
 
               {/* Enhanced Toggle Switch */}
-              <div className="p-1.5 rounded-xl inline-flex border shadow-md transition-all"
+              <div className="p-1.5 rounded-xl inline-flex border shadow-md transition-all w-full sm:w-auto"
                 style={{
                   backgroundColor: 'var(--surface-secondary)',
                   borderColor: 'var(--border)'
                 }}>
                 <button
                   onClick={() => setActiveTab('work')}
-                  className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all ${activeTab === 'work'
+                  className={`flex-1 sm:flex-none px-4 py-2 rounded-lg text-sm font-semibold transition-all ${activeTab === 'work'
                       ? 'shadow-md'
                       : 'btn-hover-shadow'
                     }`}
@@ -199,7 +199,7 @@ const Experience = () => {
                 </button>
                 <button
                   onClick={() => setActiveTab('education')}
-                  className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all ${activeTab === 'education'
+                  className={`flex-1 sm:flex-none px-4 py-2 rounded-lg text-sm font-semibold transition-all ${activeTab === 'education'
                       ? 'shadow-md'
                       : 'btn-hover-shadow'
                     }`}
@@ -219,7 +219,7 @@ const Experience = () => {
             </div>
 
             {/* Enhanced Timeline Container */}
-            <div className="relative pl-8 border-l-2 space-y-12 transition-colors duration-300" style={{ borderColor: 'var(--border)' }}>
+            <div className="relative pl-4 sm:pl-8 border-l-2 space-y-8 sm:space-y-12 transition-colors duration-300" style={{ borderColor: 'var(--border)' }}>
               {displayExperience.map((item, idx) => (
                 <div key={idx} className="scroll-fade-in" style={{ animationDelay: `${idx * 0.1}s` }}>
                   <TimelineItem
@@ -238,22 +238,22 @@ const Experience = () => {
           {/* Right Column: Skills & Certifications (5 cols) */}
           <div className="lg:col-span-5 space-y-8">
             {/* Enhanced Skills Card */}
-            <div className="scroll-fade-in hover-lift border rounded-2xl p-8 shadow-lg transition-all duration-300"
+            <div className="scroll-fade-in hover-lift border rounded-2xl p-6 sm:p-8 shadow-lg transition-all duration-300"
               style={{
                 backgroundColor: 'var(--surface)',
                 borderColor: 'var(--border)'
               }}>
-              <h2 className="text-2xl font-bold mb-8 flex items-center gap-3 transition-colors duration-300" style={{ color: 'var(--text-primary)' }}>
+              <h2 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 flex items-center gap-3 transition-colors duration-300" style={{ color: 'var(--text-primary)' }}>
                 <SVGComponent style={{ width: '28px', height: '28px' }} /> {t('experience.skills')}
               </h2>
 
               {/* Frontend Section */}
-              <div className="mb-10">
+              <div className="mb-8 sm:mb-10">
                 <h3 className="text-xs font-bold uppercase tracking-wider mb-5 flex items-center gap-2 transition-colors duration-300" style={{ color: 'var(--accent)' }}>
                   <span className="material-icons-round text-sm">web</span>
                   {t('experience.frontendSkills')}
                 </h3>
-                <div className="space-y-5">
+                <div className="space-y-4 sm:space-y-5">
                   {frontendSkills.map((skill) => (
                     <SkillBar
                       key={skill.name}
@@ -265,12 +265,12 @@ const Experience = () => {
               </div>
 
               {/* Backend Section */}
-              <div className="mb-10">
+              <div className="mb-8 sm:mb-10">
                 <h3 className="text-xs font-bold uppercase tracking-wider mb-5 flex items-center gap-2 transition-colors duration-300" style={{ color: 'var(--accent)' }}>
                   <span className="material-icons-round text-sm">storage</span>
                   {t('experience.backendSkills')}
                 </h3>
-                <div className="space-y-5">
+                <div className="space-y-4 sm:space-y-5">
                   {backendSkills.map((skill) => (
                     <SkillBar
                       key={skill.name}
@@ -291,7 +291,7 @@ const Experience = () => {
                   {devopsSkills.map((skill) => (
                     <span
                       key={skill}
-                      className="px-4 py-2 text-sm font-medium rounded-lg border transition-all cursor-default hover:scale-105 hover:shadow-md"
+                      className="px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium rounded-lg border transition-all cursor-default hover:scale-105 hover:shadow-md"
                       style={{
                         backgroundColor: 'rgb(from var(--accent) r g b / 0.1)',
                         color: 'var(--accent)',
@@ -306,15 +306,15 @@ const Experience = () => {
             </div>
 
             {/* Enhanced Certifications */}
-            <div className="scroll-fade-in hover-lift border rounded-2xl p-8 shadow-lg transition-all duration-300"
+            <div className="scroll-fade-in hover-lift border rounded-2xl p-6 sm:p-8 shadow-lg transition-all duration-300"
               style={{
                 backgroundColor: 'var(--surface)',
                 borderColor: 'var(--border)'
               }}>
-              <h2 className="text-2xl font-bold mb-8 flex items-center gap-3 transition-colors duration-300" style={{ color: 'var(--text-primary)' }}>
+              <h2 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 flex items-center gap-3 transition-colors duration-300" style={{ color: 'var(--text-primary)' }}>
                 <CertificationIconSVG style={{ width: '28px', height: '28px' }} /> {t('experience.certifications')}
               </h2>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 {certifications.map((cert, idx) => (
                   <CertificationCard
                     key={idx}
@@ -333,7 +333,7 @@ const Experience = () => {
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-24 right-6 w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-all hover:scale-110 z-50 animate-fade-in-scale"
+          className="fixed bottom-6 sm:bottom-24 right-4 sm:right-6 w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-2xl transition-all hover:scale-110 z-50 animate-fade-in-scale"
           style={{
             backgroundColor: 'var(--accent)',
             color: 'white',

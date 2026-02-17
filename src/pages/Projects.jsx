@@ -74,7 +74,7 @@ const Projects = () => {
                 { name: 'Projects', url: 'https://ramarosandratan.github.io/portfolio/projects' }
             ])} />
             {/* Enhanced Header Section with Gradient */}
-            <section className="relative pt-24 pb-12 sm:pt-28 sm:pb-16 overflow-hidden" style={{ backgroundColor: 'var(--background)' }}>
+            <section className="relative pt-20 pb-10 sm:pt-28 sm:pb-16 overflow-hidden" style={{ backgroundColor: 'var(--background)' }}>
                 {/* Animated gradient background */}
                 <div className="absolute inset-0 pointer-events-none opacity-30">
                     <div className="absolute inset-0" style={{
@@ -85,10 +85,10 @@ const Projects = () => {
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
                     <div className="animate-slide-in-up">
-                        <h1 className="text-5xl sm:text-6xl font-bold mb-6 tracking-tight transition-colors duration-300" style={{ color: 'var(--text-primary)' }}>
+                        <h1 className="text-3xl sm:text-6xl font-bold mb-4 sm:mb-6 tracking-tight transition-colors duration-300" style={{ color: 'var(--text-primary)' }}>
                             {t('projects.selected')} <span style={{ color: 'var(--accent)' }}>{t('projects.works')}</span>
                         </h1>
-                        <p className="max-w-2xl mx-auto text-xl transition-colors duration-300" style={{ color: 'var(--text-secondary)' }}>
+                        <p className="max-w-2xl mx-auto text-base sm:text-xl transition-colors duration-300" style={{ color: 'var(--text-secondary)' }}>
                             {t('projects.description')}
                         </p>
                     </div>
@@ -96,14 +96,14 @@ const Projects = () => {
             </section>
 
             {/* Enhanced Filter Bar */}
-            <div className="sticky top-20 z-40 backdrop-blur-sm border-b py-4 transition-colors duration-300 glass-effect" style={{ borderColor: 'var(--border)' }}>
+            <div className="sticky top-16 sm:top-20 z-40 backdrop-blur-sm border-b py-3 sm:py-4 transition-colors duration-300 glass-effect" style={{ borderColor: 'var(--border)' }}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center">
-                    <div className="inline-flex rounded-xl p-1.5 shadow-lg overflow-x-auto max-w-full" style={{ backgroundColor: 'var(--surface-secondary)' }}>
+                    <div className="projects-filter inline-flex rounded-xl p-1.5 shadow-lg overflow-x-auto max-w-full" style={{ backgroundColor: 'var(--surface-secondary)' }}>
                         {filterOptions.map(option => (
                             <button
                                 key={option.key}
                                 onClick={() => handleFilterChange(option.key)}
-                                className={`px-6 py-2.5 text-sm font-semibold rounded-lg transition-all ${filter === option.key
+                                className={`px-5 sm:px-6 py-2.5 text-sm font-semibold rounded-lg transition-all ${filter === option.key
                                         ? "shadow-md"
                                         : "btn-hover-shadow"
                                     }`}
@@ -125,9 +125,9 @@ const Projects = () => {
             </div>
 
             {/* Main Content: Enhanced Project Grid */}
-            <main className="flex-grow py-16">
+            <main className="flex-grow py-12 sm:py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 projects-grid ${isFiltering ? 'is-filtering' : ''}`}>
+                    <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 projects-grid ${isFiltering ? 'is-filtering' : ''}`}>
                         {filteredProjects.map((project, index) => (
                             <article
                                 key={project.id}
@@ -154,19 +154,19 @@ const Projects = () => {
                                         </span>
                                     </div>
                                 </div>
-                                <div className="p-6 flex flex-col flex-grow">
+                                <div className="p-5 sm:p-6 flex flex-col flex-grow">
                                     <Link to={`/projects/${project.id}`} className="flex justify-between items-start mb-3 group/title">
-                                        <h3 className="text-xl font-bold transition-all group-hover/title:text-opacity-80" style={{ color: 'var(--text-primary)' }}>
+                                        <h3 className="text-lg sm:text-xl font-bold transition-all group-hover/title:text-opacity-80" style={{ color: 'var(--text-primary)' }}>
                                             {project.title}
                                         </h3>
                                         <span className="transition-all group-hover/title:translate-x-1" style={{ color: 'var(--accent)' }}>
                                             <span className="material-icons-round text-xl">arrow_forward</span>
                                         </span>
                                     </Link>
-                                    <p className="text-sm mb-6 flex-grow leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                                    <p className="text-sm mb-5 sm:mb-6 flex-grow leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                                         {project.description}
                                     </p>
-                                    <div className="flex flex-wrap gap-2 mb-6">
+                                    <div className="flex flex-wrap gap-2 mb-5 sm:mb-6">
                                         {project.tags.slice(0, 3).map(tag => (
                                             <span key={tag} className="px-3 py-1 text-xs font-medium rounded-lg border transition-all hover:scale-105"
                                                 style={{
@@ -184,7 +184,7 @@ const Projects = () => {
                                             </span>
                                         )}
                                     </div>
-                                    <div className="flex gap-3 mt-auto pt-4 border-t" style={{ borderColor: 'var(--border)' }}>
+                                    <div className="flex flex-col sm:flex-row gap-3 mt-auto pt-4 border-t" style={{ borderColor: 'var(--border)' }}>
                                         <Link
                                             to={`/projects/${project.id}`}
                                             className="flex-1 py-3 px-4 rounded-xl text-sm font-semibold transition-all shadow-md flex items-center justify-center gap-2 text-white hover:scale-105"
@@ -213,7 +213,7 @@ const Projects = () => {
 
                         {/* Enhanced Coming Soon Card */}
                         {filter === 'all' && (
-                            <article className="scroll-fade-in hover-press group rounded-2xl overflow-hidden border-2 border-dashed flex flex-col h-full items-center justify-center text-center p-10 project-card"
+                            <article className="scroll-fade-in hover-press group rounded-2xl overflow-hidden border-2 border-dashed flex flex-col h-full items-center justify-center text-center p-8 sm:p-10 project-card"
                                 style={{
                                     backgroundColor: 'var(--surface-secondary)',
                                     borderColor: 'var(--border)',
@@ -227,7 +227,7 @@ const Projects = () => {
                                     }}>
                                     <span className="material-icons-round text-4xl">add_circle</span>
                                 </div>
-                                <h3 className="text-xl font-bold mb-3" style={{ color: 'var(--text-primary)' }}>
+                                <h3 className="text-lg sm:text-xl font-bold mb-3" style={{ color: 'var(--text-primary)' }}>
                                     {t('projects.comingSoon') || 'Something New'}
                                 </h3>
                                 <p className="text-sm max-w-[220px]" style={{ color: 'var(--text-muted)' }}>
@@ -243,14 +243,14 @@ const Projects = () => {
             {showScrollTop && (
                 <button
                     onClick={scrollToTop}
-                    className="fixed bottom-24 right-6 w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-all hover:scale-110 z-50 animate-fade-in-scale"
+                    className="fixed bottom-20 right-4 sm:bottom-24 sm:right-6 w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-2xl transition-all hover:scale-110 z-50 animate-fade-in-scale"
                     style={{
                         backgroundColor: 'var(--accent)',
                         color: 'white',
                         boxShadow: '0 8px 30px rgb(from var(--accent) r g b / 0.4)'
                     }}
                 >
-                    <span className="material-icons-round text-2xl">arrow_upward</span>
+                    <span className="material-icons-round text-xl sm:text-2xl">arrow_upward</span>
                 </button>
             )}
         </div>
