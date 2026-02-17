@@ -1,42 +1,369 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-html, body {
-  /* overflow-hidden is applied by default for desktop, removed for mobile */
+@theme {
+    /* Palette principale - Light mode: Bleu subtil | Dark mode: Gris chauds avec accents amber */
+    --color-primary: #1978e5;
+    --color-primary-hover: #1461ba;
+
+    /* Backgrounds */
+    --color-background-light: #f8f9fa;
+    --color-background-dark: #1a1a1a;
+
+    /* Surfaces */
+    --color-surface-light: #ffffff;
+    --color-surface-dark: #262626;
+    --color-surface-secondary-light: #f1f3f5;
+    --color-surface-secondary-dark: #2d2d2d;
+
+    /* Neutral colors - Vrais gris neutres (sans teinte bleue) */
+    --color-neutral-50: #fafafa;
+    --color-neutral-100: #f5f5f5;
+    --color-neutral-200: #e5e5e5;
+    --color-neutral-300: #d4d4d4;
+    --color-neutral-400: #a3a3a3;
+    --color-neutral-500: #737373;
+    --color-neutral-600: #525252;
+    --color-neutral-700: #404040;
+    --color-neutral-800: #262626;
+    --color-neutral-900: #171717;
+
+    /* Accent colors - Different for each mode */
+    --color-accent-light: #1978e5;
+    --color-accent-dark: #f59e0b;
+    --color-accent-hover-light: #1461ba;
+    --color-accent-hover-dark: #d97706;
+
+    /* Success/Available colors - Green for both modes */
+    --color-success-light: #10b981;
+    --color-success-dark: #34d399;
+    --color-success-hover-light: #059669;
+    --color-success-hover-dark: #10b981;
+
+    /* Text colors */
+    --color-text-primary-light: #171717;
+    --color-text-primary-dark: #f5f5f5;
+    --color-text-secondary-light: #525252;
+    --color-text-secondary-dark: #a3a3a3;
+    --color-text-muted-light: #737373;
+    --color-text-muted-dark: #737373;
+
+    /* Borders */
+    --color-border-light: #e5e5e5;
+    --color-border-dark: #404040;
+    --color-border-emphasis-light: #d4d4d4;
+    --color-border-emphasis-dark: #525252;
+
+    --font-display: Inter, sans-serif;
+    --font-mono: Fira Code, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+    --radius: 0.125rem;
+    --radius-lg: 0.25rem;
+    --radius-xl: 0.5rem;
+    --radius-full: 0.75rem;
+
+    --shadow-soft-light: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --shadow-soft-dark: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    --shadow-glow-light: 0 0 15px rgba(25, 120, 229, 0.15);
+    --shadow-glow-dark: 0 0 20px rgba(245, 158, 11, 0.2);
+    --shadow-hover-light: 0 12px 24px rgba(0, 0, 0, 0.12), 0 8px 16px rgba(0, 0, 0, 0.08);
+    --shadow-hover-dark: 0 12px 24px rgba(0, 0, 0, 0.4), 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
-@media (min-width: 768px) {
-  html, body {
-    overflow: hidden;
-  }
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-/* Custom Scrollbar Styles */
+/* Custom scrollbar for code block */
 .custom-scrollbar::-webkit-scrollbar {
-  width: 8px; /* Width of the scrollbar */
+    width: 8px;
+    height: 8px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Color of the scrollbar track */
-  border-radius: 10px;
+    background: transparent;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #888; /* Color of the scrollbar thumb */
-  border-radius: 10px;
+    background-color: var(--border-emphasis);
+    border-radius: 4px;
 }
 
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #555; /* Color of the scrollbar thumb on hover */
+html.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--color-neutral-600);
 }
 
-/* Firefox scrollbar styles */
-.custom-scrollbar {
-  scrollbar-width: thin; /* "auto" or "thin" */
-  scrollbar-color: #888 #f1f1f1; /* thumb and track color */
+.typing-cursor::after {
+    content: '|';
+    animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+@layer base {
+
+    /* Semantic color tokens - Change based on theme */
+    :root {
+        --accent: var(--color-accent-light);
+        --accent-hover: var(--color-accent-hover-light);
+        --success: var(--color-success-light);
+        --success-hover: var(--color-success-hover-light);
+        --background: var(--color-background-light);
+        --surface: var(--color-surface-light);
+        --surface-secondary: var(--color-surface-secondary-light);
+        --text-primary: var(--color-text-primary-light);
+        --text-secondary: var(--color-text-secondary-light);
+        --text-muted: var(--color-text-muted-light);
+        --border: var(--color-border-light);
+        --border-emphasis: var(--color-border-emphasis-light);
+        --shadow-soft: var(--shadow-soft-light);
+        --shadow-glow: var(--shadow-glow-light);
+        --shadow-hover: var(--shadow-hover-light);
+    }
+
+    html.dark {
+        --accent: var(--color-accent-dark);
+        --accent-hover: var(--color-accent-hover-dark);
+        --success: var(--color-success-dark);
+        --success-hover: var(--color-success-hover-dark);
+        --background: var(--color-background-dark);
+        --surface: var(--color-surface-dark);
+        --surface-secondary: var(--color-surface-secondary-dark);
+        --text-primary: var(--color-text-primary-dark);
+        --text-secondary: var(--color-text-secondary-dark);
+        --text-muted: var(--color-text-muted-dark);
+        --border: var(--color-border-dark);
+        --border-emphasis: var(--color-border-emphasis-dark);
+        --shadow-soft: var(--shadow-soft-dark);
+        --shadow-glow: var(--shadow-glow-dark);
+        --shadow-hover: var(--shadow-hover-dark);
+    }
+
+
+    body {
+        @apply font-display overflow-x-hidden;
+        background-color: var(--background);
+        color: var(--text-primary);
+    }
+
+    html {
+        @apply transition-colors duration-300;
+        background-color: var(--background);
+    }
+
+    /* Selection colors */
+    ::selection {
+        background-color: rgb(from var(--accent) r g b / 0.2);
+        color: var(--accent);
+    }
+}
+
+.perspective-1000 {
+    perspective: 1000px;
+}
+
+/* Theme transition animations */
+@layer utilities {
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    @keyframes slideInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeInScale {
+        from {
+            opacity: 0;
+            transform: scale(0.7);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    @keyframes shimmer {
+        0% {
+            background-position: -1000px 0;
+        }
+
+        100% {
+            background-position: 1000px 0;
+        }
+    }
+
+    @keyframes float {
+
+        0%,
+        100% {
+            transform: translateY(0px);
+        }
+
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    @keyframes glow-pulse {
+        0%,
+        100% {
+            box-shadow: 0 0 20px rgb(from var(--accent) r g b / 0.2);
+        }
+
+        50% {
+            box-shadow: 0 0 30px rgb(from var(--accent) r g b / 0.4);
+        }
+    }
+
+    @keyframes cardAppear {
+        from {
+            opacity: 0;
+            transform: translateY(24px) scale(0.95);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    .animate-fade-in {
+        animation: fadeIn 0.2s ease-out;
+    }
+
+    .animate-slide-in-up {
+        animation: slideInUp 0.6s ease-out;
+    }
+
+    .animate-fade-in-scale {
+        animation: fadeInScale 0.5s ease-out;
+    }
+
+    .animate-float {
+        animation: float 3s ease-in-out infinite;
+    }
+
+    .animate-card-appear {
+        animation: cardAppear 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .glass-effect {
+        background: rgb(from var(--surface) r g b / 0.7);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    .gradient-border {
+        position: relative;
+        border: 2px solid transparent;
+        background-clip: padding-box;
+    }
+
+    .gradient-border::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        padding: 2px;
+        background: linear-gradient(135deg, var(--accent), var(--success));
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask-composite: exclude;
+    }
+
+    .hover-lift {
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                    box-shadow 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                    border-color 0.3s ease;
+        box-shadow: var(--shadow-soft);
+    }
+
+    .hover-lift:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 40px rgb(0 0 0 / 0.12), 
+                    0 0 30px rgb(from var(--accent) r g b / 0.15);
+    }
+
+    html.dark .hover-lift:hover {
+        box-shadow: 0 20px 40px rgb(0 0 0 / 0.4), 
+                    0 0 30px rgb(from var(--accent) r g b / 0.25);
+    }
+
+    .btn-hover-shadow {
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .btn-hover-shadow:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    html.dark .btn-hover-shadow:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    .hover-press {
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                    box-shadow 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        box-shadow: var(--shadow-soft);
+    }
+
+    .hover-press:hover {
+        transform: scale(0.98);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12), 
+                    inset 0 2px 4px rgba(0, 0, 0, 0.08);
+    }
+
+    html.dark .hover-press:hover {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), 
+                    inset 0 2px 4px rgba(255, 255, 255, 0.08);
+    }
+
+    .scroll-fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.7s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                    transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .scroll-fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .projects-grid .project-card {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        transition: opacity 0.38s ease, transform 0.38s ease;
+        will-change: opacity, transform;
+    }
+
+    .projects-grid.is-filtering .project-card {
+        opacity: 0;
+        transform: translateY(18px) scale(0.98);
+    }
+
+    .sticky-cta {
+        position: sticky;
+        bottom: 20px;
+        z-index: 50;
+    }
 }

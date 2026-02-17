@@ -1,0 +1,19 @@
+# Netlify Redirects & Rewrites for SEO
+
+# Serve static files with proper caching headers
+/static/* 200 cache=31536000
+
+# Handle SPA routing
+/* /index.html 200
+
+# Redirect www to non-www (uncomment if needed)
+# https://www.portfolio.example.com/* https://portfolio.example.com/:splat 301!
+
+# Redirect HTTP to HTTPS (handled by Netlify by default)
+# https://:project.netlify.app/* https://your-domain.com/:splat 301!
+
+# Security headers are handled in netlify.toml
+
+# Cache XML and TXT files
+/robots.txt 200 cache=604800
+/sitemap.xml 200 cache=604800

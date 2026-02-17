@@ -1,128 +1,192 @@
-# Portfolio de Ramarosandratana Mampionona Rinasoa
+# Portfolio v2
 
-[![React](https://img.shields.io/badge/React-19.1.1-blue)](https://reactjs.org/)
-[![Vite](https://img.shields.io/badge/Vite-7.1.2-646CFF)](https://vitejs.dev/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.17-38B2AC)](https://tailwindcss.com/)
+Modern portfolio website built with React, Vite, and Tailwind CSS, featuring automatic i18n translation for project data.
 
-Un portfolio moderne et responsive développé avec React et Vite, mettant en valeur mes compétences en développement web full-stack. Ce site présente mes projets, compétences et expériences professionnelles de manière interactive et élégante.
+## Features
 
-## Fonctionnalités
+- 🌐 **Multi-language Support**: English and French translations with automatic project data translation
+- 🎨 **Dark/Light Theme**: Toggle between dark and light modes with smooth transitions
+- 📱 **Responsive Design**: Fully responsive layout optimized for all devices
+- ⚡ **Fast Performance**: Built with Vite for lightning-fast development and production builds
+- 🎯 **Type-safe**: ESLint configuration for code quality
 
-- **Hero Section** : Présentation personnelle avec animations fluides
-- **À propos** : Informations détaillées sur mon parcours et mes motivations
-- **Compétences** : Technologies et outils maîtrisés
-- **Projets** : Galerie de mes réalisations avec descriptions
-- **Contact** : Formulaire de contact intégré avec EmailJS
+## Tech Stack
 
-## Technologies utilisées
+- **Framework**: React 19
+- **Build Tool**: Vite 8
+- **Styling**: Tailwind CSS 4
+- **Routing**: React Router DOM 7
+- **Icons**: Lucide React
+- **i18n**: Custom implementation with automatic translation generation
 
-### Frontend
-- **React 19** : Bibliothèque JavaScript pour l'interface utilisateur
-- **Vite** : Outil de build rapide pour le développement moderne
-- **Tailwind CSS** : Framework CSS utilitaire pour le styling
-- **Framer Motion** : Bibliothèque d'animations pour React
+## 🚀 SEO & Search Engine Optimization
 
-### Outils et bibliothèques
-- **Lucide React** : Icônes modernes et cohérentes
-- **React Icons** : Collection d'icônes populaires
-- **EmailJS** : Service d'envoi d'emails côté client
-- **Class Variance Authority** : Gestion des variantes de classes CSS
+This portfolio includes comprehensive SEO optimizations:
 
-## Installation et configuration
+### ✅ Built-in SEO Features
 
-### Prérequis
-- Node.js (version 16 ou supérieure)
-- npm ou yarn
+- **Meta Tags**: Optimized titles, descriptions, and keywords per page
+- **Open Graph**: Social media sharing optimization
+- **Twitter Cards**: Enhanced sharing on X/Twitter
+- **Structured Data**: JSON-LD schemas for better indexing
+- **XML Sitemap**: Automatic sitemap generation
+- **Robots.txt**: Crawler configuration
+- **Breadcrumbs**: Enhanced navigation and SEO
+- **Dynamic Meta Management**: `usePageMeta` hook for page-specific metadata
 
-### Étapes d'installation
+### 📝 SEO Configuration
 
-1. **Clonez le repository** :
-   ```bash
-   git clone https://github.com/Ramarosandratan/portfolio.git
-   cd portfolio
-   ```
+For complete SEO setup instructions, see [SEO_GUIDE.md](./SEO_GUIDE.md)
 
-2. **Installez les dépendances** :
-   ```bash
-   npm install
-   ```
+#### Quick Setup:
 
-3. **Lancez le serveur de développement** :
-   ```bash
-   npm run dev
-   ```
+1. Replace `portfolio.example.com` with your actual domain
+2. Update social media profiles in `src/context/StructuredData.jsx`
+3. Update your personal info in the schema
+4. Generate sitemap: `npm run generate:sitemap`
+5. Submit to Google Search Console
 
-4. **Ouvrez votre navigateur** et allez à [http://localhost:5173](http://localhost:5173)
+### 📊 Files Included
 
-## Scripts disponibles
+- `public/robots.txt` - Search engine crawler rules
+- `public/sitemap.xml` - Website structure for indexing
+- `public/.htaccess` - Server configuration for caching & compression
+- `src/context/usePageMeta.js` - Meta tag management hook
+- `src/context/StructuredData.jsx` - JSON-LD structured data
 
-- `npm run dev` : Lance le serveur de développement
-- `npm run build` : Construit l'application pour la production
-- `npm run preview` : Prévisualise la version de production localement
-- `npm run lint` : Vérifie le code avec ESLint
-- `npm run deploy` : Déploie sur GitHub Pages
 
-## Déploiement
+## Translation System
 
-Le projet est configuré pour être déployé automatiquement sur GitHub Pages :
+This project features an **automatic translation system** for project data that doesn't require storing translations in i18n files manually.
+
+### How it Works
+
+1. **Source Data**: Project information is stored in English in `src/data/projectsData.js`
+2. **Translation Files**: Generated translations are stored separately in `src/locales/[lang]/projects.json`
+3. **Runtime Translation**: The `useTranslatedProjects` hook automatically merges project data with translations based on the current language
+4. **Fallback**: If a translation is missing, the original English text is displayed
+
+### Translation Generation
+
+#### Manual Translations (Current)
+
+The French translations in `src/locales/fr/projects.json` have been manually created for all 5 projects. This ensures high-quality, contextually accurate translations.
+
+#### Automatic Generation (For Future Updates)
+
+When you add new projects, you can generate translations automatically using LibreTranslate (free, no API key required):
 
 ```bash
-npm run deploy
+npm run translate
 ```
 
-Cela construira le projet et le publiera sur la branche `gh-pages`.
+**Note**: LibreTranslate has rate limiting. If you encounter `429 Too Many Requests` errors:
+- Wait a few minutes between attempts
+- Translate projects one at a time by modifying `src/data/projectsDataForTranslation.js`
+- Increase delays in `scripts/generateTranslations.js`
 
-## Structure du projet
+#### Project Structure
 
 ```
-portfolio/
-├── public/
-│   ├── images/          # Images du portfolio
-│   └── documents/       # Documents (CV, etc.)
-├── src/
-│   ├── components/      # Composants React
-│   │   ├── Hero.jsx
-│   │   ├── About.jsx
-│   │   ├── Skills.jsx
-│   │   ├── Projects.jsx
-│   │   ├── Contact.jsx
-│   │   └── Navbar.jsx
-│   ├── assets/          # Ressources statiques
-│   └── App.jsx          # Composant principal
-├── package.json
-├── vite.config.js
-└── tailwind.config.js
+src/
+├── data/
+│   ├── projectsData.js                    # Main project data (used in app)
+│   └── projectsDataForTranslation.js      # Text-only version (for translation script)
+├── locales/
+│   ├── en/
+│   │   ├── common.json                    # UI labels in English
+│   │   └── projects.json                  # Project translations in English
+│   └── fr/
+│       ├── common.json                    # UI labels in French
+│       └── projects.json                  # Project translations in French
+├── hooks/
+│   └── useTranslatedProjects.js           # Hook to get translated projects
+└── pages/
+    ├── Projects.jsx                        # Uses useTranslatedProjects
+    └── ProjectDetails.jsx                  # Uses useTranslatedProjects
 ```
 
-## Contribution
+### Adding New Projects
 
-Les contributions sont les bienvenues ! Pour contribuer :
+1. Add project data to `src/data/projectsData.js`
+2. Add the same project (text fields only) to `src/data/projectsDataForTranslation.js`
+3. Run `npm run translate` to generate translations
+4. Review and refine the generated translations in `src/locales/fr/projects.json`
 
-1. Forkez le projet
-2. Créez une branche pour votre fonctionnalité (`git checkout -b feature/AmazingFeature`)
-3. Commitez vos changements (`git commit -m 'Add some AmazingFeature'`)
-4. Pushez vers la branche (`git push origin feature/AmazingFeature`)
-5. Ouvrez une Pull Request
+### Translation Keys Structure
 
-### Guidelines de contribution
-- Respectez le style de code existant
-- Ajoutez des tests si nécessaire
-- Mettez à jour la documentation si vous ajoutez/modifiez des fonctionnalités
+Projects are translated using the following key structure:
 
-## Licence
+```json
+{
+  "projects": {
+    "data": {
+      "6": {
+        "title": "...",
+        "description": "...",
+        "fullDescription": "...",
+        "architecture": "...",
+        "features": ["...", "..."],
+        "tags": ["...", "..."]
+      }
+    }
+  }
+}
+```
 
-Ce projet est sous licence MIT - voir le fichier [LICENSE](LICENSE) pour plus de détails.
+## Development
 
-## Contact
+### Prerequisites
 
-**Ramarosandratana Mampionona Rinasoa**
+- Node.js 18+ (for native `fetch` API support)
+- npm or yarn
 
-- **Email** : [ramarosandratana2019@gmail.com](mailto:ramarosandratana2019@gmail.com)
-- **LinkedIn** : [LinkedInd/rinasoa-mampionona-ramarosandratana/](https://www.linkedin.com/in/rinasoa-mampionona-ramarosandratana/)
-- **GitHub** : [https://github.com/Ramarosandratan](https://github.com/Ramarosandratan)
+### Installation
 
-**Lien du projet** : [https://ramarosandratan.github.io/portfolio](https://ramarosandratan.github.io/portfolio)
+```bash
+npm install
+```
 
----
+### Development Server
 
-⭐ Si ce projet vous plaît, n'hésitez pas à lui donner une étoile !
+```bash
+npm run dev
+```
+
+Visit `http://localhost:5173/portfolio_v2/`
+
+### Production Build
+
+```bash
+npm run build
+```
+
+### Preview Production Build
+
+```bash
+npm run preview
+```
+
+### Linting
+
+```bash
+npm run lint
+```
+
+## React + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## React Compiler
+
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+

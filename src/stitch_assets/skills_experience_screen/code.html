@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Skills and Experience - Full Stack Developer Portfolio</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1978e5",
+                        "primary-content": "#ffffff",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111821",
+                        // Neutrals derived from primary hue (210)
+                        "neutral-50": "#f0f7ff",
+                        "neutral-100": "#e0effe",
+                        "neutral-200": "#bae0fd",
+                        "neutral-300": "#7cc5fb",
+                        "neutral-400": "#36aef7",
+                        "neutral-500": "#1978e5",
+                        "neutral-600": "#0c5ec3",
+                        "neutral-700": "#0c4ba0",
+                        "neutral-800": "#0e4182",
+                        "neutral-900": "#11386d",
+                        "neutral-950": "#0b2346",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-neutral-900 dark:text-neutral-50 font-display min-h-screen flex flex-col">
+<!-- Navigation (Simplified for context) -->
+<nav class="sticky top-0 z-50 w-full backdrop-blur-lg bg-background-light/90 dark:bg-background-dark/90 border-b border-neutral-200 dark:border-neutral-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16 items-center">
+<div class="flex-shrink-0 flex items-center">
+<span class="text-xl font-bold text-primary tracking-tight">dev.portfolio</span>
+</div>
+<div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+<a class="border-transparent text-neutral-500 hover:text-primary dark:text-neutral-400 dark:hover:text-primary inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors" href="#">Projects</a>
+<a class="border-primary text-neutral-900 dark:text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" href="#">Experience</a>
+<a class="border-transparent text-neutral-500 hover:text-primary dark:text-neutral-400 dark:hover:text-primary inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors" href="#">Contact</a>
+</div>
+<div>
+<button class="bg-primary hover:bg-neutral-600 text-white px-4 py-2 rounded text-sm font-medium transition-all shadow-md hover:shadow-lg flex items-center gap-2">
+<span class="material-icons text-sm">download</span> Resume
+                    </button>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<!-- Header -->
+<div class="mb-12">
+<h1 class="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-white mb-4">Experience &amp; Skills</h1>
+<p class="text-neutral-600 dark:text-neutral-400 max-w-2xl text-lg">
+                My professional journey through software engineering and the technical arsenal I've built along the way.
+            </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Left Column: Timeline (7 cols) -->
+<div class="lg:col-span-7 space-y-8">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-xl font-semibold text-neutral-900 dark:text-white flex items-center gap-2">
+<span class="material-icons text-primary">history</span> Professional History
+                    </h2>
+<!-- Toggle Switch -->
+<div class="bg-neutral-200 dark:bg-neutral-800 p-1 rounded-lg inline-flex">
+<button class="px-3 py-1 bg-white dark:bg-neutral-700 shadow-sm rounded text-xs font-medium text-neutral-900 dark:text-white transition-all">Work</button>
+<button class="px-3 py-1 text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 rounded text-xs font-medium transition-all">Education</button>
+</div>
+</div>
+<!-- Timeline Container -->
+<div class="relative pl-8 border-l-2 border-neutral-200 dark:border-neutral-800 space-y-12">
+<!-- Timeline Item 1 -->
+<div class="relative group">
+<span class="absolute -left-[41px] top-0 h-5 w-5 rounded-full border-4 border-background-light dark:border-background-dark bg-primary"></span>
+<div class="p-6 bg-white dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 rounded-xl hover:border-primary/50 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+<div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-4">
+<div>
+<h3 class="text-lg font-bold text-neutral-900 dark:text-white group-hover:text-primary transition-colors">Senior Full Stack Engineer</h3>
+<p class="text-primary font-medium text-sm">TechFlow Systems</p>
+</div>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-medium bg-primary/10 text-primary whitespace-nowrap">
+                                    2021 - Present
+                                </span>
+</div>
+<ul class="list-disc list-outside ml-4 space-y-2 text-sm text-neutral-600 dark:text-neutral-300">
+<li>Architected and led the migration of a legacy monolithic application to a microservices architecture using Node.js and Docker.</li>
+<li>Improved API response times by 40% through aggressive caching strategies with Redis and query optimization.</li>
+<li>Mentored 3 junior developers, conducting code reviews and weekly pair programming sessions.</li>
+</ul>
+<div class="mt-4 flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 text-xs rounded border border-neutral-200 dark:border-neutral-700">React</span>
+<span class="px-2 py-1 bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 text-xs rounded border border-neutral-200 dark:border-neutral-700">Node.js</span>
+<span class="px-2 py-1 bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 text-xs rounded border border-neutral-200 dark:border-neutral-700">AWS</span>
+</div>
+</div>
+</div>
+<!-- Timeline Item 2 -->
+<div class="relative group">
+<span class="absolute -left-[41px] top-0 h-5 w-5 rounded-full border-4 border-background-light dark:border-background-dark bg-neutral-300 dark:bg-neutral-600 group-hover:bg-primary transition-colors"></span>
+<div class="p-6 bg-white dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 rounded-xl hover:border-primary/50 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+<div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-4">
+<div>
+<h3 class="text-lg font-bold text-neutral-900 dark:text-white group-hover:text-primary transition-colors">Frontend Developer</h3>
+<p class="text-neutral-500 dark:text-neutral-400 font-medium text-sm">Creative Pulse Agency</p>
+</div>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-medium bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 whitespace-nowrap">
+                                    2019 - 2021
+                                </span>
+</div>
+<ul class="list-disc list-outside ml-4 space-y-2 text-sm text-neutral-600 dark:text-neutral-300">
+<li>Developed high-fidelity interactive UIs for e-commerce clients using Vue.js and Nuxt.</li>
+<li>Implemented responsive designs that increased mobile conversion rates by 25% across key client sites.</li>
+<li>Collaborated closely with UX designers to establish a reusable component library.</li>
+</ul>
+</div>
+</div>
+<!-- Timeline Item 3 -->
+<div class="relative group">
+<span class="absolute -left-[41px] top-0 h-5 w-5 rounded-full border-4 border-background-light dark:border-background-dark bg-neutral-300 dark:bg-neutral-600 group-hover:bg-primary transition-colors"></span>
+<div class="p-6 bg-white dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 rounded-xl hover:border-primary/50 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+<div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-4">
+<div>
+<h3 class="text-lg font-bold text-neutral-900 dark:text-white group-hover:text-primary transition-colors">Junior Web Developer</h3>
+<p class="text-neutral-500 dark:text-neutral-400 font-medium text-sm">StartUp Inc.</p>
+</div>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-medium bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 whitespace-nowrap">
+                                    2018 - 2019
+                                </span>
+</div>
+<p class="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
+                                Assisted in the development of internal tools using PHP and Laravel. Responsible for bug fixing, writing unit tests, and maintaining documentation for the backend API.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Skills & Certifications (5 cols) -->
+<div class="lg:col-span-5 space-y-8">
+<!-- Skills Card -->
+<div class="bg-white dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 rounded-xl p-6 shadow-sm">
+<h2 class="text-xl font-semibold text-neutral-900 dark:text-white mb-6 flex items-center gap-2">
+<span class="material-icons text-primary">code</span> Technical Proficiency
+                    </h2>
+<!-- Frontend Section -->
+<div class="mb-8">
+<h3 class="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-4">Frontend</h3>
+<div class="space-y-4">
+<!-- Skill Item -->
+<div class="group">
+<div class="flex justify-between mb-1">
+<span class="text-sm font-medium text-neutral-700 dark:text-neutral-200">React / Next.js</span>
+<span class="text-xs font-medium text-primary">95%</span>
+</div>
+<div class="w-full bg-neutral-100 dark:bg-neutral-800 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full transition-all duration-1000 group-hover:shadow-[0_0_10px_rgba(25,120,229,0.3)]" style="width: 95%"></div>
+</div>
+</div>
+<!-- Skill Item -->
+<div class="group">
+<div class="flex justify-between mb-1">
+<span class="text-sm font-medium text-neutral-700 dark:text-neutral-200">TypeScript</span>
+<span class="text-xs font-medium text-primary">90%</span>
+</div>
+<div class="w-full bg-neutral-100 dark:bg-neutral-800 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full transition-all duration-1000 group-hover:shadow-[0_0_10px_rgba(25,120,229,0.3)]" style="width: 90%"></div>
+</div>
+</div>
+<!-- Skill Item -->
+<div class="group">
+<div class="flex justify-between mb-1">
+<span class="text-sm font-medium text-neutral-700 dark:text-neutral-200">Tailwind CSS</span>
+<span class="text-xs font-medium text-primary">95%</span>
+</div>
+<div class="w-full bg-neutral-100 dark:bg-neutral-800 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full transition-all duration-1000 group-hover:shadow-[0_0_10px_rgba(25,120,229,0.3)]" style="width: 95%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Backend Section -->
+<div class="mb-8">
+<h3 class="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-4">Backend</h3>
+<div class="space-y-4">
+<!-- Skill Item -->
+<div class="group">
+<div class="flex justify-between mb-1">
+<span class="text-sm font-medium text-neutral-700 dark:text-neutral-200">Node.js</span>
+<span class="text-xs font-medium text-primary">85%</span>
+</div>
+<div class="w-full bg-neutral-100 dark:bg-neutral-800 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full transition-all duration-1000 group-hover:shadow-[0_0_10px_rgba(25,120,229,0.3)]" style="width: 85%"></div>
+</div>
+</div>
+<!-- Skill Item -->
+<div class="group">
+<div class="flex justify-between mb-1">
+<span class="text-sm font-medium text-neutral-700 dark:text-neutral-200">PostgreSQL</span>
+<span class="text-xs font-medium text-primary">80%</span>
+</div>
+<div class="w-full bg-neutral-100 dark:bg-neutral-800 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full transition-all duration-1000 group-hover:shadow-[0_0_10px_rgba(25,120,229,0.3)]" style="width: 80%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- DevOps Section -->
+<div>
+<h3 class="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-4">DevOps &amp; Tools</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 bg-neutral-50 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-sm rounded border border-neutral-200 dark:border-neutral-700 hover:border-primary hover:text-primary transition-colors cursor-default">Docker</span>
+<span class="px-3 py-1.5 bg-neutral-50 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-sm rounded border border-neutral-200 dark:border-neutral-700 hover:border-primary hover:text-primary transition-colors cursor-default">AWS EC2</span>
+<span class="px-3 py-1.5 bg-neutral-50 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-sm rounded border border-neutral-200 dark:border-neutral-700 hover:border-primary hover:text-primary transition-colors cursor-default">Git</span>
+<span class="px-3 py-1.5 bg-neutral-50 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-sm rounded border border-neutral-200 dark:border-neutral-700 hover:border-primary hover:text-primary transition-colors cursor-default">Figma</span>
+<span class="px-3 py-1.5 bg-neutral-50 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-sm rounded border border-neutral-200 dark:border-neutral-700 hover:border-primary hover:text-primary transition-colors cursor-default">Jira</span>
+</div>
+</div>
+</div>
+<!-- Certifications -->
+<div class="bg-white dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 rounded-xl p-6 shadow-sm">
+<h2 class="text-xl font-semibold text-neutral-900 dark:text-white mb-6 flex items-center gap-2">
+<span class="material-icons text-primary">verified</span> Certifications
+                    </h2>
+<div class="grid grid-cols-2 gap-4">
+<!-- Cert Item -->
+<div class="p-4 rounded-lg bg-neutral-50 dark:bg-neutral-800/50 border border-neutral-100 dark:border-neutral-700 hover:border-primary/30 transition-colors flex flex-col items-center text-center">
+<!-- Placeholder Badge Image -->
+<div class="w-16 h-16 mb-3 rounded-full bg-gradient-to-tr from-orange-400 to-yellow-500 flex items-center justify-center shadow-sm" data-alt="AWS Certified Solutions Architect badge icon with abstract geometric shapes">
+<span class="material-icons text-white text-3xl">cloud</span>
+</div>
+<h4 class="text-sm font-bold text-neutral-900 dark:text-white">AWS Certified</h4>
+<p class="text-xs text-neutral-500 dark:text-neutral-400 mt-1">Solutions Architect</p>
+<span class="mt-2 text-[10px] uppercase font-bold text-neutral-400">Issued 2022</span>
+</div>
+<!-- Cert Item -->
+<div class="p-4 rounded-lg bg-neutral-50 dark:bg-neutral-800/50 border border-neutral-100 dark:border-neutral-700 hover:border-primary/30 transition-colors flex flex-col items-center text-center">
+<!-- Placeholder Badge Image -->
+<div class="w-16 h-16 mb-3 rounded-full bg-gradient-to-tr from-blue-500 to-cyan-400 flex items-center justify-center shadow-sm" data-alt="Certified Kubernetes Administrator badge icon with abstract helm logo">
+<span class="material-icons text-white text-3xl">anchor</span>
+</div>
+<h4 class="text-sm font-bold text-neutral-900 dark:text-white">CKA</h4>
+<p class="text-xs text-neutral-500 dark:text-neutral-400 mt-1">Kubernetes Admin</p>
+<span class="mt-2 text-[10px] uppercase font-bold text-neutral-400">Issued 2023</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-white dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-800 mt-auto">
+<div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-sm text-neutral-500 dark:text-neutral-400">
+                © 2023 Dev Portfolio. Built with <span class="text-primary">Tailwind CSS</span>.
+            </p>
+<div class="flex space-x-6">
+<a class="text-neutral-400 hover:text-primary transition-colors" href="#">
+<span class="sr-only">GitHub</span>
+<!-- Simple GitHub Icon SVG -->
+<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24">
+<path clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" fill-rule="evenodd"></path>
+</svg>
+</a>
+<a class="text-neutral-400 hover:text-primary transition-colors" href="#">
+<span class="sr-only">LinkedIn</span>
+<!-- Simple LinkedIn Icon SVG -->
+<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24">
+<path clip-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" fill-rule="evenodd"></path>
+</svg>
+</a>
+</div>
+</div>
+</footer>
+</body></html>

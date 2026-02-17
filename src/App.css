@@ -1,0 +1,203 @@
+/* ===== Navigation Link Animations ===== */
+
+/* 1. Glow Effect - Effet de luminosité */
+@keyframes glowPulse {
+  0% {
+    text-shadow: 0 0 5px rgba(var(--accent-rgb), 0);
+    transform: scale(1);
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(var(--accent-rgb), 0.6);
+  }
+  100% {
+    text-shadow: 0 0 5px rgba(var(--accent-rgb), 0);
+    transform: scale(1);
+  }
+}
+
+/* 2. Shimmer Effect - Effet de brillance */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* 3. Gradient Shift - Gradient animé */
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* 4. Underline Wave - Underline ondulant */
+@keyframes underlineWave {
+  0% {
+    width: 0;
+    left: 0;
+  }
+  50% {
+    width: 100%;
+    left: 0;
+  }
+  100% {
+    width: 100%;
+    left: 0;
+  }
+}
+
+/* 5. Border Glow - Border lumineux */
+@keyframes borderGlow {
+  0%, 100% {
+    border-color: rgba(var(--accent-rgb), 0.3);
+    box-shadow: 0 0 5px rgba(var(--accent-rgb), 0);
+  }
+  50% {
+    border-color: rgba(var(--accent-rgb), 0.8);
+    box-shadow: 0 0 15px rgba(var(--accent-rgb), 0.5);
+  }
+}
+
+/* 6. Floating Effect - Effet flottant */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+/* 7. Rainbow Wave - Onde arc-en-ciel */
+@keyframes rainbowWave {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* 8. Slide and Glow */
+@keyframes slideGlow {
+  0% {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(var(--accent-rgb), 0.8);
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Nav Link Animation Classes */
+.nav-link-glow:hover {
+  animation: glowPulse 1.5s ease-in-out;
+}
+
+.nav-link-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--text-secondary),
+    var(--accent),
+    var(--text-secondary)
+  );
+  background-size: 1000px 100%;
+}
+
+.nav-link-shimmer:hover {
+  animation: shimmer 2s infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav-link-gradient {
+  background: linear-gradient(45deg, var(--text-secondary), var(--accent), var(--text-secondary));
+  background-size: 200% 200%;
+}
+
+.nav-link-gradient:hover {
+  animation: gradientShift 2s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav-link-float:hover {
+  animation: float 0.6s ease-in-out;
+}
+
+.nav-link-rainbow:hover {
+  animation: rainbowWave 2s linear;
+}
+
+/* Underline Animation Variants */
+.underline-scale {
+  position: relative;
+}
+
+.underline-scale::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 0 rgba(var(--accent-rgb), 0);
+}
+
+.underline-scale:hover::after {
+  width: 100%;
+  box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.6);
+}
+
+/* Underline with Border Glow */
+.underline-border-glow {
+  position: relative;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.underline-border-glow:hover {
+  border-bottom-color: var(--accent);
+  box-shadow: 0 4px 0 -2px rgba(var(--accent-rgb), 0.3);
+}
+
+/* Combined Effects */
+.nav-link-premium {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-link-premium::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.nav-link-premium:hover::before {
+  width: 100%;
+  box-shadow: 0 0 8px rgba(var(--accent-rgb), 0.8);
+}
+
+.nav-link-premium:hover {
+  transform: translateY(-2px);
+  text-shadow: 0 0 8px rgba(var(--accent-rgb), 0.4);
+}

@@ -1,0 +1,14 @@
+# Robots.txt for Portfolio
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /*.json$
+Disallow: /static/
+
+# Specific crawl delays
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Sitemap
+Sitemap: https://portfolio.example.com/sitemap.xml

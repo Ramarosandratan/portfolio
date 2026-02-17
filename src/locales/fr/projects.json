@@ -1,0 +1,93 @@
+{
+  "projects": {
+    "data": {
+      "6": {
+        "title": "Robot d'Application d'Emploi Automatisé",
+        "description": "Système alimenté par IA pour le scraping automatique d'emplois, le filtrage et les candidatures avec lettres de motivation personnalisées.",
+        "fullDescription": "Un système intelligent et automatisé de recherche d'emploi qui utilise l'IA pour scraper les offres d'emploi, les filtrer selon vos critères, générer des lettres de motivation personnalisées et envoyer des candidatures automatiquement. Comprend l'apprentissage automatique pour la correspondance d'emplois et un tableau de bord Streamlit pour le suivi des candidatures.",
+        "architecture": "Backend basé sur Python avec Playwright pour le scraping web, OpenAI GPT pour la génération de contenu et interface web Streamlit. Stocke les données dans PostgreSQL avec traitement asynchrone des tâches via le planificateur de tâches.",
+        "features": [
+          "Scraping intelligent depuis LinkedIn et autres plateformes d'emploi",
+          "Filtrage d'emplois alimenté par IA basé sur les critères",
+          "Génération de lettres de motivation personnalisées utilisant GPT",
+          "Envoi automatique d'e-mails avec pièces jointes",
+          "Suivi des candidatures avec mises à jour de statut",
+          "Détection des doublons pour éviter les candidatures répétées",
+          "Tableau de bord Streamlit interactif avec analyses",
+          "Analyse de marché et détection des tendances d'embauche",
+          "Modèle d'apprentissage automatique pour la précision de correspondance d'emplois"
+        ],
+        "tags": ["Python", "Playwright", "OpenAI GPT", "Streamlit", "PostgreSQL", "ML"]
+      },
+      "7": {
+        "title": "Prédiction de Courses Hippiques",
+        "description": "Système alimenté par IA pour la prédiction et l'analyse des résultats de courses de chevaux utilisant des modèles d'apprentissage automatique.",
+        "fullDescription": "Un système intelligent conçu pour analyser les données de courses de chevaux et prédire les résultats des courses en utilisant des algorithmes ML avancés. Le projet combine l'analyse de données historiques de courses, les métriques de performance des chevaux et la modélisation prédictive pour générer des prédictions de course précises.",
+        "architecture": "Backend Python pour le traitement des données et les modèles ML, frontend JavaScript/React pour un tableau de bord interactif. PostgreSQL pour l'historique des courses et les données de performance des chevaux.",
+        "features": [
+          "Analyse et scraping des données de courses historiques",
+          "Calcul des métriques de performance des chevaux",
+          "Modèles ML prédictifs pour les résultats de courses",
+          "Tableau de bord web interactif pour les prédictions",
+          "Suivi et comparaison des cotes en temps réel",
+          "Comparaison des prédictions utilisateur et statistiques",
+          "Recommandations de stratégies de paris"
+        ],
+        "tags": ["Python", "JavaScript", "Apprentissage Automatique", "PostgreSQL"]
+      },
+      "8": {
+        "title": "Moteur de Workflow BPMN",
+        "description": "Moteur de workflow BPMN moderne basé sur les microservices avec création de processus alimentée par IA et surveillance d'exécution en temps réel.",
+        "fullDescription": "Un moteur de workflow complet Business Process Model and Notation (BPMN) construit pour démocratiser la modélisation de processus et automatiser les workflows métier. La plateforme offre une interface intuitive permettant aux utilisateurs professionnels de concevoir des workflows sans compétences techniques avancées, tout en fournissant une exécution, une traçabilité et une surveillance des performances de niveau entreprise. Comprend la génération de processus alimentée par IA et des analyses en temps réel pour optimiser l'efficacité des workflows.",
+        "architecture": "Architecture de microservices moderne construite avec le framework Quarkus. Utilise Kogito pour l'exécution de workflows BPMN, Kafka pour le streaming d'événements et PostgreSQL pour le stockage persistant. APIs REST avec documentation complète pour l'extensibilité.",
+        "features": [
+          "Interface intuitive de modélisation de workflow BPMN",
+          "Moteur d'exécution de workflow fiable et traçable",
+          "Création de processus automatisée alimentée par IA",
+          "Outils d'attribution de tâches et de collaboration en temps réel",
+          "Piste d'audit complète pour la conformité réglementaire",
+          "Surveillance des performances et analyse des goulots d'étranglement",
+          "Architecture de microservices pour l'évolutivité",
+          "Garantie de temps de réponse inférieur à 2 secondes"
+        ],
+        "tags": ["Quarkus", "PostgreSQL", "Kogito", "Kafka"]
+      },
+      "9": {
+        "title": "Modélisateur de Workflow BPMN",
+        "description": "Plateforme de modélisation de workflow BPMN basée sur Angular avec éditeur glisser-déposer, attribution de tâches et intégration transparente avec Kogito.",
+        "fullDescription": "Une application Angular avancée pour créer, modéliser et gérer des processus BPMN avec intégration complète de Kogito. Fournit un modélisateur basé sur BPMN.js avec interface glisser-déposer intuitive permettant aux utilisateurs professionnels de concevoir des workflows sans expertise technique. Comprend la transformation automatique au format Kogito, la génération de processus alimentée par IA, l'attribution de tâches en temps réel aux groupes/utilisateurs et la gestion complète des instances de processus. Construit avec Angular 21 et le Orange Design System (Boosted) pour une expérience utilisateur moderne et accessible.",
+        "architecture": "Architecture de composants standalone Angular 21 avec BPMN.js pour la modélisation visuelle. RxJS pour la gestion d'état réactive et la communication HTTP avec le backend Kogito. Orange Design System (Boosted) pour les composants UI. Le pipeline de transformation XML automatique assure la compatibilité Kogito.",
+        "features": [
+          "Modélisateur BPMN 2.0 visuel avec interface glisser-déposer",
+          "Attribution de tâches aux groupes avec création automatique de PotentialOwner",
+          "Transformation automatique de BPMN.js vers le format Kogito (13 étapes)",
+          "Génération de processus alimentée par IA à partir de descriptions textuelles",
+          "Configuration de passerelles avec routage conditionnel",
+          "Gestion en temps réel des instances de processus et des tâches",
+          "Panneau de propriétés personnalisé pour la configuration de workflow",
+          "Support multilingue (FR/EN) avec i18n",
+          "Déploiement en un clic vers le backend Kogito"
+        ],
+        "tags": ["Angular", "TypeScript", "BPMN.js", "RxJS"]
+      },
+      "10": {
+        "title": "Framework Sprint",
+        "description": "Framework MVC Java personnalisé avec routage basé sur les annotations, injection de dépendances et architecture Maven multi-modules.",
+        "fullDescription": "Sprint est un framework MVC Java léger construit à partir de zéro pour démontrer des concepts Java avancés et des patterns de conception de framework. Inspiré par l'architecture du Spring Framework, il fournit un routage basé sur les annotations, un scan automatique des contrôleurs, un pattern singleton pour les instances de contrôleurs et un pattern ModelView propre pour le rendu des vues. Le projet présente une architecture Maven multi-modules avec un module de framework central et un module d'application de démonstration. Conçu à des fins éducatives et comme base pour construire des applications web personnalisées avec un minimum de code répétitif.",
+        "architecture": "Projet Maven multi-modules avec séparation claire entre le cœur du framework et l'application de démonstration. Le module framework fournit l'infrastructure MVC en tant que bibliothèque JAR, tandis que le module démo le consomme pour construire des applications web déployées en tant que fichiers WAR sur Tomcat. Utilise la réflexion Java pour le scan des contrôleurs et le traitement des annotations.",
+        "features": [
+          "Système de routage personnalisé basé sur les annotations (@GET, @url)",
+          "Scan et enregistrement automatiques des contrôleurs",
+          "Pattern singleton pour les instances de contrôleurs (mise en cache)",
+          "Pattern ModelView pour le rendu des vues",
+          "Architecture Maven multi-modules (framework + démo)",
+          "Support du déploiement WAR pour Tomcat",
+          "Conversion de type et liaison de paramètres",
+          "Séparation claire du code framework et application",
+          "Script de déploiement automatisé"
+        ],
+        "tags": ["Java", "Maven", "Tomcat", "MVC"]
+      }
+    }
+  }
+}

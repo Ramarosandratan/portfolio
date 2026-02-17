@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="36" height="36">
+  <!-- Background rounded square -->
+  <rect width="36" height="36" rx="6" fill="#1f2937"/>
+  <!-- Text "RM" -->
+  <text x="18" y="25" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="800" fill="white" text-anchor="middle" letter-spacing="2">RM</text>
+</svg>
