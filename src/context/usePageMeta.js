@@ -15,6 +15,8 @@ export const usePageMeta = (config) => {
       twitterHandle = '@yourhandle'
     } = config;
 
+    const resolvedOgImage = resolveMetaUrl(ogImage);
+
     // Update title
     document.title = title;
 
@@ -23,11 +25,11 @@ export const usePageMeta = (config) => {
     updateOrCreateMetaTag('name', 'keywords', keywords);
     updateOrCreateMetaTag('property', 'og:title', title);
     updateOrCreateMetaTag('property', 'og:description', description);
-    updateOrCreateMetaTag('property', 'og:image', ogImage);
+    updateOrCreateMetaTag('property', 'og:image', resolvedOgImage);
     updateOrCreateMetaTag('property', 'og:url', ogUrl);
     updateOrCreateMetaTag('name', 'twitter:title', title);
     updateOrCreateMetaTag('name', 'twitter:description', description);
-    updateOrCreateMetaTag('name', 'twitter:image', ogImage);
+    updateOrCreateMetaTag('name', 'twitter:image', resolvedOgImage);
     updateOrCreateMetaTag('name', 'twitter:creator', twitterHandle);
 
     // Update canonical URL
@@ -41,15 +43,38 @@ export const usePageMeta = (config) => {
   }, [config]);
 };
 
+const resolveMetaUrl = (url) => {
+  if (!url) {
+    return url;
+  }
+
+  if (/^https?:\/\//i.test(url)) {
+    return url;
+  }
+
+  const origin = window.location.origin;
+  const basePath = import.meta.env.BASE_URL || '/';
+
+  if (url.startsWith('/')) {
+    if (url.startsWith(basePath)) {
+      return `${origin}${url}`;
+    }
+
+    return `${origin}${basePath}${url.replace(/^\/+/, '')}`;
+  }
+
+  return `${origin}${basePath}${url}`;
+};
+
 const updateOrCreateMetaTag = (type, name, content) => {
   const attribute = type === 'name' ? 'name' : 'property';
   let tag = document.querySelector(`meta[${attribute}="${name}"]`);
-  
+
   if (!tag) {
     tag = document.createElement('meta');
     tag.setAttribute(attribute, name);
     document.head.appendChild(tag);
   }
-  
+
   tag.content = content;
 };

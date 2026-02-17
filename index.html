@@ -13,7 +13,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Professional Portfolio - Digital Solutions" />
   <meta property="og:description" content="Explore my latest projects and professional experience in web development and digital solutions." />
-  <meta property="og:image" content="/logo.svg" />
+  <meta property="og:image" content="%BASE_URL%logo.svg" />
   <meta property="og:url" content="https://ramarosandratan.github.io/portfolio" />
   <meta property="og:locale" content="en_US" />
   
@@ -21,7 +21,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Professional Portfolio - Digital Solutions" />
   <meta name="twitter:description" content="Explore my latest projects and professional experience in web development and digital solutions." />
-  <meta name="twitter:image" content="/logo.svg" />
+  <meta name="twitter:image" content="%BASE_URL%logo.svg" />
   
   <!-- Canonical URL -->
   <meta property="canonical" content="https://ramarosandratan.github.io/portfolio" />
@@ -29,7 +29,7 @@
   <!-- Search Engine Indexing -->
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   
-  <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+  <link rel="icon" type="image/svg+xml" href="%BASE_URL%logo.svg" />
   <link rel="canonical" href="https://ramarosandratan.github.io/portfolio" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
@@ -37,6 +37,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
     rel="stylesheet">
   <title>Professional Portfolio - Digital Solutions & Web Development</title>
+  <script>
+    (function () {
+      var repo = '/portfolio';
+      var location = window.location;
+      if (location.search && location.search[1] === '/') {
+        var decoded = location.search.slice(2).split('&').map(function (segment) {
+          return segment.replace(/~and~/g, '&');
+        }).join('?');
+        var newUrl = repo + '/' + decoded.replace(/^\/+/, '');
+        window.history.replaceState(null, '', newUrl + location.hash);
+      }
+    })();
+  </script>
 </head>
 
 <body>

@@ -8,7 +8,7 @@ import App from './App.jsx'
 // Set favicon to logo.svg
 const favicon = document.querySelector('link[rel="icon"]');
 if (favicon) {
-  favicon.href = '/logo.svg';
+  favicon.href = `${import.meta.env.BASE_URL}logo.svg`;
 }
 
 createRoot(document.getElementById('root')).render(

@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useThemeLanguage } from '../context/useThemeLanguage';
 import { useTranslatedProjects } from '../hooks/useTranslatedProjects';
 
@@ -9,6 +9,9 @@ const ProjectDetails = () => {
     const projects = useTranslatedProjects();
     const [showScrollTop, setShowScrollTop] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [showSwipeHint, setShowSwipeHint] = useState(true);
+    const [tapPulse, setTapPulse] = useState(false);
+    const touchStartX = useRef(null);
 
     // Find project by ID
     const project = projects.find(p => p.id === Number.parseInt(id, 10));
@@ -35,8 +38,55 @@ const ProjectDetails = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    useEffect(() => {
+        if (!showSwipeHint) {
+            return undefined;
+        }
+
+        const hintTimer = window.setTimeout(() => setShowSwipeHint(false), 3500);
+        return () => window.clearTimeout(hintTimer);
+    }, [showSwipeHint]);
+
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    const goPrevImage = () => {
+        setCurrentImageIndex((prev) => (prev - 1 + imageGallery.length) % imageGallery.length);
+    };
+
+    const goNextImage = () => {
+        setCurrentImageIndex((prev) => (prev + 1) % imageGallery.length);
+    };
+
+    const handleGalleryTouchStart = (event) => {
+        if (!event.touches || !event.touches.length) {
+            return;
+        }
+
+        touchStartX.current = event.touches[0].clientX;
+        setShowSwipeHint(false);
+        setTapPulse(true);
+        window.setTimeout(() => setTapPulse(false), 220);
+    };
+
+    const handleGalleryTouchEnd = (event) => {
+        if (!event.changedTouches || !event.changedTouches.length || touchStartX.current === null) {
+            return;
+        }
+
+        const deltaX = event.changedTouches[0].clientX - touchStartX.current;
+        touchStartX.current = null;
+
+        if (Math.abs(deltaX) < 40 || imageGallery.length <= 1) {
+            return;
+        }
+
+        if (deltaX < 0) {
+            goNextImage();
+        } else {
+            goPrevImage();
+        }
     };
 
     if (!project) {
@@ -52,11 +102,19 @@ const ProjectDetails = () => {
 
     // Create image gallery (use main image multiple times if no gallery exists)
     const imageGallery = project.gallery || [project.image];
+    const sectionLinks = [
+        { id: 'gallery', label: t('projects.gallery') || 'Gallery', icon: 'photo_library', show: imageGallery.length > 0 },
+        { id: 'overview', label: t('projects.overview') || 'Overview', icon: 'description', show: true },
+        { id: 'features', label: t('projects.features') || 'Features', icon: 'stars', show: project.features && project.features.length > 0 },
+        { id: 'architecture', label: t('projects.architecture') || 'Architecture', icon: 'account_tree', show: Boolean(project.architecture) },
+        { id: 'technologies', label: t('projects.technologiesUsed') || 'Technologies', icon: 'code', show: Boolean(project.technologies) },
+        { id: 'links', label: t('projects.projectLinks') || 'Links', icon: 'rocket_launch', show: true }
+    ].filter((section) => section.show);
 
     return (
         <div className="flex flex-col min-h-screen transition-colors duration-300" style={{ backgroundColor: 'var(--background)' }}>
             {/* Enhanced Hero Section with Gradient */}
-            <div className="relative pt-24 pb-16 overflow-hidden transition-colors duration-300" style={{ backgroundColor: 'var(--background)' }}>
+            <div className="relative pt-24 sm:pt-24 pb-10 sm:pb-16 overflow-hidden transition-colors duration-300" style={{ backgroundColor: 'var(--background)' }}>
                 {/* Animated gradient background */}
                 <div className="absolute inset-0 pointer-events-none opacity-30">
                     <div className="absolute inset-0" style={{
@@ -67,14 +125,14 @@ const ProjectDetails = () => {
 
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     {/* Breadcrumb */}
-                    <Link to="/projects" className="inline-flex items-center gap-2 mb-8 transition-all hover:gap-3 group" style={{ color: 'var(--accent)' }}>
+                    <Link to="/projects" className="inline-flex items-center gap-2 mt-2 mb-6 sm:mb-8 transition-all hover:gap-3 group active:scale-95" style={{ color: 'var(--accent)' }}>
                         <span className="material-icons-round text-lg group-hover:animate-pulse">arrow_back</span>
                         <span className="text-sm font-medium">{t('projects.backToProjects') || 'Back to Projects'}</span>
                     </Link>
 
                     <div className="animate-slide-in-up">
                         {/* Category Badge with Glow */}
-                        <div className="flex items-center gap-3 mb-6">
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-6">
                             <span className="px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all shadow-lg"
                                 style={{
                                     backgroundColor: 'rgb(from var(--accent) r g b / 0.15)',
@@ -85,7 +143,7 @@ const ProjectDetails = () => {
                                 {project.category}
                             </span>
                             {/* Project metadata */}
-                            <div className="flex items-center gap-4 text-sm" style={{ color: 'var(--text-muted)' }}>
+                            <div className="flex flex-wrap items-center gap-3 text-sm" style={{ color: 'var(--text-muted)' }}>
                                 <span className="flex items-center gap-1">
                                     <span className="material-icons-round text-sm">schedule</span>
                                     {project.duration || '3 months'}
@@ -100,17 +158,17 @@ const ProjectDetails = () => {
                         </div>
 
                         {/* Title & Description */}
-                        <h1 className="text-5xl sm:text-6xl font-bold transition-colors duration-300 mb-6 leading-tight" style={{ color: 'var(--text-primary)' }}>
+                        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold transition-colors duration-300 mb-4 sm:mb-6 leading-tight" style={{ color: 'var(--text-primary)' }}>
                             {project.title}
                         </h1>
-                        <p className="text-xl leading-relaxed max-w-3xl transition-colors duration-300" style={{ color: 'var(--text-secondary)' }}>
+                        <p className="text-base sm:text-xl leading-relaxed max-w-3xl transition-colors duration-300" style={{ color: 'var(--text-secondary)' }}>
                             {project.description}
                         </p>
 
                         {/* Quick Tech Tags */}
-                        <div className="flex flex-wrap gap-2 mt-8">
+                        <div className="flex flex-wrap gap-2 mt-6 sm:mt-8">
                             {project.tags.map(tag => (
-                                <span key={tag} className="px-3 py-1.5 text-sm font-medium rounded-lg border transition-all hover:scale-105"
+                                <span key={tag} className="px-3 py-1 text-xs sm:text-sm font-medium rounded-lg border transition-all hover:scale-105"
                                     style={{
                                         backgroundColor: 'rgb(from var(--accent) r g b / 0.1)',
                                         color: 'var(--accent)',
@@ -125,17 +183,20 @@ const ProjectDetails = () => {
             </div>
 
             {/* Main Content */}
-            <main className="flex-grow pb-16">
+            <main className="flex-grow pb-14 sm:pb-16">
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
                     {/* Enhanced Image Gallery with Navigation */}
-                    <div className="scroll-fade-in mb-20">
+                    <div id="gallery" className="scroll-fade-in mb-12 sm:mb-20 scroll-mt-24 sm:scroll-mt-28">
                         <div className="relative rounded-2xl overflow-hidden shadow-2xl border transition-all hover:shadow-3xl group"
-                            style={{ borderColor: 'var(--border)' }}>
+                            style={{ borderColor: 'var(--border)' }}
+                            onTouchStart={handleGalleryTouchStart}
+                            onTouchEnd={handleGalleryTouchEnd}
+                        >
+                            <div className={`absolute inset-0 pointer-events-none ${tapPulse ? 'tap-pulse' : ''}`} />
                             <img
                                 src={imageGallery[currentImageIndex]}
                                 alt={`${project.title} - Image ${currentImageIndex + 1}`}
-                                className="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
+                                className="w-full h-[260px] sm:h-[380px] lg:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
                             />
 
                             {/* Gradient overlay on hover */}
@@ -145,22 +206,30 @@ const ProjectDetails = () => {
                             {imageGallery.length > 1 && (
                                 <>
                                     <button
-                                        onClick={() => setCurrentImageIndex((prev) => (prev - 1 + imageGallery.length) % imageGallery.length)}
-                                        className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 hover:scale-110"
+                                        onClick={goPrevImage}
+                                        className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 hover:scale-110"
                                         style={{ backgroundColor: 'rgb(from var(--surface) r g b / 0.9)', color: 'var(--text-primary)' }}
                                     >
                                         <span className="material-icons-round">chevron_left</span>
                                     </button>
                                     <button
-                                        onClick={() => setCurrentImageIndex((prev) => (prev + 1) % imageGallery.length)}
-                                        className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 hover:scale-110"
+                                        onClick={goNextImage}
+                                        className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 hover:scale-110"
                                         style={{ backgroundColor: 'rgb(from var(--surface) r g b / 0.9)', color: 'var(--text-primary)' }}
                                     >
                                         <span className="material-icons-round">chevron_right</span>
                                     </button>
 
+                                    {showSwipeHint && (
+                                        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 sm:hidden swipe-hint">
+                                            <span className="material-icons-round text-base">swipe</span>
+                                            <span className="text-xs font-semibold uppercase tracking-widest">Swipe</span>
+                                            <span className="material-icons-round text-base">chevron_right</span>
+                                        </div>
+                                    )}
+
                                     {/* Image indicators */}
-                                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                                    <div className="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
                                         {imageGallery.map((_, index) => (
                                             <button
                                                 key={index}
@@ -170,7 +239,7 @@ const ProjectDetails = () => {
                                                     backgroundColor: index === currentImageIndex
                                                         ? 'var(--accent)'
                                                         : 'rgb(from var(--surface) r g b / 0.5)',
-                                                    width: index === currentImageIndex ? '24px' : '8px'
+                                                    width: index === currentImageIndex ? '22px' : '8px'
                                                 }}
                                             />
                                         ))}
@@ -181,18 +250,18 @@ const ProjectDetails = () => {
                     </div>
 
                     {/* Overview Section */}
-                    <section className="scroll-fade-in mb-20">
-                        <h2 className="text-4xl font-bold mb-8 transition-colors duration-300 flex items-center gap-3" style={{ color: 'var(--text-primary)' }}>
-                            <span className="material-icons-round text-4xl" style={{ color: 'var(--accent)' }}>description</span>
+                    <section id="overview" className="scroll-fade-in mb-12 sm:mb-20 scroll-mt-24 sm:scroll-mt-28">
+                        <h2 className="text-2xl sm:text-4xl font-bold mb-6 sm:mb-8 transition-colors duration-300 flex items-center gap-3" style={{ color: 'var(--text-primary)' }}>
+                            <span className="material-icons-round text-3xl sm:text-4xl" style={{ color: 'var(--accent)' }}>description</span>
                             {t('projects.overview') || 'Overview'}
                         </h2>
-                        <div className="p-8 rounded-2xl border transition-all"
+                        <div className="p-5 sm:p-8 rounded-2xl border transition-all"
                             style={{
                                 backgroundColor: 'var(--surface)',
                                 borderColor: 'var(--border)',
                                 boxShadow: '0 4px 20px rgb(from var(--accent) r g b / 0.05)'
                             }}>
-                            <p className="text-lg leading-relaxed transition-colors duration-300" style={{ color: 'var(--text-secondary)' }}>
+                            <p className="text-base sm:text-lg leading-relaxed transition-colors duration-300" style={{ color: 'var(--text-secondary)' }}>
                                 {project.fullDescription}
                             </p>
                         </div>
@@ -200,16 +269,44 @@ const ProjectDetails = () => {
 
                     {/* Enhanced Key Features Section */}
                     {project.features && project.features.length > 0 && (
-                        <section className="scroll-fade-in mb-20">
-                            <h2 className="text-4xl font-bold mb-10 transition-colors duration-300 flex items-center gap-3" style={{ color: 'var(--text-primary)' }}>
-                                <span className="material-icons-round text-4xl" style={{ color: 'var(--accent)' }}>stars</span>
+                        <section id="features" className="scroll-fade-in mb-12 sm:mb-20 scroll-mt-24 sm:scroll-mt-28">
+                            <h2 className="text-2xl sm:text-4xl font-bold mb-6 sm:mb-10 transition-colors duration-300 flex items-center gap-3" style={{ color: 'var(--text-primary)' }}>
+                                <span className="material-icons-round text-3xl sm:text-4xl" style={{ color: 'var(--accent)' }}>stars</span>
                                 {t('projects.features') || 'Key Features'}
                             </h2>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="space-y-3 sm:hidden">
                                 {project.features.map((feature, index) => (
                                     <div
                                         key={feature}
-                                        className="hover-lift p-6 rounded-xl border transition-all duration-300 group cursor-pointer"
+                                        className="relative overflow-hidden rounded-xl border px-4 py-4 transition-all"
+                                        style={{
+                                            backgroundColor: 'var(--surface)',
+                                            borderColor: 'var(--border)'
+                                        }}
+                                    >
+                                        <div className="absolute left-0 top-0 h-full w-1" style={{ backgroundColor: 'var(--accent)' }} />
+                                        <div className="flex items-start gap-3">
+                                            <span
+                                                className="flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold"
+                                                style={{
+                                                    backgroundColor: 'rgb(from var(--accent) r g b / 0.15)',
+                                                    color: 'var(--accent)'
+                                                }}
+                                            >
+                                                {index + 1}
+                                            </span>
+                                            <p className="flex-1 text-sm leading-relaxed transition-colors duration-300" style={{ color: 'var(--text-primary)' }}>
+                                                {feature}
+                                            </p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="hidden sm:grid grid-cols-1 md:grid-cols-2 gap-6">
+                                {project.features.map((feature, index) => (
+                                    <div
+                                        key={feature}
+                                        className="hover-lift p-5 sm:p-6 rounded-xl border transition-all duration-300 group cursor-pointer"
                                         style={{
                                             backgroundColor: 'var(--surface)',
                                             borderColor: 'var(--border)',
@@ -223,7 +320,7 @@ const ProjectDetails = () => {
                                                     check_circle
                                                 </span>
                                             </div>
-                                            <p className="flex-1 transition-colors duration-300 text-base leading-relaxed" style={{ color: 'var(--text-primary)' }}>
+                                            <p className="flex-1 transition-colors duration-300 text-sm sm:text-base leading-relaxed" style={{ color: 'var(--text-primary)' }}>
                                                 {feature}
                                             </p>
                                         </div>
@@ -235,18 +332,18 @@ const ProjectDetails = () => {
 
                     {/* Architecture Section */}
                     {project.architecture && (
-                        <section className="scroll-fade-in mb-20">
-                            <h2 className="text-4xl font-bold mb-8 transition-colors duration-300 flex items-center gap-3" style={{ color: 'var(--text-primary)' }}>
-                                <span className="material-icons-round text-4xl" style={{ color: 'var(--accent)' }}>account_tree</span>
+                        <section id="architecture" className="scroll-fade-in mb-12 sm:mb-20 scroll-mt-24 sm:scroll-mt-28">
+                            <h2 className="text-2xl sm:text-4xl font-bold mb-6 sm:mb-8 transition-colors duration-300 flex items-center gap-3" style={{ color: 'var(--text-primary)' }}>
+                                <span className="material-icons-round text-3xl sm:text-4xl" style={{ color: 'var(--accent)' }}>account_tree</span>
                                 {t('projects.architecture') || 'Architecture'}
                             </h2>
-                            <div className="p-8 rounded-2xl border transition-colors duration-300"
+                            <div className="p-5 sm:p-8 rounded-2xl border transition-colors duration-300"
                                 style={{
                                     backgroundColor: 'var(--surface)',
                                     borderColor: 'var(--border)',
                                     boxShadow: '0 4px 20px rgb(from var(--accent) r g b / 0.05)'
                                 }}>
-                                <p className="text-lg leading-relaxed transition-colors duration-300" style={{ color: 'var(--text-secondary)' }}>
+                                <p className="text-base sm:text-lg leading-relaxed transition-colors duration-300" style={{ color: 'var(--text-secondary)' }}>
                                     {project.architecture}
                                 </p>
                             </div>
@@ -255,16 +352,49 @@ const ProjectDetails = () => {
 
                     {/* Enhanced Technologies Section */}
                     {project.technologies && (
-                        <section className="scroll-fade-in mb-20">
-                            <h2 className="text-4xl font-bold mb-10 transition-colors duration-300 flex items-center gap-3" style={{ color: 'var(--text-primary)' }}>
-                                <span className="material-icons-round text-4xl" style={{ color: 'var(--accent)' }}>code</span>
+                        <section id="technologies" className="scroll-fade-in mb-12 sm:mb-20 scroll-mt-24 sm:scroll-mt-28">
+                            <h2 className="text-2xl sm:text-4xl font-bold mb-6 sm:mb-10 transition-colors duration-300 flex items-center gap-3" style={{ color: 'var(--text-primary)' }}>
+                                <span className="material-icons-round text-3xl sm:text-4xl" style={{ color: 'var(--accent)' }}>code</span>
                                 {t('projects.technologiesUsed') || 'Technologies'}
                             </h2>
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div className="space-y-4 sm:hidden">
                                 {Object.entries(project.technologies).map(([category, techs]) => (
                                     <div
                                         key={category}
-                                        className="hover-lift p-6 rounded-xl border transition-all duration-300 group"
+                                        className="rounded-xl border p-4 transition-colors duration-300"
+                                        style={{
+                                            backgroundColor: 'var(--surface)',
+                                            borderColor: 'var(--border)'
+                                        }}
+                                    >
+                                        <div className="flex items-center gap-2 mb-3">
+                                            <span className="material-icons-round" style={{ color: 'var(--accent)' }}>folder_special</span>
+                                            <h3 className="text-base font-bold capitalize" style={{ color: 'var(--text-primary)' }}>
+                                                {category}
+                                            </h3>
+                                        </div>
+                                        <div className="flex flex-wrap gap-2">
+                                            {techs.map((tech) => (
+                                                <span
+                                                    key={tech}
+                                                    className="rounded-full px-3 py-1 text-xs font-semibold"
+                                                    style={{
+                                                        backgroundColor: 'rgb(from var(--accent) r g b / 0.12)',
+                                                        color: 'var(--accent)'
+                                                    }}
+                                                >
+                                                    {tech}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="hidden sm:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                                {Object.entries(project.technologies).map(([category, techs]) => (
+                                    <div
+                                        key={category}
+                                        className="hover-lift p-5 sm:p-6 rounded-xl border transition-all duration-300 group"
                                         style={{
                                             backgroundColor: 'var(--surface)',
                                             borderColor: 'var(--border)'
@@ -291,19 +421,19 @@ const ProjectDetails = () => {
                     )}
 
                     {/* Enhanced Links/CTA Section */}
-                    <section className="scroll-fade-in mb-12">
-                        <h2 className="text-4xl font-bold mb-8 transition-colors duration-300 flex items-center gap-3" style={{ color: 'var(--text-primary)' }}>
-                            <span className="material-icons-round text-4xl" style={{ color: 'var(--accent)' }}>rocket_launch</span>
+                    <section id="links" className="scroll-fade-in mb-10 sm:mb-12 scroll-mt-24 sm:scroll-mt-28">
+                        <h2 className="text-2xl sm:text-4xl font-bold mb-6 sm:mb-8 transition-colors duration-300 flex items-center gap-3" style={{ color: 'var(--text-primary)' }}>
+                            <span className="material-icons-round text-3xl sm:text-4xl" style={{ color: 'var(--accent)' }}>rocket_launch</span>
                             {t('projects.projectLinks') || 'Get Started'}
                         </h2>
-                        <div className="flex flex-wrap gap-4">
+                        <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
                             {project.links.map(link => (
                                 <a
                                     key={link.label}
                                     href={link.primary ? project.githubLink : project.demoLink}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className={`flex items-center gap-3 px-8 py-4 rounded-xl text-base font-semibold transition-all shadow-lg hover:shadow-xl hover:scale-105 ${link.primary
+                                    className={`flex items-center justify-center gap-3 px-6 sm:px-8 py-4 rounded-xl text-base font-semibold transition-all shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 w-full sm:w-auto ${link.primary
                                             ? 'text-white'
                                             : 'border'
                                         }`}
@@ -328,13 +458,13 @@ const ProjectDetails = () => {
                     </section>
 
                     {/* Footer CTA */}
-                    <div className="scroll-fade-in mt-24 pt-10 border-t text-center transition-colors duration-300" style={{ borderColor: 'var(--border)' }}>
-                        <p className="text-lg mb-8 transition-colors duration-300" style={{ color: 'var(--text-secondary)' }}>
+                    <div className="scroll-fade-in mt-16 sm:mt-24 pt-8 sm:pt-10 border-t text-center transition-colors duration-300" style={{ borderColor: 'var(--border)' }}>
+                        <p className="text-base sm:text-lg mb-6 sm:mb-8 transition-colors duration-300" style={{ color: 'var(--text-secondary)' }}>
                             {t('projects.interestedInOther') || 'Interested in other projects?'}
                         </p>
                         <Link
                             to="/projects"
-                            className="inline-flex items-center gap-3 px-8 py-4 rounded-xl text-base font-semibold transition-all shadow-lg text-white hover:shadow-xl hover:scale-105"
+                            className="inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-4 rounded-xl text-base font-semibold transition-all shadow-lg text-white hover:shadow-xl hover:scale-105 active:scale-95 w-full sm:w-auto"
                             style={{
                                 backgroundColor: 'var(--accent)',
                                 boxShadow: '0 4px 20px rgb(from var(--accent) r g b / 0.3)'
@@ -351,14 +481,14 @@ const ProjectDetails = () => {
             {showScrollTop && (
                 <button
                     onClick={scrollToTop}
-                    className="fixed bottom-8 right-8 w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-all hover:scale-110 z-50 animate-fade-in-scale"
+                    className="fixed bottom-5 right-5 sm:bottom-8 sm:right-8 w-11 h-11 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-2xl transition-all hover:scale-110 z-50 animate-fade-in-scale"
                     style={{
                         backgroundColor: 'var(--accent)',
                         color: 'white',
                         boxShadow: '0 8px 30px rgb(from var(--accent) r g b / 0.4)'
                     }}
                 >
-                    <span className="material-icons-round text-2xl">arrow_upward</span>
+                    <span className="material-icons-round text-xl sm:text-2xl">arrow_upward</span>
                 </button>
             )}
         </div>
