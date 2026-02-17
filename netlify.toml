@@ -1,0 +1,70 @@
+# Netlify Configuration
+# SEO optimized configuration for portfolio
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[[headers]]
+  # Set headers for all files
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), payment=()"
+
+[[headers]]
+  # Cache static assets for 1 year
+  for = "/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # Cache CSS and JS for 1 month
+  for = "/*.{js,css}"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  # Cache images for 1 year
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # Don't cache HTML files
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  # Cache XML files
+  for = "/*.xml"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+    Content-Type = "application/xml"
+
+[[headers]]
+  # Cache robots.txt
+  for = "/robots.txt"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+    Content-Type = "text/plain"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Preload critical resources
+[[headers]]
+  for = "/"
+  [headers.values]
+    Link = "</static/css/main.css>; rel=preload; as=style, </static/js/main.js>; rel=preload; as=script"
+
+# Performance monitoring
+[context.production]
+  command = "npm run build"
+  environment = { NODE_ENV = "production" }
