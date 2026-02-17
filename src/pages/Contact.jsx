@@ -44,8 +44,8 @@ const Contact = () => {
         title: 'Contact Me - Get in Touch for Web Development Projects',
         description: 'Get in touch with me for web development inquiries, project discussions, or collaboration opportunities. Let\'s create something amazing together.',
         keywords: 'contact, get in touch, web development, collaboration, inquiry, projects',
-        ogImage: '/portfolio_v2/logo.svg',
-        ogUrl: 'https://portfolio.example.com/portfolio_v2/contact'
+        ogImage: '/logo.svg',
+        ogUrl: 'https://ramarosandratan.github.io/portfolio/contact'
     });
 
     // Scroll animations
@@ -163,8 +163,8 @@ const Contact = () => {
     return (
         <div className="flex flex-col min-h-screen transition-colors duration-300" style={{ backgroundColor: 'var(--background)' }}>
             <StructuredData data={getBreadcrumbSchema([
-                { name: 'Home', url: 'https://portfolio.example.com/portfolio_v2' },
-                { name: 'Contact', url: 'https://portfolio.example.com/portfolio_v2/contact' }
+                { name: 'Home', url: 'https://ramarosandratan.github.io/portfolio' },
+                { name: 'Contact', url: 'https://ramarosandratan.github.io/portfolio/contact' }
             ])} />
             {/* Main Content Area */}
             <main className="flex-grow flex items-center justify-center pt-28 pb-16 px-4 sm:px-6 lg:px-8">
@@ -269,7 +269,7 @@ const Contact = () => {
                                     <h3 className="text-2xl font-bold mb-2">{t('contact.myResume')}</h3>
                                     <p className="mb-6 text-sm opacity-90">{t('contact.downloadCVDesc')}</p>
                                     <a 
-                                        href="/portfolio_v2/CV_ramarosandratana_Full_stack.pdf" 
+                                        href="/CV_ramarosandratana_Full_stack.pdf" 
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="w-full group bg-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 flex items-center justify-center shadow-md hover:opacity-90" 

@@ -5,7 +5,7 @@
   
   <!-- Home Page -->
   <url>
-    <loc>https://portfolio.example.com/</loc>
+    <loc>https://ramarosandratan.github.io/portfolio/</loc>
     <lastmod>2026-02-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
@@ -13,7 +13,7 @@
   
   <!-- Experience Page -->
   <url>
-    <loc>https://portfolio.example.com/experience</loc>
+    <loc>https://ramarosandratan.github.io/portfolio/experience</loc>
     <lastmod>2026-02-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -21,7 +21,7 @@
   
   <!-- Projects Page -->
   <url>
-    <loc>https://portfolio.example.com/projects</loc>
+    <loc>https://ramarosandratan.github.io/portfolio/projects</loc>
     <lastmod>2026-02-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -29,7 +29,7 @@
   
   <!-- Contact Page -->
   <url>
-    <loc>https://portfolio.example.com/contact</loc>
+    <loc>https://ramarosandratan.github.io/portfolio/contact</loc>
     <lastmod>2026-02-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>

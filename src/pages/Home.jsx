@@ -14,7 +14,7 @@ const Home = () => {
         description: 'Explore my portfolio featuring cutting-edge web development projects, technical expertise, and digital solutions. Full-stack developer with 5+ years of experience.',
         keywords: 'portfolio, web developer, full-stack, React, Node.js, digital solutions, projects',
         ogImage: '/logo.svg',
-        ogUrl: 'https://portfolio.example.com'
+        ogUrl: 'https://ramarosandratan.github.io/portfolio'
     });
 
     // Scroll animations

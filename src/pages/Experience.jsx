@@ -20,7 +20,7 @@ const Experience = () => {
     description: 'Explore my professional experience, technical skills, certifications, and work history as a full-stack developer. Over 5 years of expertise in web development.',
     keywords: 'experience, skills, certifications, full-stack developer, work history, expertise',
     ogImage: '/logo.svg',
-    ogUrl: 'https://portfolio.example.com/experience'
+    ogUrl: 'https://ramarosandratan.github.io/portfolio/experience'
   });
 
   const workExperienceKeys = [
@@ -141,8 +141,8 @@ const Experience = () => {
   return (
     <div className="flex flex-col min-h-screen transition-colors duration-300" style={{ backgroundColor: 'var(--background)' }}>
       <StructuredData data={getBreadcrumbSchema([
-        { name: 'Home', url: 'https://portfolio.example.com' },
-        { name: 'Experience', url: 'https://portfolio.example.com/experience' }
+        { name: 'Home', url: 'https://ramarosandratan.github.io/portfolio' },
+        { name: 'Experience', url: 'https://ramarosandratan.github.io/portfolio/experience' }
       ])} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16 w-full">
         {/* Enhanced Header with Gradient */}

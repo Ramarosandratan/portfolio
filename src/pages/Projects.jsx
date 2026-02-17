@@ -17,7 +17,7 @@ const Projects = () => {
         description: 'Explore my portfolio of web development projects showcasing full-stack development, frontend, and backend solutions. View case studies and technical implementations.',
         keywords: 'projects, web development, portfolio, case studies, React, Node.js, full-stack',
         ogImage: '/logo.svg',
-        ogUrl: 'https://portfolio.example.com/projects'
+        ogUrl: 'https://ramarosandratan.github.io/portfolio/projects'
     });
 
     const filterOptions = [
@@ -70,8 +70,8 @@ const Projects = () => {
     return (
         <div className="flex flex-col min-h-screen transition-colors duration-300" style={{ backgroundColor: 'var(--background)' }}>
             <StructuredData data={getBreadcrumbSchema([
-                { name: 'Home', url: 'https://portfolio.example.com' },
-                { name: 'Projects', url: 'https://portfolio.example.com/projects' }
+                { name: 'Home', url: 'https://ramarosandratan.github.io/portfolio' },
+                { name: 'Projects', url: 'https://ramarosandratan.github.io/portfolio/projects' }
             ])} />
             {/* Enhanced Header Section with Gradient */}
             <section className="relative pt-24 pb-12 sm:pt-28 sm:pb-16 overflow-hidden" style={{ backgroundColor: 'var(--background)' }}>

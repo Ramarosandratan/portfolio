@@ -31,16 +31,16 @@ export const StructuredData = ({ data }) => {
 export const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: 'Your Name',
-  url: 'https://portfolio.example.com',
-  logo: 'https://portfolio.example.com/logo.svg',
+  name: 'Ramarosandratana Rinasoa Mampionona',
+  url: 'https://ramarosandratan.github.io/portfolio',
+  logo: 'https://ramarosandratan.github.io/portfolio/logo.svg',
   sameAs: [
-    'https://www.linkedin.com/in/yourprofile',
-    'https://github.com/yourprofile',
+    'https://www.linkedin.com/in/rinasoa-mampionona-ramarosandratana/',
+    'https://github.com/Ramarosandratan',
     'https://twitter.com/yourhandle'
   ],
   jobTitle: 'Full Stack Developer',
-  email: 'your.email@example.com',
+  email: 'ramarosandratana2019@gmail.com',
   description: 'Professional Full Stack Developer specializing in digital solutions and web development'
 };
 

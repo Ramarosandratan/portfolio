@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ portfolio-v2 ]
+    branches: [ main ]
   workflow_dispatch:
 
 permissions:
@@ -31,6 +31,10 @@ jobs:
         run: npm ci
 
       - name: Build
+        env:
+          VITE_EMAILJS_PUBLIC_KEY: ${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}
+          VITE_EMAILJS_SERVICE_ID: ${{ secrets.VITE_EMAILJS_SERVICE_ID }}
+          VITE_EMAILJS_TEMPLATE_ID: ${{ secrets.VITE_EMAILJS_TEMPLATE_ID }}
         run: npm run build
 
       - name: Upload artifact

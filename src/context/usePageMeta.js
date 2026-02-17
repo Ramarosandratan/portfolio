@@ -11,7 +11,7 @@ export const usePageMeta = (config) => {
       description = 'Explore my portfolio featuring digital solutions and web development projects.',
       keywords = 'portfolio, web development, digital solutions',
       ogImage = '/logo.svg',
-      ogUrl = 'https://portfolio.example.com',
+      ogUrl = 'https://ramarosandratan.github.io/portfolio',
       twitterHandle = '@yourhandle'
     } = config;
 
