@@ -158,27 +158,27 @@ const Home = () => {
                     <p className="text-center text-sm font-medium mb-6 uppercase tracking-wider" style={{ color: 'var(--text-muted)' }}>{t('home.technologiesHeading')}</p>
                     <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-7 sm:gap-x-12 sm:gap-y-8 opacity-70 transition-all duration-500">
                         {/* React */}
-                        <div className="group flex flex-col items-center gap-2 hover:text-primary transition-colors cursor-default">
+                        <a className="group flex flex-col items-center gap-2 hover:text-primary transition-colors cursor-pointer" href="https://react.dev/" target="_blank" rel="noreferrer">
                             <div className="w-10 h-10 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-300">
                                 <svg className="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M18.6789 15.9759C18.6789 14.5415 17.4796 13.3785 16 13.3785C14.5206 13.3785 13.3211 14.5415 13.3211 15.9759C13.3211 17.4105 14.5206 18.5734 16 18.5734C17.4796 18.5734 18.6789 17.4105 18.6789 15.9759Z" fill="#53C1DE" />
                                     <path fillRule="evenodd" clipRule="evenodd" d="M24.7004 11.1537C25.2661 8.92478 25.9772 4.79148 23.4704 3.39016C20.9753 1.99495 17.7284 4.66843 16.0139 6.27318C14.3044 4.68442 10.9663 2.02237 8.46163 3.42814C5.96751 4.82803 6.73664 8.8928 7.3149 11.1357C4.98831 11.7764 1 13.1564 1 15.9759C1 18.7874 4.98416 20.2888 7.29698 20.9289C6.71658 23.1842 5.98596 27.1909 8.48327 28.5877C10.9973 29.9932 14.325 27.3945 16.0554 25.7722C17.7809 27.3864 20.9966 30.0021 23.4922 28.6014C25.9956 27.1963 25.3436 23.1184 24.7653 20.8625C27.0073 20.221 31 18.7523 31 15.9759C31 13.1835 26.9903 11.7923 24.7004 11.1537ZM24.4162 19.667C24.0365 18.5016 23.524 17.2623 22.8971 15.9821C23.4955 14.7321 23.9881 13.5088 24.3572 12.3509C26.0359 12.8228 29.7185 13.9013 29.7185 15.9759C29.7185 18.07 26.1846 19.1587 24.4162 19.667ZM22.85 27.526C20.988 28.571 18.2221 26.0696 16.9478 24.8809C17.7932 23.9844 18.638 22.9422 19.4625 21.7849C20.9129 21.6602 22.283 21.4562 23.5256 21.1777C23.9326 22.7734 24.7202 26.4763 22.85 27.526ZM9.12362 27.5111C7.26143 26.47 8.11258 22.8946 8.53957 21.2333C9.76834 21.4969 11.1286 21.6865 12.5824 21.8008C13.4123 22.9332 14.2816 23.9741 15.1576 24.8857C14.0753 25.9008 10.9945 28.557 9.12362 27.5111ZM2.28149 15.9759C2.28149 13.874 5.94207 12.8033 7.65904 12.3326C8.03451 13.5165 8.52695 14.7544 9.12123 16.0062C8.51925 17.2766 8.01977 18.5341 7.64085 19.732C6.00369 19.2776 2.28149 18.0791 2.28149 15.9759ZM9.1037 4.50354C10.9735 3.45416 13.8747 6.00983 15.1159 7.16013C14.2444 8.06754 13.3831 9.1006 12.5603 10.2265C11.1494 10.3533 9.79875 10.5569 8.55709 10.8297C8.09125 9.02071 7.23592 5.55179 9.1037 4.50354ZM20.3793 11.5771C21.3365 11.6942 22.2536 11.85 23.1147 12.0406C22.8562 12.844 22.534 13.6841 22.1545 14.5453C21.6044 13.5333 21.0139 12.5416 20.3793 11.5771ZM16.0143 8.0481C16.6054 8.66897 17.1974 9.3623 17.7798 10.1145C16.5985 10.0603 15.4153 10.0601 14.234 10.1137C14.8169 9.36848 15.414 8.67618 16.0143 8.0481ZM9.8565 14.5444C9.48329 13.6862 9.16398 12.8424 8.90322 12.0275C9.75918 11.8418 10.672 11.69 11.623 11.5748C10.9866 12.5372 10.3971 13.5285 9.8565 14.5444ZM11.6503 20.4657C10.6679 20.3594 9.74126 20.2153 8.88556 20.0347C9.15044 19.2055 9.47678 18.3435 9.85796 17.4668C10.406 18.4933 11.0045 19.4942 11.6503 20.4657ZM16.0498 23.9915C15.4424 23.356 14.8365 22.6531 14.2448 21.8971C15.4328 21.9423 16.6231 21.9424 17.811 21.891C17.2268 22.6608 16.6369 23.3647 16.0498 23.9915ZM22.1667 17.4222C22.5677 18.3084 22.9057 19.1657 23.1742 19.9809C22.3043 20.1734 21.3652 20.3284 20.3757 20.4435C21.015 19.4607 21.6149 18.4536 22.1667 17.4222ZM18.7473 20.5941C16.9301 20.72 15.1016 20.7186 13.2838 20.6044C12.2509 19.1415 11.3314 17.603 10.5377 16.0058C11.3276 14.4119 12.2404 12.8764 13.2684 11.4158C15.0875 11.2825 16.9178 11.2821 18.7369 11.4166C19.7561 12.8771 20.6675 14.4086 21.4757 15.9881C20.6771 17.5812 19.7595 19.1198 18.7473 20.5941ZM22.8303 4.4666C24.7006 5.51254 23.8681 9.22726 23.4595 10.8426C22.2149 10.5641 20.8633 10.3569 19.4483 10.2281C18.6239 9.09004 17.7698 8.05518 16.9124 7.15949C18.1695 5.98441 20.9781 3.43089 22.8303 4.4666Z" fill="#53C1DE" />
                                 </svg>
                             </div>
-                            <span className="text-xs font-semibold">React</span>
-                        </div>
+                            <span className="text-xs font-semibold text-[color:var(--text-muted)] transition-colors group-hover:text-[#53C1DE]">React</span>
+                        </a>
                         {/* Node */}
-                        <div className="group flex flex-col items-center gap-2 hover:text-primary transition-colors cursor-default">
+                        <a className="group flex flex-col items-center gap-2 hover:text-primary transition-colors cursor-pointer" href="https://nodejs.org/" target="_blank" rel="noreferrer">
                             <div className="w-10 h-10 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-300">
                                 <svg className="w-full h-full" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M16,30a2.151,2.151,0,0,1-1.076-.288L11.5,27.685c-.511-.286-.262-.387-.093-.446a6.828,6.828,0,0,0,1.549-.7.263.263,0,0,1,.255.019l2.631,1.563a.34.34,0,0,0,.318,0l10.26-5.922a.323.323,0,0,0,.157-.278V10.075a.331.331,0,0,0-.159-.283L16.158,3.875a.323.323,0,0,0-.317,0L5.587,9.794a.33.33,0,0,0-.162.281V21.916a.315.315,0,0,0,.161.274L8.4,23.814c1.525.762,2.459-.136,2.459-1.038V11.085a.3.3,0,0,1,.3-.3h1.3a.3.3,0,0,1,.3.3V22.777c0,2.035-1.108,3.2-3.038,3.2a4.389,4.389,0,0,1-2.363-.642L4.661,23.788a2.166,2.166,0,0,1-1.076-1.872V10.075A2.162,2.162,0,0,1,4.661,8.2L14.922,2.276a2.246,2.246,0,0,1,2.156,0L27.338,8.2a2.165,2.165,0,0,1,1.077,1.87V21.916a2.171,2.171,0,0,1-1.077,1.872l-10.26,5.924A2.152,2.152,0,0,1,16,30Z" fill="#83cd29" />
                                     <path d="M14.054,17.953a.3.3,0,0,1,.3-.3h1.327a.3.3,0,0,1,.295.251c.2,1.351.8,2.032,3.513,2.032,2.161,0,3.082-.489,3.082-1.636,0-.661-.261-1.152-3.62-1.481-2.808-.278-4.544-.9-4.544-3.144,0-2.07,1.745-3.305,4.67-3.305,3.287,0,4.914,1.141,5.12,3.589a.3.3,0,0,1-.295.323H22.566a.3.3,0,0,1-.288-.232c-.319-1.421-1.1-1.875-3.2-1.875-2.36,0-2.634.822-2.634,1.438,0,.746.324.964,3.51,1.385,3.153.417,4.651,1.007,4.651,3.223,0,2.236-1.864,3.516-5.115,3.516C14.995,21.743,14.054,19.682,14.054,17.953Z" fill="#83cd29" />
                                 </svg>
                             </div>
-                            <span className="text-xs font-semibold">Node.js</span>
-                        </div>
+                            <span className="text-xs font-semibold text-[color:var(--text-muted)] transition-colors group-hover:text-[#83cd29]">Node.js</span>
+                        </a>
                         {/* TypeScript */}
-                        <div className="group flex flex-col items-center gap-2 hover:text-primary transition-colors cursor-default">
+                        <a className="group flex flex-col items-center gap-2 hover:text-primary transition-colors cursor-pointer" href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer">
                             <div className="w-10 h-10 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-300">
                                 <svg
                                     className="w-full h-full"
@@ -196,10 +196,37 @@ const Home = () => {
                                     />
                                 </svg>
                             </div>
-                            <span className="text-xs font-semibold">TypeScript</span>
-                        </div>
+                            <span className="text-xs font-semibold text-[color:var(--text-muted)] transition-colors group-hover:text-[#3178c6]">TypeScript</span>
+                        </a>
+                        {/* Java */}
+                        <a className="group flex flex-col items-center gap-2 hover:text-primary transition-colors cursor-pointer" href="https://www.java.com/" target="_blank" rel="noreferrer">
+                            <div className="w-10 h-10 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                                    <path fill="#F44336" d="M23.65,24.898c-0.998-1.609-1.722-2.943-2.725-5.455C19.229,15.2,31.24,11.366,26.37,3.999c2.111,5.089-7.577,8.235-8.477,12.473C17.07,20.37,23.645,24.898,23.65,24.898z"></path><path fill="#F44336" d="M23.878,17.27c-0.192,2.516,2.229,3.857,2.299,5.695c0.056,1.496-1.447,2.743-1.447,2.743s2.728-0.536,3.579-2.818c0.945-2.534-1.834-4.269-1.548-6.298c0.267-1.938,6.031-5.543,6.031-5.543S24.311,11.611,23.878,17.27z"></path><g><path fill="#1565C0" d="M32.084 25.055c1.754-.394 3.233.723 3.233 2.01 0 2.901-4.021 5.643-4.021 5.643s6.225-.742 6.225-5.505C37.521 24.053 34.464 23.266 32.084 25.055zM29.129 27.395c0 0 1.941-1.383 2.458-1.902-4.763 1.011-15.638 1.147-15.638.269 0-.809 3.507-1.638 3.507-1.638s-7.773-.112-7.773 2.181C11.683 28.695 21.858 28.866 29.129 27.395z"></path><path fill="#1565C0" d="M27.935,29.571c-4.509,1.499-12.814,1.02-10.354-0.993c-1.198,0-2.974,0.963-2.974,1.889c0,1.857,8.982,3.291,15.63,0.572L27.935,29.571z"></path><path fill="#1565C0" d="M18.686,32.739c-1.636,0-2.695,1.054-2.695,1.822c0,2.391,9.76,2.632,13.627,0.205l-2.458-1.632C24.271,34.404,17.014,34.579,18.686,32.739z"></path><path fill="#1565C0" d="M36.281,36.632c0-0.936-1.055-1.377-1.433-1.588c2.228,5.373-22.317,4.956-22.317,1.784c0-0.721,1.807-1.427,3.477-1.093l-1.42-0.839C11.26,34.374,9,35.837,9,37.017C9,42.52,36.281,42.255,36.281,36.632z"></path><path fill="#1565C0" d="M39,38.604c-4.146,4.095-14.659,5.587-25.231,3.057C24.341,46.164,38.95,43.628,39,38.604z"></path></g>
+                                </svg>
+                            </div>
+                            <span className="text-xs font-semibold text-[color:var(--text-muted)] transition-colors group-hover:text-[#1565C0]">Java</span>
+                        </a>
+                        {/* Python */}
+                        <a className="group flex flex-col items-center gap-2 hover:text-primary transition-colors cursor-pointer" href="https://www.python.org/" target="_blank" rel="noreferrer">
+                            <div className="w-10 h-10 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                                    <path fill="#0277BD" d="M24.047,5c-1.555,0.005-2.633,0.142-3.936,0.367c-3.848,0.67-4.549,2.077-4.549,4.67V14h9v2H15.22h-4.35c-2.636,0-4.943,1.242-5.674,4.219c-0.826,3.417-0.863,5.557,0,9.125C5.851,32.005,7.294,34,9.931,34h3.632v-5.104c0-2.966,2.686-5.896,5.764-5.896h7.236c2.523,0,5-1.862,5-4.377v-8.586c0-2.439-1.759-4.263-4.218-4.672C27.406,5.359,25.589,4.994,24.047,5z M19.063,9c0.821,0,1.5,0.677,1.5,1.502c0,0.833-0.679,1.498-1.5,1.498c-0.837,0-1.5-0.664-1.5-1.498C17.563,9.68,18.226,9,19.063,9z"></path><path fill="#FFC107" d="M23.078,43c1.555-0.005,2.633-0.142,3.936-0.367c3.848-0.67,4.549-2.077,4.549-4.67V34h-9v-2h9.343h4.35c2.636,0,4.943-1.242,5.674-4.219c0.826-3.417,0.863-5.557,0-9.125C41.274,15.995,39.831,14,37.194,14h-3.632v5.104c0,2.966-2.686,5.896-5.764,5.896h-7.236c-2.523,0-5,1.862-5,4.377v8.586c0,2.439,1.759,4.263,4.218,4.672C19.719,42.641,21.536,43.006,23.078,43z M28.063,39c-0.821,0-1.5-0.677-1.5-1.502c0-0.833,0.679-1.498,1.5-1.498c0.837,0,1.5,0.664,1.5,1.498C29.563,38.32,28.899,39,28.063,39z"></path>
+                                </svg>
+                            </div>
+                            <span className="text-xs font-semibold text-[color:var(--text-muted)] transition-colors group-hover:text-[#FFC107]">Python</span>
+                        </a>
+                        {/* Oracle DB */}
+                        <a className="group flex flex-col items-center gap-2 hover:text-primary transition-colors cursor-pointer" href="https://www.oracle.com/database/" target="_blank" rel="noreferrer">
+                            <div className="w-10 h-10 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                                    <path fill="#EF0F14" d="M2.861,21.998h2.917c1.05,0,2.261,0.896,2.261,2s-1.21,2-2.261,2H2.861c-1.05,0-1.861-0.895-1.861-2C1,22.893,1.811,21.998,2.861,21.998z M43.021,20.998c-1.401,0-2.521,1.343-2.521,3s1.13,3,2.521,3h4.019l0.96-1h-5c-0.898-0.047-1.289-0.638-1.5-1.5h5.54l0.96-1h-6.5c0.213-0.861,0.592-1.495,1.5-1.5h4.04l0.96-1H43.021z M34,20.998v5.426c0,0.148,0.095,0.292,0.201,0.402s0.249,0.172,0.405,0.172L38.54,27l1-1L35,25.998V21L34,20.998z M27.842,20.998c-1.591,0-2.851,1.346-2.851,3.003s1.26,2.997,2.851,2.997l3.649-0.012l1.149-0.988h-4.819c-1.05,0-1.84-0.894-1.84-1.999s0.79-2.001,1.84-2.001l3.689,0.016l1.13-1.016H27.842z M21,20.998c-0.258,0-0.522,0.215-0.67,0.483l-2.83,5.517h1l2.5-5l1.691,3H20.04l0.941,0.98l2.181-0.006l0.658,1.025l1.081-0.009l-3.277-5.507C21.394,21.112,21.25,20.998,21,20.998z M10,20.998v6h1v-5h3c0.515,0,1,0.464,1,1s-0.485,1-1,1h-2.5l3.481,3H16.5l-2.5-2l0.337-0.009C15.077,24.99,16,24.119,16,22.998c0-1.121-0.687-1.986-1.553-2H10z M2.882,20.998c-1.591,0-2.882,1.344-2.882,3s1.291,3,2.882,3H5.76c1.591,0,3.24-1.343,3.24-3s-1.649-3-3.24-3H2.882z"></path>
+                                </svg>
+                            </div>
+                            <span className="text-xs font-semibold text-[color:var(--text-muted)] transition-colors group-hover:text-[#EF0F14]">Oracle DB</span>
+                        </a>
                         {/* PostgreSQL */}
-                        <div className="group flex flex-col items-center gap-2 hover:text-primary transition-colors cursor-default">
+                        <a className="group flex flex-col items-center gap-2 hover:text-primary transition-colors cursor-pointer" href="https://www.postgresql.org/" target="_blank" rel="noreferrer">
                             <div className="w-10 h-10 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-300">
                                 <svg
                                     width="264px"
@@ -234,26 +261,26 @@ const Home = () => {
                                     </g>
                                 </svg>
                             </div>
-                            <span className="text-xs font-semibold">PostgreSQL</span>
-                        </div>
+                            <span className="text-xs font-semibold text-[color:var(--text-muted)] transition-colors group-hover:text-[#336791]">PostgreSQL</span>
+                        </a>
                         {/* Next.js */}
-                        <div className="group flex flex-col items-center gap-2 hover:text-primary transition-colors cursor-default">
+                        <a className="group flex flex-col items-center gap-2 hover:text-primary transition-colors cursor-pointer" href="https://nextjs.org/" target="_blank" rel="noreferrer">
                             <div className="w-10 h-10 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-300">
                                 <svg className="w-full h-full fill-current text-neutral-400 group-hover:text-black transition-colors" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path fillRule="evenodd" clipRule="evenodd" d="M0 7.5C0 3.35786 3.35786 0 7.5 0C11.6421 0 15 3.35786 15 7.5C15 10.087 13.6902 12.3681 11.6975 13.7163L4.90687 4.20942C4.78053 4.03255 4.5544 3.95756 4.34741 4.02389C4.14042 4.09022 4 4.28268 4 4.50004V12H5V6.06027L10.8299 14.2221C9.82661 14.7201 8.696 15 7.5 15C3.35786 15 0 11.6421 0 7.5ZM10 10V4H11V10H10Z" fill="currentColor" />
                                 </svg>
                             </div>
-                            <span className="text-xs font-semibold">Next.js</span>
-                        </div>
+                            <span className="text-xs font-semibold text-[color:var(--text-muted)] transition-colors group-hover:text-black">Next.js</span>
+                        </a>
                         {/* Tailwind */}
-                        <div className="group flex flex-col items-center gap-2 hover:text-primary transition-colors cursor-default">
+                        <a className="group flex flex-col items-center gap-2 hover:text-primary transition-colors cursor-pointer" href="https://tailwindcss.com/" target="_blank" rel="noreferrer">
                             <div className="w-10 h-10 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-300">
                                 <svg className="w-full h-full fill-current text-neutral-400 group-hover:text-[#44a8b3] transition-colors" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M9,13.7q1.4-5.6,7-5.6c5.6,0,6.3,4.2,9.1,4.9q2.8.7,4.9-2.1-1.4,5.6-7,5.6c-5.6,0-6.3-4.2-9.1-4.9Q11.1,10.9,9,13.7ZM2,22.1q1.4-5.6,7-5.6c5.6,0,6.3,4.2,9.1,4.9q2.8.7,4.9-2.1-1.4,5.6-7,5.6c-5.6,0-6.3-4.2-9.1-4.9Q4.1,19.3,2,22.1Z" />
                                 </svg>
                             </div>
-                            <span className="text-xs font-semibold">Tailwind</span>
-                        </div>
+                            <span className="text-xs font-semibold text-[color:var(--text-muted)] transition-colors group-hover:text-[#44a8b3]">Tailwind</span>
+                        </a>
                     </div>
                 </div>
             </section>
