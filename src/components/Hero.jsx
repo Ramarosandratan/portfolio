@@ -1,12 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+const baseUrl = import.meta.env.BASE_URL || '/';
+
 const Hero = ({
   goToSection,
   name = "Ramarosandratana Mampionona Rinasoa",
   title = "A passionate Full-Stack Developer with a focus on creating elegant and efficient web applications. I love bringing ideas to life through code and constantly learning new technologies.",
-  backgroundImage = "/images/freelance.png",
-  profileImage = "/portfolio/images/profil.png",
+  backgroundImage = `${baseUrl}images/freelance.png`,
+  profileImage = `${baseUrl}images/profil.png`,
   profileImageAlt = "Profile Illustration",
 }) => {
   return (

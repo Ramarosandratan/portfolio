@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+const baseUrl = import.meta.env.BASE_URL || '/';
+
 const About = () => {
   return (
     <div id="about" className="min-h-screen flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8 bg-gray-900">
@@ -19,7 +21,7 @@ const About = () => {
             className="flex-shrink-0"
           >
             <img
-              src="/portfolio/images/profil-colored.png"
+              src={`${baseUrl}images/profil-colored.png`}
               alt="Profile"
               className="w-32 h-32 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 xl:w-72 xl:h-72 rounded-full object-cover shadow-lg border-4 border-indigo-500 dark:border-indigo-400 lg:border-6 xl:border-8 max-w-full"
             />
@@ -59,7 +61,7 @@ const About = () => {
             </motion.ul>
 
             <motion.a
-              href="/portfolio/documents/CV_ramarosandratana_mampionona_rinasoa.pdf"
+              href={`${baseUrl}documents/CV_ramarosandratana_mampionona_rinasoa.pdf`}
               download
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
